@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>シフト設定</title>
+    <link rel="stylesheet" href="ShiftDisplay.css">
+    <script src="ShiftDisplay.js"></script>
+</head>
+<body>
+<h1>シフト設定</h1>
+<br><br>
+<form>
+    <div>
+        <label>
+            アルバイト名　
+            <input type="text" name="JobName">
+        </label>
+    </div>
+    <p><br>ー給料ー</p>
+    <div>
+        <label>
+            時給　　
+            <input type="text" name="HourWages">
+        </label>
+    </div>
+    <div>
+        <label>
+            交通費　
+            <input type="text" name="TrasCosts">
+        </label>
+    </div>
+    <div>
+        <label>
+             深夜給　
+            <input type="text" name="NightWages">
+            <input type="time" name="NightWages_time_s" id="NightWages_time_s">
+            ～
+            <input type="time" name="NightWages_time_f" id="NightWages_time_f">
+        </label>
+    </div>
+    <div>
+        <label>
+            残業代　
+            <input type="text" name="Overtime">
+        </label>
+    </div>
+    <p><br>ーシフト情報ー</p>  
+    <form action="#">
+        <select name="MethodLink">
+            <option value="">選択してください
+            <option value="1">曜日固定シフト
+            <option value="2">月のシフト
+        </select>
+        <br>
+    <input type="button" value="時間設定" onclick="modal(this.form.MethodLink.value)">
+    </form>
+    <br><br>
+    <button type="button"
+    onclick="location.href='../W2メイン/MainDisplay.html'">戻る
+    </button>
+    <button type="submit">完了</button>
+</form>
+</body>
+</html>
