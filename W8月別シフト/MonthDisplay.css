@@ -1,0 +1,53 @@
+.Calender-container {
+    padding-top: 10px;
+    border-radius: 5px;
+    background: white;
+    color: #1a1a1a;
+}
+
+.Calender {
+    width: 80%;
+    margin: 0 auto;
+}
+
+th, td {
+    text-align: left;
+}
+
+th {
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    width: calc(8%*10/7);
+}
+
+p1 {
+    padding-left: 20px;
+}
+
+.Day *:first-child {
+    color: red;
+}
+
+.Day *:last-child {
+    color: blue;
+}
+
+button {
+    display: block;
+    width: 50px;
+}
+
+button:nth-child(2){
+    margin-left: 10%;
+    float: left;
+}
+button:nth-child(3){
+    float: left;
+}
+button:nth-child(4){
+    float: right;
+    margin-right: 10%;
+}
