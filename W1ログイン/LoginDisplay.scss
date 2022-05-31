@@ -1,0 +1,36 @@
+.title{
+    position: relative;
+    font-size: 20px;
+    margin-top: 100px;
+}
+.ID{
+    font-size: 30px;
+    >input {
+        width: 150px;
+        padding: 5px;
+        font-size: 20px;
+    }
+}
+.Password{
+    font-size: 30px;
+    >input {
+        width: 150px;
+        padding: 5px;
+        font-size: 20px;
+    }
+}
+.decide{
+    margin-top: 20px;
+    >button {
+        width: 100px;
+        padding: 10px;
+        font-size: large;
+        background-color: rgb(244, 233, 233);
+    }
+}
+.center{
+    text-align: center;
+}
+.inline_brock{
+    display: inline-block;
+}

@@ -1,0 +1,45 @@
+.title {
+  position: relative;
+  font-size: 20px;
+  margin-top: 100px;
+}
+
+.ID {
+  font-size: 30px;
+}
+
+.ID > input {
+  width: 150px;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.Password {
+  font-size: 30px;
+}
+
+.Password > input {
+  width: 150px;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.decide {
+  margin-top: 20px;
+}
+
+.decide > button {
+  width: 100px;
+  padding: 10px;
+  font-size: large;
+  background-color: #f4e9e9;
+}
+
+.center {
+  text-align: center;
+}
+
+.inline_brock {
+  display: inline-block;
+}
+/*# sourceMappingURL=LoginDisplay.css.map */
