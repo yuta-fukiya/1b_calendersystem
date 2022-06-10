@@ -1,63 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>曜日固定シフト</title>
-  <link rel="stylesheet" href="WeekDisplay.css">
+    <meta charset="UTF-8">
+    <title>曜日固定シフト</title>
+    <link rel="stylesheet" href="WeekDisplay.css">
+    <script type="text/javascript" src="WeekDisplay.js"></script>
 </head>
 <body>
-<h1>シフト設定ー曜日固定シフト</h1>
-<form>
-    <table>
-        <tr>
-        <th>日</th>
-        <th>月</th>
-        <th>火</th>
-        <th>水</th>
-        <th>木</th>
-        <th>金</th>
-        <th>土</th>
-        </tr>
-        <tr>
-            <td>
-                <input type="time" name="weekshift-time1-s" id="weekshift-time1-s">
-                <p>～<br></p>
-                <input type="time" name="weekshift-time1-f" id="weekshift-time1-f">
-            </td>
-            <td>
-                <input type="time" name="weekshift-time2-s" id="weekshift-time2-s">
-                <p>～<br></p>
-                <input type="time" name="weekshift-time2-f" id="weekshift-time2-f">
-            </td>
-            <td>
-                <input type="time" name="weekshift-time3-s" id="weekshift-time3-s">
-                <p>～<br></p>
-                <input type="time" name="weekshift-time3-f" id="weekshift-time3-f">
-            </td>
-            <td>
-                <input type="time" name="weekshift-time4-s" id="weekshift-time4-s">
-                <p>～<br></p>
-                <input type="time" name="weekshift-time4-f" id="weekshift-time4-f">
-            </td>
-            <td>
-                <input type="time" name="weekshift-time5-s" id="weekshift-time5-s">
-                <p>～<br></p>
-                <input type="time" name="weekshift-time5-f" id="weekshift-time5-f">
-            </td>
-            <td>
-                <input type="time" name="weekshift-time6-s" id="weekshift-time6-s">
-                <p>～<br></p>
-                <input type="time" name="weekshift-time6-f" id="weekshift-time6-f">
-            </td>
-            <td>
-                <input type="time" name="weekshift-time7-s" id="weekshift-time7-f">
-                <p>～<br></p>
-                <input type="time" name="weekshift-time7-s" id="weekshift-time7-f">
-            </td>
-        </tr>
-    </table>
-    <br><br>
-    <input type="button" value="戻る" onClick="javascript:window.close();">
-</form>
+    <h1>シフト設定ー曜日固定シフト</h1>
+        <table>
+            <tr>
+            <th>日</th>
+            <th>月</th>
+            <th>火</th>
+            <th>水</th>
+            <th>木</th>
+            <th>金</th>
+            <th>土</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="time" id="weekshift_sun_s">
+                    <p>～<br></p>
+                    <input type="time" id="weekshift_sun_f">
+                </td>
+                <td>
+                    <input type="time" id="weekshift_mon_s" >
+                    <p>～<br></p>
+                    <input type="time" id="weekshift_mon_f" >
+                </td>
+                <td>
+                    <input type="time" id="weekshift_tue_s" >
+                    <p>～<br></p>
+                    <input type="time" id="weekshift_tue_f" >
+                </td>
+                <td>
+                    <input type="time" id="weekshift_wed_s" >
+                    <p>～<br></p>
+                    <input type="time" id="weekshift_wed_f" >
+                </td>
+                <td>
+                    <input type="time" id="weekshift_thu_s" >
+                    <p>～<br></p>
+                    <input type="time" id="weekshift_thu_f" >
+                </td>
+                <td>
+                    <input type="time" id="weekshift_fri_s" >
+                    <p>～<br></p>
+                    <input type="time" id="weekshift_fri_f" >
+                </td>
+                <td>
+                    <input type="time" id="weekshift_sut_s" >
+                    <p>～<br></p>
+                    <input type="time" id="weekshift_sut_f" >
+                </td>
+            </tr>
+        </table>
+        <br><br>
+    <form>
+        <input type="button" value="戻る" onclick="window.close()" >
+    </form>
 </body>
 </html>
