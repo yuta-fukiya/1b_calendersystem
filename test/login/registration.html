@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>登録</title> 
+    <script src="registration.mjs" type="module">
+        import {UserRegistration, AskRegistration} from "./registration.mjs";
+    </script>
+</head>
+<body>
+    ID：　<input type="text" id="userID" required>
+    <br>
+    PASS：<input type="text" id="userPASS" required>
+    <br>
+    <input type="button" value="登録" onclick="UserRegistration()">
+    <input type="button" value="ログイン" onclick="AskRegistration()">
+</body>
+</html>

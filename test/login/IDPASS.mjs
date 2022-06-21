@@ -1,0 +1,30 @@
+import sqlite3 from "sqlite3";
+
+export async function regist(userid, userpass){
+  var result = await check(userid, userpass);
+  if (result == "false"){
+    var db = new sqlite3.Database("./login/idpass.db");
+    await db.run("INSERT OR REPLACE INTO user VALUES($id, $pass)", {$id: userid, $pass: userpass});
+    db.close();
+    result = "success";
+  }
+  return result;
+}
+
+export async function check(userid, userpass){
+  return new Promise(async resolve => {
+    var db = new sqlite3.Database("./login/idpass.db");
+    var exists = "false";
+    await db.serialize(() => {
+      db.get("SELECT count(*) FROM user WHERE id=$id and pass=$pass", { $id: userid, $pass: userpass }, (err, res) => {
+        if (0 < res["count(*)"]) {
+          exists = "success";
+          console.log("登録済み");
+        }
+      });
+    db.close();
+    })
+    console.log("未登録");
+    resolve(exists);
+  })
+}
