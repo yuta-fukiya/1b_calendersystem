@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<HTML>
+
+<HEAD>
+    <title>日別予定設定画面</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="desctription" content="日別予定設定画面">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="author" content="Ohta">
+    <meta name="generator" content="Visual Studio Code">
+</HEAD>
+
+<body>
+    <p class="expense">支出：
+        <script>
+            document.open();
+            document.write("")
+        </script>
+    </p>
+    <!--前半の〇に内容，後半に金額-->
+    <div class="scheduleSet">
+        <p class="name">スケジュール設定</p>
+        <p class="date">〇月〇日</p>
+        <!--日にちは選んだ日を表示する-->
+    </div>
+    <form action="cgi-bin/formmail.cgi" method="post">
+        <p>
+            予定名：<input type="text" name="name" size="40">
+        </p>
+        <!--後ろに内容を入力できるようにする-->
+            <p>時間：<input type="time"></p>
+        <!--時間を設定できるようにする-->
+        <p>
+            色：<select name="color">
+                <option value="red">赤</option>
+                <option value="blue">青</option>
+                <option value="green">緑</option>
+                <option value="black">黒</option>
+            </select>
+        </p>
+        <p class="memo">メモ</p><br>
+        <textarea name="memo" rows="30" cols="80"></textarea>
+        <div class="button">
+            <button type="button" name="cancel" value="cancel">
+                <font size="2">キャンセル</font>
+            </button>
+            <button type="button" name="accept" value="accept">
+                <font size="2">決定</font>
+            </button>
+        </div>
+</body>

@@ -1,0 +1,60 @@
+div.scheduleSet {
+    outline: solid 1px #696969;
+    width: 200px;
+}
+
+div.scheduleSet p {
+    text-align: center;
+    height: 30px;
+    margin: 5px;
+}
+
+p.name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+p.expense {
+    position: absolute;
+    right: 30%;
+    background-color: #e9e9e9;
+    width: 150px;
+    height: 20px;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: rgb(250, 41, 41);
+}
+
+.form {
+    color: white;
+    height: 10px;
+    border-bottom: solid 5px #696969;
+    padding-bottom: 15px;
+    margin-right: 500px;
+}
+
+p.title {
+    float: left;
+}
+
+
+div.colorSet {
+    display: inline-block;
+}
+
+.color {
+    float: left;
+}
+
+.button {
+    text-align: center;
+}
+
+.button button {
+    font-size: 18px;
+    margin-right: 50px;
+    margin-left: 50px;
+    width: 150px;
+    height: 50px;
+}
