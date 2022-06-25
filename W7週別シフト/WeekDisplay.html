@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>曜日固定シフト</title>
     <link rel="stylesheet" href="WeekDisplay.css">
-    <script type="text/javascript" src="WeekDisplay.js"></script>
+    <script src="WeekDisplay.js" type="module"> 
+        import Week_DataSave from "./WeekDisplay.js";
+    </script>
 </head>
 <body>
     <h1>シフト設定ー曜日固定シフト</h1>
@@ -57,8 +59,7 @@
             </tr>
         </table>
         <br><br>
-    <form>
-        <input type="button" value="戻る" onclick="window.close()" >
-    </form>
+        <input type="button" id="back" value="戻る" onclick="Week_DataSave();window.close()" >
+        <script src="WeekDisplay.js" type="text/javasctipt"></script> 
 </body>
 </html>
