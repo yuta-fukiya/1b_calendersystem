@@ -1,86 +1,144 @@
-.title{
-    position: relative;
-    font-size: 20px;
-    margin-top: 50px;
-    text-align: center;
-}
-.subtitle{
-    width: 100%;
-    position: relative;
-    text-align: center;
-
-    .transit {
-        width: auto;
-    }
-    .money{
-        width: auto;
-        margin-left: 100px;
-        margin-right: auto;
-        .income{
-            border: solid black 1px;
-            background-color: rgb(187, 253, 253);
-            color:black;
-        }
-        .spending{
-            border: solid black 1px;
-            background-color: rgb(187, 253, 253);
-            color: black;
-        }
-    }
+.title {
+  position: relative;
+  font-size: 20px;
+  margin-top: 50px;
+  text-align: center;
 }
 
-.inline_brock{
-    display: inline-block;
+.subtitle {
+width: 100%;
+position: relative;
+text-align: center;
+#income {
+  border: solid black 1px;
+  background-color: #0df1e2;
+  color: black;
+}
+#spending {
+  border: solid black 1px;
+  background-color: #0df1e2;
+  color: black;
+}
+.prev-next {
+  width: auto;
+  text-align: center;
+}
+.money {
+  width: auto;
+  margin-left: 50px;
+  margin-right: auto;  
+}
 }
 
-.calender {
+.inline_brock {
+display: inline-block;
+}
+
+.wrapper{
+  max-width: 600px;
   margin: 0 auto;
+  color: #666;
+}
+.subtitle .transit #header{
+  text-align: center;
+  font-size: 24px;
   width: 100%;
-  thead, tbody {
-    text-align: center;
-    .cell:hover{
-        background-color: aliceblue;
-    }
-  } 
-  thead {
-    tr {
-      th {
-        text-align: center;
-      }
-    }
-  }
-
-  tbody {
-    tr {
-      td {
-        width: calc(100%/7);
-        text-align: center;
-        color: #000;
-        ul {
-          top: 0;
-          padding: 0;
-          margin: 0;
-      
-          li {
-            margin: 5px auto;
-            padding: 5px 0;
-            width: 90%;
-            list-style: none;
-          }
-
-          .day {
-            list-style-type: none;
-            font-size: 20px;
-            margin: 10px 0;
-          }
-        }
-      }
-    }
-  }
+  margin: 1rem 0 0;
+}
+#calender{
+text-align: center;
+width: 100%;
+.cell:hover{
+  background-color: aliceblue;
 }
 .college{
-    background-color: orange;
+  background-color: orange;
 }
 .private{
-    background-color: aquamarine;
+  background-color: aquamarine;  
 }
+table{
+  outline: 2px solid #ddd;
+  border-collapse: collapse;
+  width: 100%;
+}
+th {
+  color: #000;
+  outline: 1px solid #ddd;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+  /*日曜日*/
+td:first-child {
+  color: red;
+}
+/*土曜日*/
+td:last-child {
+  color: blue;
+}
+/*前後月の日付*/
+td.disabled {
+  color: #ccc;
+}
+td{
+  outline: 1px solid #ddd;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  width: calc(100%/7);
+  height: 100px;
+  .today {/*本日*/
+    background-color: #D65E72;
+    color: #fff;
+  }
+  .today_cell:hover{
+  background-color: #e892a0;
+  }
+  .holiday{
+    color: rgb(255, 0, 0);
+  }
+  .days{
+    background-color: rgb(253, 253, 253);
+    padding-top: 8%;
+    padding-bottom: 8%;
+  }
+  li{
+  list-style: none;
+  }
+  .disabled {
+    color: #ccc;
+  }
+}
+}
+
+/*ボタン*/
+#next-prev-button {
+  position: relative;
+}
+#next-prev-button button{
+  cursor: pointer;
+  background: #B78D4A;
+  color: #fff;
+  border: 1px solid #B78D4A;
+  border-radius: 4px;
+  font-size: 1rem;
+  padding: 0.5rem 2rem;
+  margin: 1rem 0;
+}
+#next-prev-button button:hover{
+  background-color: #D4BB92;
+  border-color: #D4BB92;
+}
+#top-page{
+  margin-top: 10px;
+  
+}
+#prev {
+  float: left;
+}
+#next {
+  float: right;
+}
+
+/*# sourceMappingURL=MainDisplay.css.map */
