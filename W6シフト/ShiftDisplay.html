@@ -5,7 +5,7 @@
     <title>シフト設定</title>
     <link rel="stylesheet" href="ShiftDisplay.css">
     <script src="ShiftDisplay.js" type="module">
-        import ShiftData_update from "./ShiftDisplay.js";
+        import {ShiftData_update, modal} from "./ShiftDisplay.js";
     </script>
 </head>
 <body>
@@ -46,13 +46,13 @@
         <input type="button" value="時間設定" onclick="modal(this.form.MethodLink.value)">
     </form>
     <script>
-        function modal(num){
-            if (num == "1")
-	            window.open("../W7週別シフト/WeekDisplay.html", null ,'width=800,height=350');
-            else if (num == "2")
-        	    window.open("../W8月別シフト/MonthDisplay.html", null ,'width=600,height=600');
-            }
-    </script>
+    function modal(num){
+        if (num == "1")
+           window.open("/WeekDisplay.html", null ,'width=800,height=350');
+        else if (num == "2")
+           window.open("/MonthDisplay.html", null ,'width=600,height=600');
+     }
+     </script>
     <br><br>
     <input type="button" value="戻る" onclick="history.back(-1)">
     <input type="button" value="完了" onclick="ShiftData_update();history.back(-1)">
