@@ -1,3 +1,60 @@
 h1 {
-    background: linear-gradient(transparent 70%, #6eb3ef 70%);
+    background: linear-gradient(transparent 70%, #46ee8c 70%);
+}
+.main input[type="text"]{
+    width: 200px;
+    padding: 1px;
+    font-size: 15px;
+}
+.main input[type="time"]{
+    width: 75px;
+    padding: 1px;
+    font-size: 15px;
+}
+.main > label{
+    font-size: 17px;
+}
+.main > input:focus{
+    border: 1px solid #46ee8c;
+	outline: none;
+	box-shadow: 0 0 5px 1px #b4ffd9;
+}
+.mainwage{
+    font-size: 20px
+}
+.mainwage::first-letter{
+    font-weight: bold;
+    font-size: 30px;
+    color: #46ee8c;
+}
+.maintime{
+    font-size: 20px;
+}
+.maintime::first-letter{
+    font-weight: bold;
+    font-size: 30px;
+    color: #46ee8c;
+}
+.timemethod{
+    font-size: 17px;
+}
+.time{
+    width: 100px;
+    padding: 3px;
+    font-size: large;
+    background-color: #46ee8c;
+    cursor: pointer;
+}
+.time:hover{
+    background-color: #b4ffd9;
+}
+.update > input{
+    width: 100px;
+    padding: 3px;
+    font-size: large;
+    background-color: #46ee8c;
+    cursor: pointer;
+}
+.update > input:hover{
+    background-color: #b4ffd9;
 }
