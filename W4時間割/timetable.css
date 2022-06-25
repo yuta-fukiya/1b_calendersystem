@@ -1,0 +1,50 @@
+@charset "utf-8";
+body {
+	background-color:#ffffff;		/*ページ全体の背景色*/
+	font-size:100%;			/* フォントサイズを95%にする */
+	font-family: "ＭＳ ゴシック",sans-serif;	/* フォントの種類をゴシック系にする */
+	line-height:2.0;	/* 行の高さを1.5倍にする */
+	color:#000000;			/* 文字色を濃い目のグレーにする */
+}
+
+div#page-body {
+    font-size: 100%;
+    width: 1000px; margin: 0 auto;
+
+}
+
+p{
+    width: 1000px;
+    background-color: aquamarine;
+    border: solid 1px #000000;
+    border-collapse: collapse;
+}
+
+table.timetable {
+    padding: 10px;
+    width: 1000px;
+    background-color: rgb(217, 217, 233);
+    border: solid 1px #000000;
+    empty-cells: show;
+    border-collapse: collapse;
+}
+
+.day {
+    background-color: #0004ff;
+    color: aliceblue;
+    font-weight: 100;
+    border: solid 1px #000000;
+    empty-cells: show;
+}
+
+th {
+    width: 1px;
+    background-color: aqua;
+    border: solid 1px #000000;
+    empty-cells: show;
+}
+
+td {
+    border: solid 1px #000000;
+    empty-cells: show;
+}
