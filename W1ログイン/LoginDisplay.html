@@ -7,7 +7,9 @@
     <title>ログイン画面</title>
     <link rel="stylesheet" href="LoginDisplay.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="LoginDisplay.js"></script>
+    <script src="LoginDisplay.js" type="module">
+        import {UserRegistration, AskRegistration} from "./LoginDisplay.js";
+    </script>
 </head>
 <body>
     <div class="title center">
@@ -15,14 +17,15 @@
     </div>
     <div class="ID center">
         ログインID
-        <input type="text" id="LoginText" onchange="IDSet()" required>
+        <input type="text" id="userID" required>
     </div>
     <div class="Password center">
         パスワード
-        <input type="text" id="PasswordText" onchange="PasswordSet()" required>
+        <input type="text" id="userPASS" required>
     </div>
     <div class="decide center">
-        <button onclick="Certification()">決定</button>
+        <button onclick="AskRegistration()">ログイン</button>
+        <button onclick="UserRegistration()">登録</button>
     </div>
     
 </body>
