@@ -1,9 +1,10 @@
 import * as http from "http";
 import * as fs from "fs";
 import * as url from "url";
-import * as IDPASS from "./C7 ID,パスワード管理部/IDPASS.mjs";
+import * as IDPASS from "./C7ID,パスワード管理部/IDPASS.mjs";
 
 const LoginDisplay_html = fs.readFileSync('./W1ログイン/LoginDisplay.html', 'UTF-8');
+const RegistDisplay_html = fs.readFileSync('./W1ログイン/RegistDisplay.html', 'UTF-8');
 const LoginDisplay_js = fs.readFileSync('./W1ログイン/LoginDisplay.js', 'UTF-8');
 const LoginDisplay_css = fs.readFileSync('./W1ログイン/LoginDisplay.css', 'UTF-8');
 const LoginDisplay_cssmap = fs.readFileSync('./W1ログイン/LoginDisplay.css.map', 'UTF-8');
@@ -46,6 +47,12 @@ function RouteSetting(req, res) {
     case '/LoginDisplay.html':
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.write(LoginDisplay_html);
+        res.end();
+        break;
+
+    case '/RegistDisplay.html':
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(RegistDisplay_html);
         res.end();
         break;
 
@@ -184,8 +191,8 @@ function RouteSetting(req, res) {
               result = await IDPASS.check(idpass[1], idpass[2]);
             }
             console.log(result);
-            fs.writeFileSync("./C7 ID,パスワード管理部/login.txt", result);
-            login_txt = fs.readFileSync('./C7 ID,パスワード管理部/login.txt', 'UTF-8');        
+            fs.writeFileSync("./C7ID,パスワード管理部/login.txt", result);
+            login_txt = fs.readFileSync('./C7ID,パスワード管理部/login.txt', 'UTF-8');        
             res.writeHead(200, {'Content-Type': 'text/plain'});
             res.write(login_txt);
             res.end();
