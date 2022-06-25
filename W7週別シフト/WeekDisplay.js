@@ -1,4 +1,4 @@
-import {AskJobs,UpdateJobs} from "../M4シフト設定処理部/MainJobs.js";           //シフト設定処理部
+import {AskJobs,UpdateJobs} from "/MainJobs.js";           //シフト設定処理部
 /*****************************************************************
 ***function name     :Week_DataSave
 ***Designer          :吹谷　優太
