@@ -9,32 +9,57 @@
 }
 
 .ID > input {
-  width: 150px;
+  width: 200px;
   padding: 5px;
   font-size: 20px;
 }
 
-.Password {
+.PASS {
   font-size: 30px;
 }
 
-.Password > input {
-  width: 150px;
+.PASS > input {
+  width: 200px;
   padding: 5px;
   font-size: 20px;
 }
 
-.decide {
+.log{
   margin-top: 20px;
-}
-
-.decide > button {
   width: 100px;
   padding: 10px;
   font-size: large;
-  background-color: #f4e9e9;
+  background-color: #46ee8c;
+  text-align: center;
+  cursor: pointer;
 }
-
+.log:hover{
+  background-color: #b4ffd9;
+}
+.reg{
+  width: 100-x;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  text-align: center;
+}
+.reg:hover{
+  color: #46ee8c;
+}
+.back{
+  margin-top: 20px;
+  width: 100px;
+  padding: 10px;
+  font-size: large;
+  background-color: #46ee8c;
+  text-align: center;
+  cursor: pointer;
+}
+.back:hover{
+  background-color: #b4ffd9;
+}
 .center {
   text-align: center;
 }
@@ -42,4 +67,3 @@
 .inline_brock {
   display: inline-block;
 }
-/*# sourceMappingURL=LoginDisplay.css.map */
