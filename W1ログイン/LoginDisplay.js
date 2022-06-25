@@ -8,7 +8,7 @@ function IDSet(){
 function PasswordSet(){
     Password_value = document.getElementById("PasswordText").value;
 }
-function PushDecide(){
+function Certification(){
     if(LoginID_value==trueID && Password_value==truePassword){
         window.location.href = '../W2メイン/MainDisplay.html';
     }else if(LoginID_value==null || Password_value==null){
