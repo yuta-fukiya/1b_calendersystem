@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>シフト設定</title>
     <link rel="stylesheet" href="ShiftDisplay.css">
-    <script type="text/javascript" src="ShiftDisplay.js"></script>
+    <script src="ShiftDisplay.js" type="module">
+        import ShiftData_update from "./ShiftDisplay.js";
+    </script>
 </head>
 <body>
     <h1>シフト設定</h1>
@@ -50,10 +52,9 @@
             else if (num == "2")
         	    window.open("../W8月別シフト/MonthDisplay.html", null ,'width=600,height=600');
             }
-            modal(NUM);
     </script>
     <br><br>
-    <button type="button">戻る</button>
-    <input type="button" value="完了" onclick="ShiftData_save()">
+    <input type="button" value="戻る" onclick="history.back(-1)">
+    <input type="button" value="完了" onclick="ShiftData_update();history.back(-1)">
 </body>
 </html>
