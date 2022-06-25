@@ -1,5 +1,5 @@
 h1 {
-  background: linear-gradient(transparent 70%, #71b4f0 70%);
+  background: linear-gradient(transparent 70%, #46ee8c 70%);
 }
 table{
     border-spacing: 0;
@@ -11,7 +11,12 @@ table{
     padding: 20px;
     text-align: center;
   }
-   
+  td:first-child{
+    background-color: #f1d3d3;
+  }
+  td:last-child{
+    background-color: rgb(205, 212, 241);
+  }
   th:first-child{
     color: red;
   }
@@ -23,3 +28,18 @@ table{
   th.is-disabled{
     color: #ccc;
   }
+.time input{
+    width: 75px;
+    padding: 1px;
+    font-size: 15px;
+}
+.back{
+    width: 100px;
+    padding: 3px;
+    font-size: large;
+    background-color: #46ee8c;
+    cursor: pointer;
+}
+.back:hover{
+    background-color: #b4ffd9;
+}

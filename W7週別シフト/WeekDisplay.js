@@ -51,6 +51,8 @@ function Week_DataSave(){
     weekshift.push(document.getElementById("weekshift_sut_f").value);
 
     UpdateJobs(weekshift, "WeekShift_UI");   //シフト設定処理部に週別シフト情報を送る
+
+    window.location.href="./MainDisplay.html";
 }
 window.Week_DataSave=Week_DataSave;
 
