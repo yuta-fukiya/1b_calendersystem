@@ -7,24 +7,33 @@ export async function regist(userid, userpass){
     await db.run("INSERT OR REPLACE INTO user VALUES($id, $pass)", {$id: userid, $pass: userpass});
     db.close();
     result = "success";
+  } else {
+    result = "already";
   }
   return result;
 }
 
 export async function check(userid, userpass){
-  return new Promise(async resolve => {
-    var db = new sqlite3.Database("./login/idpass.db");
-    var exists = "false";
-    await db.serialize(() => {
-      db.get("SELECT count(*) FROM user WHERE id=$id and pass=$pass", { $id: userid, $pass: userpass }, (err, res) => {
-        if (0 < res["count(*)"]) {
-          exists = "success";
-          console.log("登録済み");
-        }
-      });
-    db.close();
+  async function check2(){
+    return new Promise((resolve) => {
+      var exists;
+      var db = new sqlite3.Database("./login/idpass.db");
+      db.serialize(() => {
+        db.get("SELECT count(*) FROM user WHERE id=$id and pass=$pass", { $id: userid, $pass: userpass }, (err, res) => {
+          if (0 < res["count(*)"]) {
+            exists = "success";
+            resolve(exists);
+          } else {
+            exists = "false";
+            resolve(exists);
+          }
+        });
+      })
+      db.close();
     })
-    console.log("未登録");
-    resolve(exists);
-  })
+  }
+  
+  const result = await check2();
+  console.log(result);
+  return result;
 }
