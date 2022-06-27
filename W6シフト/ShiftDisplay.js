@@ -8,7 +8,6 @@ import {AskJobs, UpdateJobs} from "/MainJobs.js";
 **********************************************************/
 function ShiftData_init(){
       var shiftdata = AskJobs("Shift_UI");   //シフト設定処理部に収支系情報の問い合わせ
-
       document.getElementById("JobName").placeholder = shiftdata[0];   //アルバイト名
       document.getElementById("HourWages").placeholder = shiftdata[1];   //時給
       document.getElementById("TrasCosts").placeholder = shiftdata[2];   //交通費
@@ -35,12 +34,36 @@ export function ShiftData_update(){
       shiftdata.push(document.getElementById("Overtime").value);             //残業代
       shiftdata.push(document.getElementById("NightWages_time_s").value);    //深夜給になる時間帯の始まり
       shiftdata.push(document.getElementById("NightWages_time_f").value);    //深夜給になる時間帯の終わり
-      UpdateJobs(shiftdata, "Shift_UI");   //シフト設定処理部に収支系の情報をを送る
-      alert("aaa");
+      var countstr = shiftdata[0].length;
+      var count = 0;
+      if (shiftdata[0] = ""){
+            shiftdata[0] = "アルバイト1";
+      }
+      for (var i = 1; i < 5; i++){
+            if (shiftdata[i].match(/^[0-9]*$/)){
+                  count++;
+            }
+            if (shiftdata[i] = ""){
+                  shiftdata[i]=0;
+            }
+      }
+      if (count == 4 && countstr < 32){
+            UpdateJobs(shiftdata, "Shift_UI");   //シフト設定処理部に収支系の情報をを送る
+            RemoveData();
+            alert("aaa");
+            window.location.href="./MainDisplay.html"+location.search;
+      } else if (countstr > 32){
+            alert("アルバイト名は32文字以内で入力してください");
+      } else {
+            alert("給料情報は半角数字で入力してください");
+      }
 }
-
 window.ShiftData_update=ShiftData_update;
 
 
 //変更不要
-
+export function RemoveData(){
+      localStorage.removeItem("Week");
+      localStorage.removeItem("Month");
+}
+window.RemoveData=RemoveData;

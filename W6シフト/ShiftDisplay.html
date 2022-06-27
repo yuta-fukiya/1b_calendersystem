@@ -5,7 +5,7 @@
     <title>シフト設定</title>
     <link rel="stylesheet" href="ShiftDisplay.css">
     <script src="ShiftDisplay.js" type="module">
-        import {ShiftData_update, modal} from "./ShiftDisplay.js";
+        import {ShiftData_update, RemoveData} from "./ShiftDisplay.js";
     </script>
 </head>
 <body>
@@ -13,42 +13,44 @@
         <h1>シフト設定</h1>
         <br>
         <label>アルバイト名　</label>
-        <input type="text" maxlength="32" size="32" id="JobName" neme="JobName">
+        <input type="text" maxlength="32" id="JobName" class="JobName">
         <p class="mainwage">給料情報</p>
         <label>時給　　</label>
-        <input type="text" maxlength=5 id="HourWages" name="HourWages" oninput="value = value.replace(/[^0-9]+/i,'');" />
+        <input type="text" maxlength=5 id="HourWages" class="HourWages"/>
         <br>
         <label>交通費　</label>
-        <input type="text" maxlength=5 id="TrasCosts" name="TrasCosts" oninput="value = value.replace(/[^0-9]+/i,'');" />
+        <input type="text" maxlength=5 id="TrasCosts" class="TrasCosts"/>
         <br>
         <label>深夜給　</label>
-        <input class="nighttxt" type="text" maxlength=5 id="NightWages" name="NightWages" oninput="value = value.replace(/[^0-9]+/i,'');" />
+        <input type="text" maxlength=5 class="NightWages" id="NightWages"/>
         <input type="time" class="NightWages_time_s" id="NightWages_time_s">
         ～
         <input type="time" class="NightWages_time_f" id="NightWages_time_f">
         <br>
         <label>残業代　</label>
-        <input type="text" maxlength=5 id="Overtime" name="Overtime" oninput="value = value.replace(/[^0-9]+/i,'');" />
+        <input type="text" maxlength=5 id="Overtime" class="Overtime"/>
     </div>
     <p class="maintime">シフト情報</p>
-    <select class="timemethod" name="MethodLink" class="method">
-            <option value="">選択してください
+    <form action="#">
+        <select class="timemethod" name="MethodLink">
+            <option value="0">選択してください
             <option value="1">曜日固定シフト
             <option value="2">月のシフト
-    </select>
+        </select>
     <br>
     <input class="time" type="button" value="時間設定" onclick="modal(this.form.MethodLink.value)">
+    </form>
     <script>
     function modal(num){
         if (num == "1")
-           window.open("/WeekDisplay.html", null ,'width=800,height=350');
+           window.open("/WeekDisplay.html"+location.search, null ,'width=900,height=400');
         else if (num == "2")
-           window.open("/MonthDisplay.html", null ,'width=600,height=600');
+           window.open("/MonthDisplay.html"+location.search, null ,'width=600,height=600');
      }
      </script>
     <br><br><br>
     <div class="update">
-        <input type="button" value="戻る" onclick="history.back(-1)">　　　　
+        <input type="button" value="戻る" onclick="RemoveData();history.back(-1)">　　　　
         <input type="button" value="完了" onclick="ShiftData_update()">
     </div>
 </body>

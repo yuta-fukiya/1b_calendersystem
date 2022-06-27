@@ -1,11 +1,32 @@
 h1 {
     background: linear-gradient(transparent 70%, #46ee8c 70%);
 }
-.main input[type="text"]{
-    width: 200px;
+.main > .JobName{
+    width: 550px;
+    padding: 2px;
+    font-size: 17px;
+}
+.main > .HourWages{
+    width: 100px;
     padding: 1px;
     font-size: 15px;
 }
+.main > .TrasCosts{
+    width: 100px;
+    padding: 1px;
+    font-size: 15px;
+}
+.main > .NightWages{
+    width: 100px;
+    padding: 1px;
+    font-size: 15px;
+}
+.main > .Overtime{
+    width: 100px;
+    padding: 1px;
+    font-size: 15px;
+}
+
 .main input[type="time"]{
     width: 75px;
     padding: 1px;
