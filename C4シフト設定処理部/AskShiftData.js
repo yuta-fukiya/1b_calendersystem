@@ -1,7 +1,6 @@
-/* 
-import ReturnShiftInformation from "../M8スケジュール管理部/ShiftManagement.js";    //スケジュール管理部
-import Asksalary from "../M9収支管理部/MainPaymentsManagementJob.js";       //収支管理部
+//var xhr = new XMLHttpRequest();
 
+const id = window.location.search.replace("?","");
 /*****************************************************************
 ***function name     :CopyJobName
 ***Designer          :吹谷　優太
@@ -10,7 +9,24 @@ import Asksalary from "../M9収支管理部/MainPaymentsManagementJob.js";      
  *******************************************************************/
 
 export function CopyJobName(){
-    return "焼肉屋さん";//ReturnShiftInformation("ユーザID", "JobName");
+    /*
+    var data = [];
+    data.push("Jobname");
+    data.push(id);
+    xhr.open("POST", "./Shift.txt", true);
+    xhr.send(data);
+    xhr.onreadystatechange = function (){
+        if(this.readyState === 4){
+            if(this.status === 200 || this.status == 0){
+                return this.responseText; 
+            } else {
+                return "err";
+            }
+        } else {
+            return "err";
+        }
+    }*/
+    return "焼肉屋さん";
 }        
 
 /*******************************************
@@ -21,14 +37,31 @@ export function CopyJobName(){
 ********************************************/
 
 export function CopyJobTime(ProcessName){
+    /*
+    var data = [];
+    data.push(ProcessName);
+    data.push(id);
+    xhr.open("POST", "./Shift.txt", true);
+    xhr.send(data);
+    xhr.onreadystatechange = function (){
+        if(this.readyState === 4){
+            if(this.status === 200 || this.status == 0){
+                return this.responseText; 
+            } else {
+                return "err";
+            }
+        } else {
+            return "err";
+        }
+    }*/
     var sample = [];
     for (var i = 0; i < 14; i++){
         sample.push("12:12");
     }
     if (ProcessName == "WeekShift"){
-        return sample;//ReturnShiftInformation("ユーザID", "WeekShift");
+        return sample;
     }else if (ProcessName == "MonthShift"){
-       // return ReturnShiftInformation("ユーザID", "MonthShift");
+        //return 
     }
 }
 
@@ -40,7 +73,24 @@ export function CopyJobTime(ProcessName){
  *******************************************************************/
 
 export function CopyHourWages(){
-    return 1111;//Asksalary("ユーザID", "HourWage");
+    /*
+    var data = [];
+    data.push("HourWages");
+    data.push(id);
+    xhr.open("POST", "./Shift.txt", true);
+    xhr.send(data);
+    xhr.onreadystatechange = function (){
+        if(this.readyState === 4){
+            if(this.status === 200 || this.status == 0){
+                return this.responseText; 
+            } else {
+                return "err";
+            }
+        } else {
+            return "err";
+        }
+    }*/
+    return 1111;
 }        
 
 /*****************************************************************
@@ -51,7 +101,24 @@ export function CopyHourWages(){
  *******************************************************************/
 
 export function CopyTrasCosts(){
-    return 2222;//Asksalary("ユーザID", "TrasCosts");
+    /*
+    var data = [];
+    data.push("TrasCosts");
+    data.push(id);
+    xhr.open("POST", "./Shift.txt", true);
+    xhr.send(data);
+    xhr.onreadystatechange = function (){
+        if(this.readyState === 4){
+            if(this.status === 200 || this.status == 0){
+                return this.responseText; 
+            } else {
+                return "err";
+            }
+        } else {
+            return "err";
+        }
+    }*/
+    return 2222;
 }        
 
 /*****************************************************************
@@ -62,7 +129,24 @@ export function CopyTrasCosts(){
  *******************************************************************/
 
 export function CopyNightWages(){
-    return 3333;//Asksalary("ユーザID", "NightWages");
+    /*
+    var data = [];
+    data.push("NightWages");
+    data.push(id);
+    xhr.open("POST", "./Shift.txt", true);
+    xhr.send(data);
+    xhr.onreadystatechange = function (){
+        if(this.readyState === 4){
+            if(this.status === 200 || this.status == 0){
+                return this.responseText; 
+            } else {
+                return "err";
+            }
+        } else {
+            return "err";
+        }
+    }*/
+    return 3333;
 }        
 /*****************************************************************
 ***function name     :CopyNightWagesRange
@@ -72,10 +156,27 @@ export function CopyNightWages(){
  *******************************************************************/
 
 export function CopyNightWagesRange(){
+    /*
+    var data = [];
+    data.push("NightWagesRange");
+    data.push(id);
+    xhr.open("POST", "./Shift.txt", true);
+    xhr.send(data);
+    xhr.onreadystatechange = function (){
+        if(this.readyState === 4){
+            if(this.status === 200 || this.status == 0){
+                return this.responseText; 
+            } else {
+                return "err";
+            }
+        } else {
+            return "err";
+        }
+    }*/
     var sample = [];
     sample.push("11:11");
     sample.push("22:22");
-    return sample;//Asksalary("ユーザID", "CopyNightWages");
+    return sample;
 }        
 
 /*****************************************************************
@@ -86,7 +187,24 @@ export function CopyNightWagesRange(){
  *******************************************************************/
 
 export function CopyOvertime(){
-    return 4444;//Asksalary("ユーザID", "Overtime");
+    /*
+    var data = [];
+    data.push("Overtime");
+    data.push(id);
+    xhr.open("POST", "./Shift.txt", true);
+    xhr.send(data);
+    xhr.onreadystatechange = function (){
+        if(this.readyState === 4){
+            if(this.status === 200 || this.status == 0){
+                return this.responseText; 
+            } else {
+                return "err";
+            }
+        } else {
+            return "err";
+        }
+    }*/
+    return 4444;
 }        
 
 //管理部に応じて変更

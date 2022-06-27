@@ -1,5 +1,5 @@
-import * as ask from "../M4シフト設定処理部/AskShiftData.js";      //シフト設定処理部
-import * as update from "../M4シフト設定処理部/UpdateShiftData.js";    //シフト設定処理部
+import * as ask from "./AskShiftData.js";      //シフト設定処理部
+import * as update from "./UpdateShiftData.js";    //シフト設定処理部
 
 /*****************************************************************
 ***function name     :AskJobs
@@ -46,11 +46,9 @@ export function UpdateJobs(shiftdata, ProcessName){
         NightWages_time.push(shiftdata[6]);
         update.SendNightWagesRange(NightWages_time);
     } else if (ProcessName == "WeekShift_UI") {
-        update.SendJobTime("WeekShift", shiftdata);
+        update.SendJobTime("WeekShift", localStorage.getItem("Week"));
     } else if (ProcessName == "MonthShift_UI") {
-        update.SendJobTime("MonthShift", shiftdata);
+        update.SendJobTime("MonthShift", monthdata);
     }
 }
 
-
-//変更不要
