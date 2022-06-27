@@ -1,4 +1,4 @@
-import {AskJobs,UpdateJobs} from "/MainJobs.js";           //シフト設定処理部
+import {AskJobs} from "./MainJobs.js";           //シフト設定処理部
 /*****************************************************************
 ***function name     :Week_DataSave
 ***Designer          :吹谷　優太
@@ -34,7 +34,6 @@ window.onload = Week_DataInit;
 ********************************************/
 function Week_DataSave(){
     var weekshift = [];   //週間シフト情報をまとめるための配列
-
     weekshift.push(document.getElementById("weekshift_sun_s").value);
     weekshift.push(document.getElementById("weekshift_sun_f").value);
     weekshift.push(document.getElementById("weekshift_mon_s").value);
@@ -49,10 +48,8 @@ function Week_DataSave(){
     weekshift.push(document.getElementById("weekshift_fri_f").value);
     weekshift.push(document.getElementById("weekshift_sut_s").value);
     weekshift.push(document.getElementById("weekshift_sut_f").value);
-
-    UpdateJobs(weekshift, "WeekShift_UI");   //シフト設定処理部に週別シフト情報を送る
-
-    window.location.href="./MainDisplay.html";
+    localStorage.setItem("Week", weekshift);
+    window.close();
 }
 window.Week_DataSave=Week_DataSave;
 
