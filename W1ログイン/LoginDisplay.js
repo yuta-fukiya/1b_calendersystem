@@ -21,7 +21,7 @@ export function UserRegistration(){
                             alert ("入力されたIDは使用することができません");
                         } else {
                             alert("登録失敗");
-                        }
+                        }    
                     }
                 }
             }
@@ -51,7 +51,7 @@ export function AskRegistration(){
                 result = this.responseText;
                 console.log(result);
                 if(result=="success"){
-                    window.location.href = './MainDisplay.html';
+                    window.location.href = './MainDisplay.html?'+id;
                 }else{
                     alert("IDまたはパスワードが違います");
                 }
@@ -61,3 +61,8 @@ export function AskRegistration(){
     }
 }
 window.AskRegistration=AskRegistration;
+
+export function returnID(){
+    const id = document.getElementById("userID").value;
+    return id;
+}
