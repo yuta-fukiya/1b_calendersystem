@@ -2,18 +2,13 @@ import sqlite3 from "sqlite3";
 
 export async function ReturnShiftInformation(id, name){
     return new Promise((resolve, reject) => {
-        console.log("3333-0");
         const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
-        console.log("3333-1");
         var Shiftdata = [];
         db.serialize(() => {
-            console.log("3333-2");
             db.each('SELECT * FROM Shiftdata WHERE id=$id', {$id: id}, function(err, row) {
-                console.log("3333-3");
                 if (err) {
                     reject(err);
                 } else if (name == 'JobName') {
-                    console.log("3333-4");
                     Shiftdata.push(row.JobName);
                     resolve(Shiftdata);
                 } else if (name == 'WeekShift') {
@@ -31,7 +26,6 @@ export async function ReturnShiftInformation(id, name){
             });
         });
         db.close();
-        console.log("4444");
     })
 }
 
@@ -60,13 +54,13 @@ export async function UpdateShiftInformation(id, name, Shiftdata){
                 if (err) {
                     throw err;
                 }
-                stmt.run(Shiftdata[number], id);
+                stmt.run(Shiftdata, id);
                 stmt.finalize();
             });
         });
         db.close();
     }
-    return true;
+    return "success";
 }
 
 //------------------------------------------------------------------------------------------
