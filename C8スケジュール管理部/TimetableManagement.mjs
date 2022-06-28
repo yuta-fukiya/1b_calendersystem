@@ -1,6 +1,6 @@
 import sqlite3 from "sqlite3";
 
-async function ReturnTimetableInformation(id, wday, period, name){
+export async function ReturnTimetableInformation(id, wday, period, name){
     return new Promise((resolve, reject) => {
         const db = new sqlite3.Database('Schedule.sqlite');
         var Timetabledata = [];
@@ -41,7 +41,7 @@ async function ReturnTimetableInformation(id, wday, period, name){
     })
 }
 
-async function UpdateTimetableInformation(id, name, Timetabledata){
+export async function UpdateTimetableInformation(id, name, Timetabledata){
     var number = -1;
     if(name == 'Class_name') {
         number = 0;
@@ -101,4 +101,4 @@ async function test() {
     console.log(c);
 }
 
-test();
+//test();

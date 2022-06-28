@@ -1,6 +1,6 @@
 import sqlite3 from "sqlite3";
 
-async function ReturnDayScheduleInformation(id, Date, name){
+export async function ReturnDayScheduleInformation(id, Date, name){
     return new Promise((resolve, reject) => {
         const db = new sqlite3.Database('Schedule.sqlite');
         var DayScheduledata = [];
@@ -45,7 +45,7 @@ async function ReturnDayScheduleInformation(id, Date, name){
     })
 }
 
-async function UpdateDayScheduleInformation(id, name, DayScheduledata){
+export async function UpdateDayScheduleInformation(id, name, DayScheduledata){
     var number = -1;
     if(name == 'Title') {
         number = 0;
@@ -106,4 +106,4 @@ async function test() {
     console.log(c);
 }
 
-test();
+//test();

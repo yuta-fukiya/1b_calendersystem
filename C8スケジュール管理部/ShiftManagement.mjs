@@ -1,6 +1,6 @@
 import sqlite3 from "sqlite3";
 
-async function ReturnShiftInformation(id, name){
+export async function ReturnShiftInformation(id, name){
     return new Promise((resolve, reject) => {
         const db = new sqlite3.Database('Schedule.sqlite');
         var Shiftdata = [];
@@ -29,7 +29,7 @@ async function ReturnShiftInformation(id, name){
     })
 }
 
-async function UpdateShiftInformation(id, name, Shiftdata){
+export async function UpdateShiftInformation(id, name, Shiftdata){
     var number = -1;
     if(name == 'JobName') {
         number = 0;
@@ -67,7 +67,7 @@ async function UpdateShiftInformation(id, name, Shiftdata){
 async function test() {
     var Shiftdata = new Array('塾', '11:11,22:22', '11:11,22:22,12:12,21:21');
     var id = 'al20116';
-    var name1 = 'JobName1';
+    var name1 = '';
     var name2 = 'WeekShift';
     var Judge;
     Judge = await UpdateShiftInformation(id, name1, Shiftdata);
@@ -81,4 +81,4 @@ async function test() {
     console.log(c);
 }
 
-test();
+//test();
