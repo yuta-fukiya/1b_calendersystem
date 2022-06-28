@@ -8,13 +8,13 @@ const id = window.location.search.replace("?","");
  *******************************************************************/
 
 export function SendJobName(shiftdata){
-    /*
     var result;
     var data = [];
-    data.push("UJobName");
+    data.push("update");
+    data.push("JobName");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./Shift.txt", true);
+    xhr.open("POST", "./Scedule_shift.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function (){
         if(this.readyState === 4){
@@ -23,9 +23,6 @@ export function SendJobName(shiftdata){
             }
         }
     }
-    */
-    shiftdata=0;
-    //UpdateShiftInformation("ユーザID", "JobName", shiftdata);
 }        
 
 /*******************************************
@@ -39,10 +36,11 @@ export function SendJobTime(ProcessName, shiftdata){
     /*
     var result;
     var data = [];
+    data.push("update")
     data.push(ProsessName);
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./Shift.txt", true);
+    xhr.open("POST", "./schedule_shift.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function (){
         if(this.readyState === 4){
@@ -54,12 +52,6 @@ export function SendJobTime(ProcessName, shiftdata){
     */
     ProcessName=0;
     shiftdata=0;
-    /*  if (ProcessName == "WeekShift"){
-        UpdateShiftInformation("ユーザID", "WeekShift", shiftdata);
-    }else if (ProcessName == "MonthShift"){
-        UpdateShiftInformation("ユーザID", "MonthShift", shiftdata);
-    }
-    */
 }
 /*****************************************************************
 ***function name     :SendHourWages
@@ -74,7 +66,7 @@ export function SendHourWages(shiftdata){
     var data = [];
     data.push("UHourWages");
     data.push(shiftdata);
-    xhr.open("POST", "./Shift.txt", true);
+    xhr.open("POST", "./shift.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function (){
         if(this.readyState === 4){
@@ -85,7 +77,6 @@ export function SendHourWages(shiftdata){
     }
     */
     shiftdata=0;
-    //Updatesalary("ユーザID", "HourWage", shiftdata);
 }        
 
 /*****************************************************************
@@ -102,7 +93,7 @@ export function SendTrasCosts(shiftdata){
     data.push("UTrasCosts");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./Shift.txt", true);
+    xhr.open("POST", "./shift.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function (){
         if(this.readyState === 4){
@@ -113,7 +104,6 @@ export function SendTrasCosts(shiftdata){
     }
     */
     shiftdata=0;
-    //Updatesalary("ユーザID", "TrasCosts", shiftdata);
 }        
 
 /*****************************************************************
@@ -130,7 +120,7 @@ export function SendNightWages(shiftdata){
     data.push("UNightWages");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./Shift.txt", true);
+    xhr.open("POST", "./shift.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function (){
         if(this.readyState === 4){
@@ -141,7 +131,6 @@ export function SendNightWages(shiftdata){
     }
     */
     shiftdata=0;
-    //Updatesalary("ユーザID", "NightWages", shiftdata);
 }        
 /*****************************************************************
 ***function name     :SendNightWagesRange
@@ -157,7 +146,7 @@ export function SendNightWagesRange(shiftdata){
     data.push("UNightWagesTime");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./Shift.txt", true);
+    xhr.open("POST", "./shift.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function (){
         if(this.readyState === 4){
@@ -168,7 +157,6 @@ export function SendNightWagesRange(shiftdata){
     }
     */
     shiftdata=0;
-    //Updatesalary("ユーザID", "CopyNightWages", shiftdata);
 }        
 
 /*****************************************************************
@@ -185,7 +173,7 @@ export function SendOvertime(shiftdata){
     data.push("UOverTime");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./Shift.txt", true);
+    xhr.open("POST", "./shift.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function (){
         if(this.readyState === 4){
@@ -196,7 +184,4 @@ export function SendOvertime(shiftdata){
     }
     */
     shiftdata=0;
-    //Updatesalary("ユーザID", "Overtime", shiftdata);
 }        
-
-//管理部に応じて変更

@@ -1,5 +1,4 @@
-//var xhr = new XMLHttpRequest();
-
+var xhr = new XMLHttpRequest();
 const id = window.location.search.replace("?","");
 /*****************************************************************
 ***function name     :CopyJobName
@@ -9,25 +8,21 @@ const id = window.location.search.replace("?","");
  *******************************************************************/
 
 export function CopyJobName(){
-    /*
+    var result = "false";
     var data = [];
+    data.push("ask");
     data.push("Jobname");
     data.push(id);
-    xhr.open("POST", "./Shift.txt", true);
+    xhr.open("POST", "./schedule_shift.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText; 
-            } else {
-                return "err";
-            }
-        } else {
-            return "err";
-        }
-    }*/
-    return "焼肉屋さん";
-}        
+    if (xhr.readyState == 4 && xhr.status == 200){
+        result = xhr.responseText;
+    }
+    if (result == "false"){
+        alert("通信に失敗しました");
+    }
+    return result;
+}
 
 /*******************************************
 ***function name     :CopyJobTime
@@ -37,32 +32,21 @@ export function CopyJobName(){
 ********************************************/
 
 export function CopyJobTime(ProcessName){
-    /*
+    var result = "false";
     var data = [];
+    data.push("ask");
     data.push(ProcessName);
     data.push(id);
-    xhr.open("POST", "./Shift.txt", true);
+    xhr.open("POST", "./schedule_shift.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText; 
-            } else {
-                return "err";
-            }
-        } else {
-            return "err";
-        }
-    }*/
-    var sample = [];
-    for (var i = 0; i < 14; i++){
-        sample.push("12:12");
+    if (xhr.readyState == 4 && xhr.status == 200){
+        result = xhr.responseText;
+        console.log(result);
     }
-    if (ProcessName == "WeekShift"){
-        return sample;
-    }else if (ProcessName == "MonthShift"){
-        //return 
+    if (result == "false"){
+        alert("通信に失敗しました");
     }
+    return result;
 }
 
 /*****************************************************************
@@ -74,22 +58,22 @@ export function CopyJobTime(ProcessName){
 
 export function CopyHourWages(){
     /*
+    var result = "false";
     var data = [];
+    data.push("ask");
     data.push("HourWages");
     data.push(id);
-    xhr.open("POST", "./Shift.txt", true);
+    xhr.open("POST", "./shift.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText; 
-            } else {
-                return "err";
-            }
-        } else {
-            return "err";
-        }
-    }*/
+    if (xhr.readyState == 4 && xhr.status == 200){
+        result = xhr.responseText;
+        console.log(result);
+    }
+    if (result == "false"){
+        alert("通信に失敗しました");
+    }
+    return result;
+    */
     return 1111;
 }        
 
@@ -102,22 +86,22 @@ export function CopyHourWages(){
 
 export function CopyTrasCosts(){
     /*
+    var result = "false";
     var data = [];
+    data.push("ask");
     data.push("TrasCosts");
     data.push(id);
-    xhr.open("POST", "./Shift.txt", true);
+    xhr.open("POST", "./shift.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText; 
-            } else {
-                return "err";
-            }
-        } else {
-            return "err";
-        }
-    }*/
+    if (xhr.readyState == 4 && xhr.status == 200){
+        result = xhr.responseText;
+        console.log(result);
+    }
+    if (result == "false"){
+        alert("通信に失敗しました");
+    }
+    return result;
+    */
     return 2222;
 }        
 
@@ -130,22 +114,22 @@ export function CopyTrasCosts(){
 
 export function CopyNightWages(){
     /*
+    var result = "false";
     var data = [];
+    data.push("ask");
     data.push("NightWages");
     data.push(id);
-    xhr.open("POST", "./Shift.txt", true);
+    xhr.open("POST", "./shift.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText; 
-            } else {
-                return "err";
-            }
-        } else {
-            return "err";
-        }
-    }*/
+    if (xhr.readyState == 4 && xhr.status == 200){
+        result = xhr.responseText;
+        console.log(result);
+    }
+    if (result == "false"){
+        alert("通信に失敗しました");
+    }
+    return result;
+    */
     return 3333;
 }        
 /*****************************************************************
@@ -157,22 +141,22 @@ export function CopyNightWages(){
 
 export function CopyNightWagesRange(){
     /*
+    var result = "false";
     var data = [];
-    data.push("NightWagesRange");
+    data.push("ask");
+    data.push("HourWages");
     data.push(id);
-    xhr.open("POST", "./Shift.txt", true);
+    xhr.open("POST", "./shift.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText; 
-            } else {
-                return "err";
-            }
-        } else {
-            return "err";
-        }
-    }*/
+    if (xhr.readyState == 4 && xhr.status == 200){
+        result = xhr.responseText;
+        console.log(result);
+    }
+    if (result == "false"){
+        alert("通信に失敗しました");
+    }
+    return result;
+    */
     var sample = [];
     sample.push("11:11");
     sample.push("22:22");
@@ -188,23 +172,21 @@ export function CopyNightWagesRange(){
 
 export function CopyOvertime(){
     /*
+    var result = "false";
     var data = [];
-    data.push("Overtime");
+    data.push("ask");
+    data.push("HourWages");
     data.push(id);
-    xhr.open("POST", "./Shift.txt", true);
+    xhr.open("POST", "./shift.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText; 
-            } else {
-                return "err";
-            }
-        } else {
-            return "err";
-        }
-    }*/
+    if (xhr.readyState == 4 && xhr.status == 200){
+        result = xhr.responseText;
+        console.log(result);
+    }
+    if (result == "false"){
+        alert("通信に失敗しました");
+    }
+    return result;
+    */
     return 4444;
 }        
-
-//管理部に応じて変更

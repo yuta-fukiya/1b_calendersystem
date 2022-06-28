@@ -12,6 +12,7 @@ export function AskJobs(ProcessName){
     var Shift = [];
     if (ProcessName == "Shift_UI") {
         Shift.push(ask.CopyJobName());
+        alert("444");
         Shift.push(ask.CopyHourWages());
         Shift.push(ask.CopyTrasCosts());
         Shift.push(ask.CopyNightWages());
