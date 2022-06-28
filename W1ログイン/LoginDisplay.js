@@ -61,8 +61,3 @@ export function AskRegistration(){
     }
 }
 window.AskRegistration=AskRegistration;
-
-export function returnID(){
-    const id = document.getElementById("userID").value;
-    return id;
-}
