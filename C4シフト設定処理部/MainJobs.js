@@ -12,7 +12,6 @@ export function AskJobs(ProcessName){
     var Shift = [];
     if (ProcessName == "Shift_UI") {
         Shift.push(ask.CopyJobName());
-        alert("444");
         Shift.push(ask.CopyHourWages());
         Shift.push(ask.CopyTrasCosts());
         Shift.push(ask.CopyNightWages());
@@ -47,9 +46,9 @@ export function UpdateJobs(shiftdata, ProcessName){
         NightWages_time.push(shiftdata[6]);
         update.SendNightWagesRange(NightWages_time);
     } else if (ProcessName == "WeekShift_UI") {
-        update.SendJobTime("WeekShift", localStorage.getItem("Week"));
+        update.SendJobTime("WeekShift", shiftdata);
     } else if (ProcessName == "MonthShift_UI") {
-        update.SendJobTime("MonthShift", monthdata);
+        update.SendJobTime("MonthShift", shiftdata);
     }
 }
 

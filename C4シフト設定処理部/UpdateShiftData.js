@@ -1,4 +1,4 @@
-//var xhr = new XMLHttpRequest();
+var xhr = new XMLHttpRequest();
 const id = window.location.search.replace("?","");
 /*****************************************************************
 ***function name     :SendJobName
@@ -14,12 +14,13 @@ export function SendJobName(shiftdata){
     data.push("JobName");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./Scedule_shift.txt", true);
+    xhr.open("POST", "./schedule_shift.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function (){
         if(this.readyState === 4){
             if(this.status === 200 || this.status == 0){
-                return this.responseText;  //success or false       
+                result =  this.responseText;  //success or false
+                return result;
             }
         }
     }
@@ -33,13 +34,12 @@ export function SendJobName(shiftdata){
 ********************************************/
    
 export function SendJobTime(ProcessName, shiftdata){
-    /*
-    var result;
     var data = [];
-    data.push("update")
-    data.push(ProsessName);
+    var send_shift = shiftdata.replace(/,/g, " ");
+    data.push("update");
+    data.push(ProcessName);
     data.push(id);
-    data.push(shiftdata);
+    data.push(send_shift);
     xhr.open("POST", "./schedule_shift.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function (){
@@ -49,9 +49,6 @@ export function SendJobTime(ProcessName, shiftdata){
             }
         }
     }
-    */
-    ProcessName=0;
-    shiftdata=0;
 }
 /*****************************************************************
 ***function name     :SendHourWages

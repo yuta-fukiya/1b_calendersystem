@@ -20,7 +20,9 @@ export function CopyJobName(){
     }
     if (result == "false"){
         alert("通信に失敗しました");
-    }
+    } else if (result == "none"){
+        result = "32文字以内で入力してください";
+    }       
     return result;
 }
 
@@ -33,10 +35,13 @@ export function CopyJobName(){
 
 export function CopyJobTime(ProcessName){
     var result = "false";
+    var send_shift = "";
+    var result_shift = [];
     var data = [];
     data.push("ask");
     data.push(ProcessName);
     data.push(id);
+    data.push(send_shift);
     xhr.open("POST", "./schedule_shift.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
@@ -45,8 +50,16 @@ export function CopyJobTime(ProcessName){
     }
     if (result == "false"){
         alert("通信に失敗しました");
+    } else if (result == "none" && ProcessName == "WeekShift"){
+        for (var i = 0; i < 14; i++){
+            result_shift.push("00:00");
+        }
+    } else if (result === "none" && ProcessName == "MonthShift"){
+    
+    } else {
+        result_shift = result.split(" ");
     }
-    return result;
+    return result_shift;
 }
 
 /*****************************************************************
