@@ -2,13 +2,18 @@ import sqlite3 from "sqlite3";
 
 export async function ReturnShiftInformation(id, name){
     return new Promise((resolve, reject) => {
-        const db = new sqlite3.Database('Schedule.sqlite');
+        console.log("3333-0");
+        const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
+        console.log("3333-1");
         var Shiftdata = [];
         db.serialize(() => {
-            db.each('SELECT id, JobName, WeekShift, MonthShift FROM Shiftdata WHERE id=$id', {$id: id}, function(err, row) {
+            console.log("3333-2");
+            db.each('SELECT * FROM Shiftdata WHERE id=$id', {$id: id}, function(err, row) {
+                console.log("3333-3");
                 if (err) {
                     reject(err);
                 } else if (name == 'JobName') {
+                    console.log("3333-4");
                     Shiftdata.push(row.JobName);
                     resolve(Shiftdata);
                 } else if (name == 'WeekShift') {
@@ -26,6 +31,7 @@ export async function ReturnShiftInformation(id, name){
             });
         });
         db.close();
+        console.log("4444");
     })
 }
 
@@ -39,7 +45,7 @@ export async function UpdateShiftInformation(id, name, Shiftdata){
         number = 2;
     }
     if(number == -1) {
-        const db = new sqlite3.Database('Schedule.sqlite');
+        const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         db.serialize(() => {
             db.run('CREATE TABLE IF NOT EXISTS Shiftdata (id TEXT, JobName TEXT, WeekShift TEXT, MonthShift TEXT)');
             const stmt = db.prepare('INSERT INTO Shiftdata VALUES (?, ?, ?, ?)');
@@ -48,7 +54,7 @@ export async function UpdateShiftInformation(id, name, Shiftdata){
         });
         db.close();
     } else {
-        const db = new sqlite3.Database('Schedule.sqlite');
+        const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         db.serialize(() => {
             const stmt = db.prepare('UPDATE Shiftdata SET ' + name + ' = ? WHERE id = ?', err => {
                 if (err) {
