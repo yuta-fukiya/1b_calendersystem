@@ -28,15 +28,30 @@ window.onload = ShiftData_init;
 export function ShiftData_update(){
       var shiftdata = [];
       shiftdata.push(document.getElementById("JobName").value);              //アルバイト名
-      shiftdata.push(document.getElementById("HourWages").value);            //時給
+      if (shiftdata[0] == ""){
+            shiftdata[0] = document.getElementById("JobName").placeholder;
+      }
+      shiftdata.push(document.getElementById("HourWages").value);         //時給
+      if (shiftdata[1] == ""){
+            shiftdata[1] = document.getElementById("HourWages").placeholder;
+      }
       shiftdata.push(document.getElementById("TrasCosts").value);            //交通費
+      if (shiftdata[2] == ""){
+            shiftdata[2] = document.getElementById("TrasCosts").placeholder;
+      }
       shiftdata.push(document.getElementById("NightWages").value);           //深夜給
+      if (shiftdata[3] == ""){
+            shiftdata[3] = document.getElementById("NightWages").placeholder;
+      }
       shiftdata.push(document.getElementById("Overtime").value);             //残業代
+      if (shiftdata[4] == ""){
+            shiftdata[4] = document.getElementById("Overtime").placeholder;
+      }
       shiftdata.push(document.getElementById("NightWages_time_s").value);    //深夜給になる時間帯の始まり
       shiftdata.push(document.getElementById("NightWages_time_f").value);    //深夜給になる時間帯の終わり
       var countstr = shiftdata[0].length;
       var count = 0;
-      if (shiftdata[0] = ""){
+      if (shiftdata[0] == ""){
             shiftdata[0] = "アルバイト1";
       }
       for (var i = 1; i < 5; i++){
@@ -47,10 +62,12 @@ export function ShiftData_update(){
                   shiftdata[i]=0;
             }
       }
+
       if (count == 4 && countstr < 32){
             UpdateJobs(shiftdata, "Shift_UI");   //シフト設定処理部に収支系の情報をを送る
+            UpdateJobs(localStorage.getItem("Week"), "WeekShift_UI");
+           // UpdateJobs(localStorage.setItem("Month"), "MonthShift_UI");
             RemoveData();
-            alert("aaa");
             window.location.href="./MainDisplay.html"+location.search;
       } else if (countstr > 32){
             alert("アルバイト名は32文字以内で入力してください");
@@ -64,6 +81,6 @@ window.ShiftData_update=ShiftData_update;
 //変更不要
 export function RemoveData(){
       localStorage.removeItem("Week");
-      localStorage.removeItem("Month");
+     // localStorage.removeItem("Month");
 }
 window.RemoveData=RemoveData;
