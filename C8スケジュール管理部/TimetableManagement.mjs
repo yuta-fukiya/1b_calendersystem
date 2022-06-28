@@ -68,11 +68,11 @@ async function UpdateTimetableInformation(id, name, Timetabledata){
     } else {
         const db = new sqlite3.Database('Schedule.sqlite');
         db.serialize(() => {
-            const stmt = db.prepare('UPDATE Timetabledata SET ' + name + ' = ? WHERE id=$id and wday=$wday and period=$period', {$id: id, $wday: Timetabledata[4], $period: Timetabledata[5]}, err => {
+            const stmt = db.prepare('UPDATE Timetabledata SET ' + name + ' = ? WHERE id = ? and wday = ? and period = ?', err => {
                 if (err) {
                     throw err;
                 }
-                stmt.run(Timetabledata[number], id);
+                stmt.run(Timetabledata[number], id, Timetabledata[4], Timetabledata[5]);
                 stmt.finalize();
             });
         });
@@ -83,9 +83,9 @@ async function UpdateTimetableInformation(id, name, Timetabledata){
 
 //-----------------------------------------------------------------------------------------------
 async function test() {
-    var Timetabledata = new Array('実験', 16, 2, '伊藤', 2, 3);
+    var Timetabledata = new Array('プログラミング', 16, 2, '山田', 2, 3);
     var id = 'al20116';
-    var name1 = 'Class_name';
+    var name1 = '';
     var name2 = 'Teacher_name';
     var wday = 2;
     var period = 3;
@@ -97,7 +97,7 @@ async function test() {
         console.log('false');
     }
     var c = [];
-    c = await ReturnTimetableInformation(id, wday, period, name1);
+    c = await ReturnTimetableInformation(id, wday, period, name2);
     console.log(c);
 }
 

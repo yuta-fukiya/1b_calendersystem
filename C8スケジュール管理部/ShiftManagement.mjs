@@ -63,10 +63,11 @@ async function UpdateShiftInformation(id, name, Shiftdata){
     return true;
 }
 
+//------------------------------------------------------------------------------------------
 async function test() {
     var Shiftdata = new Array('塾', '11:11,22:22', '11:11,22:22,12:12,21:21');
-    var id = 'al20114';
-    var name1 = 'WeekShift1';
+    var id = 'al20116';
+    var name1 = 'JobName1';
     var name2 = 'WeekShift';
     var Judge;
     Judge = await UpdateShiftInformation(id, name1, Shiftdata);
