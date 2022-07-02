@@ -37,6 +37,8 @@ const MonthDisplay_html = fs.readFileSync('./W8月別シフト/MonthDisplay.html
 const MonthDisplay_css = fs.readFileSync('./W8月別シフト/MonthDisplay.css', 'UTF-8');
 const MonthDisplay_js = fs.readFileSync('./W8月別シフト/MonthDisplay.js', 'UTF-8');
 
+const MainLogin_js = fs.readFileSync('./C2認証処理部/MainLogin.js', 'UTF-8');
+
 const AskSchedule_js = fs.readFileSync('C3カレンダー設定処理部/AskSchedule.js', 'UTF-8');
 const MainSchedule_js = fs.readFileSync('C3カレンダー設定処理部/MainSchedule.js', 'UTF-8');
 const UpdateSchedule_js = fs.readFileSync('C3カレンダー設定処理部/UpdateSchedule.js', 'UTF-8');
@@ -212,6 +214,11 @@ function RouteSetting(req, res) {
         res.end();
         break;
     
+    case '/MainLogin.js':
+        res.writeHead(200, {'Content-Type': 'text/javascript'});
+        res.write(MainLogin_js);
+        res.end();
+        break;
 
     case '/MainJobs.js':
         res.writeHead(200, {'Content-Type': 'text/javascript'});
