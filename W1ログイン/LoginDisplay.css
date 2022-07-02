@@ -14,6 +14,12 @@
   font-size: 20px;
 }
 
+.ID > input:focus{
+  border: 1px solid #46ee8c;
+  outline: none; 
+  box-shadow: 0 0 5px 1px #b4ffd9;
+}
+
 .PASS {
   font-size: 30px;
 }
@@ -22,6 +28,12 @@
   width: 200px;
   padding: 5px;
   font-size: 20px;
+}
+
+.PASS > input:focus{
+  border: 1px solid #46ee8c;
+  outline: none;
+  box-shadow: 0 0 5px 1px #b4ffd9;
 }
 
 .log{
