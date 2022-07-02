@@ -1,170 +1,123 @@
-@charset "UTF-8";
-.title {
-  position: relative;
-  font-size: 20px;
-  margin-top: 50px;
-  text-align: center;
-}
+@charset "utf-8";
 
-.subtitle {
-  width: 100%;
-  position: relative;
-  text-align: center;
-}
-
-.subtitle #income {
-  border: solid black 1px;
-  background-color: #0df1e2;
-  color: black;
-}
-
-.subtitle #spending {
-  border: solid black 1px;
-  background-color: #0df1e2;
-  color: black;
-}
-
-.subtitle .prev-next {
-  width: auto;
-  text-align: center;
-}
-
-.subtitle .money {
-  width: auto;
-  margin-left: 50px;
-  margin-right: auto;
-}
-
-.inline_brock {
-  display: inline-block;
-}
-
+/*全体*/
 .wrapper {
-  max-width: 600px;
-  margin: 0 auto;
-  color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #666;
 }
 
-.subtitle .transit #header {
-  text-align: center;
-  font-size: 24px;
-  width: 100%;
-  margin: 1rem 0 0;
+#header {
+    text-align: center;
+    font-size: 24px;
+    width: 100%;
+    margin: 1rem 0 0;
 }
 
-#calender {
-  text-align: center;
-  width: 100%;
-  /*日曜日*/
-  /*土曜日*/
-  /*前後月の日付*/
+/*カレンダー*/
+#calendar {
+    text-align: center;
+    width: 100%;
 }
 
-#calender .cell:hover {
-  background-color: aliceblue;
+table {
+    outline: 2px solid rgb(0, 0, 0);
+    border-collapse: collapse;
+    width: 100%;
 }
 
-#calender .college {
-  background-color: orange;
+th {
+    color: #000;
 }
 
-#calender .private {
-  background-color: aquamarine;
+th,
+td {
+    outline: 1px solid rgb(0, 0, 0);
+    padding-top: 10px;
+    padding-bottom: 30px;
+    text-align: center;
 }
 
-#calender table {
-  outline: 2px solid #ddd;
-  border-collapse: collapse;
-  width: 100%;
+/*日曜日*/
+td:first-child {
+    color: red;
 }
 
-#calender th {
-  color: #000;
-  outline: 1px solid #ddd;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: center;
+/*土曜日*/
+td:last-child {
+    color: blue;
 }
 
-#calender td:first-child {
-  color: red;
+/*前後月の日付*/
+td.disabled {
+    color: #ccc;
 }
 
-#calender td:last-child {
-  color: blue;
-}
-
-#calender td.disabled {
-  color: #ccc;
-}
-
-#calender td {
-  outline: 1px solid #ddd;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: center;
-  width: calc(100%/7);
-  height: 100px;
-}
-
-#calender td .today {
-  /*本日*/
-  background-color: #D65E72;
-  color: #fff;
-}
-
-#calender td .today_cell:hover {
-  background-color: #e892a0;
-}
-
-#calender td .holiday {
-  color: red;
-}
-
-#calender td .days {
-  background-color: #fdfdfd;
-  padding-top: 8%;
-  padding-bottom: 8%;
-}
-
-#calender td li {
-  list-style: none;
-}
-
-#calender td .disabled {
-  color: #ccc;
+/*本日*/
+td.today {
+    background-color: #D65E72;
+    color: #fff;
 }
 
 /*ボタン*/
 #next-prev-button {
-  position: relative;
+    position: relative;
 }
 
 #next-prev-button button {
-  cursor: pointer;
-  background: #B78D4A;
-  color: #fff;
-  border: 1px solid #B78D4A;
-  border-radius: 4px;
-  font-size: 1rem;
-  padding: 0.5rem 2rem;
-  margin: 1rem 0;
+    cursor: pointer;
+    background: rgb(7, 119, 35);
+    color: #fff;
+    border: 1px solid rgb(7, 119, 35);
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.5rem 2rem;
+    margin: 1rem 0;
 }
 
 #next-prev-button button:hover {
-  background-color: #D4BB92;
-  border-color: #D4BB92;
-}
-
-#top-page {
-  margin-top: 10px;
+    background-color: #92d495;
+    border-color: #92d495;
 }
 
 #prev {
-  float: left;
+    float: left;
 }
 
 #next {
-  float: right;
+    float: right;
 }
-/*# sourceMappingURL=MainDisplay.css.map */
+
+h1{
+    text-align: center;
+}
+
+td:hover{
+    cursor: pointer;
+}
+
+a{
+    background-color: aqua;
+    color: #000;
+    font-size: 30px;
+    border: 2px solid;
+    border-radius: 5px;
+    padding-bottom: 0px;
+}
+
+a:hover{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(57, 214, 214);
+    color: #000;
+    font-size: 30px;
+    border: solid;
+}
+
+table{
+    margin-top: 10px;
+}
+
+h3{
+    text-align: center;
+}
