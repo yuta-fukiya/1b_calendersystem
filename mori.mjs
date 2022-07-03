@@ -3,6 +3,7 @@ import * as fs from "fs";
 import * as url from "url";
 import * as IDPASS from "./C7ID,パスワード管理部/IDPASS.mjs";
 import * as Schedule from "./C8スケジュール管理部/ShiftManagement.mjs";
+import * as Salary from "./C9収支管理部/SalaryManagement.mjs";
 
 const LoginDisplay_html = fs.readFileSync('./W1ログイン/LoginDisplay.html', 'UTF-8');
 const RegistDisplay_html = fs.readFileSync('./W1ログイン/RegistDisplay.html', 'UTF-8');
@@ -49,7 +50,7 @@ const UpdateShiftData_js = fs.readFileSync('./C4シフト設定処理部/UpdateS
 
 var login_txt;
 var schedule_shift_txt;
-var shift_txt;
+var salary_txt;
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -270,7 +271,6 @@ function RouteSetting(req, res) {
             } else if (idpass[0] == "AskRegistration"){
               result = await IDPASS.check(idpass[1], idpass[2]);
             }
-            console.log(result);
             fs.writeFileSync("./C7ID,パスワード管理部/login.txt", result);
             login_txt = fs.readFileSync('./C7ID,パスワード管理部/login.txt', 'UTF-8');        
             res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -308,7 +308,7 @@ function RouteSetting(req, res) {
         }
         break;
 
-    case '/_shift.txt':
+    case '/salary.txt':
         var result = "false";
         if (req.method == "POST"){
           var postData = "";
@@ -316,17 +316,16 @@ function RouteSetting(req, res) {
             postData += chunk;
           })
           req.on("end", async function(){
-            var shift = postData.split(",");
-            if (shift[0] == "ask"){
-                //データベース処理
-            } else if (shift[0] == "update"){
-                //データベース処理
+            var salary = postData.split(",");
+            if (salary[0] == "ask"){
+                result = await Salary.AskWages(salary[2], salary[1]);
+            } else if (salary[0] == "update"){
+                result = await Salary.UpdateWages(salary[2], salary[1], salary[3]);
             }
-            console.log(result);
-            fs.writeFileSync("./C9収支管理部/shift.txt", result);
-            shift_txt = fs.readFileSync('./C9収支管理部/shift.txt', 'UTF-8');        
+            fs.writeFileSync("./C9収支管理部/salary.txt", result);
+            salary_txt = fs.readFileSync('./C9収支管理部/salary.txt', 'UTF-8');        
             res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.write(shift_txt);
+            res.write(salary_txt);
             res.end();
           })
         }
