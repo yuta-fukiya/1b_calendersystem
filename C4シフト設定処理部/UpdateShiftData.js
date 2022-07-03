@@ -8,7 +8,6 @@ const id = window.location.search.replace("?","");
  *******************************************************************/
 
 export function SendJobName(shiftdata){
-    var result;
     var data = [];
     data.push("update");
     data.push("JobName");
@@ -19,8 +18,7 @@ export function SendJobName(shiftdata){
     xhr.onreadystatechange = function (){
         if(this.readyState === 4){
             if(this.status === 200 || this.status == 0){
-                result =  this.responseText;  //success or false
-                return result;
+                return this.responseText;  //success or false
             }
         }
     }
@@ -58,12 +56,12 @@ export function SendJobTime(ProcessName, shiftdata){
  *******************************************************************/
 
 export function SendHourWages(shiftdata){
-       /*
-    var result;
     var data = [];
-    data.push("UHourWages");
+    data.push("update");
+    data.push("HourWages");
+    data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./shift.txt", true);
+    xhr.open("POST", "./salary.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function (){
         if(this.readyState === 4){
@@ -72,8 +70,6 @@ export function SendHourWages(shiftdata){
             }
         }
     }
-    */
-    shiftdata=0;
 }        
 
 /*****************************************************************
@@ -84,13 +80,12 @@ export function SendHourWages(shiftdata){
  *******************************************************************/
 
 export function SendTrasCosts(shiftdata){
-       /*
-    var result;
     var data = [];
-    data.push("UTrasCosts");
+    data.push("update");
+    data.push("TrasCosts");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./shift.txt", true);
+    xhr.open("POST", "./salary.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function (){
         if(this.readyState === 4){
@@ -99,8 +94,6 @@ export function SendTrasCosts(shiftdata){
             }
         }
     }
-    */
-    shiftdata=0;
 }        
 
 /*****************************************************************
@@ -111,13 +104,12 @@ export function SendTrasCosts(shiftdata){
  *******************************************************************/
 
 export function SendNightWages(shiftdata){
-       /*
-    var result;
     var data = [];
-    data.push("UNightWages");
+    data.push("update");
+    data.push("NightWages");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./shift.txt", true);
+    xhr.open("POST", "./salary.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function (){
         if(this.readyState === 4){
@@ -126,8 +118,6 @@ export function SendNightWages(shiftdata){
             }
         }
     }
-    */
-    shiftdata=0;
 }        
 /*****************************************************************
 ***function name     :SendNightWagesRange
@@ -137,13 +127,12 @@ export function SendNightWages(shiftdata){
  *******************************************************************/
 
 export function SendNightWagesRange(shiftdata){
-       /*
-    var result;
     var data = [];
-    data.push("UNightWagesTime");
+    data.push("update");
+    data.push("NightWagesRange");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./shift.txt", true);
+    xhr.open("POST", "./salary.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function (){
         if(this.readyState === 4){
@@ -152,8 +141,6 @@ export function SendNightWagesRange(shiftdata){
             }
         }
     }
-    */
-    shiftdata=0;
 }        
 
 /*****************************************************************
@@ -164,13 +151,12 @@ export function SendNightWagesRange(shiftdata){
  *******************************************************************/
 
 export function SendOvertime(shiftdata){
-       /*
-    var result;
     var data = [];
-    data.push("UOverTime");
+    data.push("update");
+    data.push("OverTime");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./shift.txt", true);
+    xhr.open("POST", "./salary.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function (){
         if(this.readyState === 4){
@@ -179,6 +165,4 @@ export function SendOvertime(shiftdata){
             }
         }
     }
-    */
-    shiftdata=0;
 }        

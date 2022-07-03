@@ -16,7 +16,7 @@ export function AskJobs(ProcessName){
         Shift.push(ask.CopyTrasCosts());
         Shift.push(ask.CopyNightWages());
         Shift.push(ask.CopyOvertime());
-        var NightWages_time = ask.CopyNightWagesRange();
+        var NightWages_time = ask.CopyNightWagesRange().split(" ");
         Shift.push(NightWages_time[0]);
         Shift.push(NightWages_time[1]);
     } else if (ProcessName == "WeekShift_UI") {
@@ -41,9 +41,8 @@ export function UpdateJobs(shiftdata, ProcessName){
         update.SendTrasCosts(shiftdata[2]);
         update.SendNightWages(shiftdata[3]);
         update.SendOvertime(shiftdata[4]);
-        var NightWages_time = [];
-        NightWages_time.push(shiftdata[5]);
-        NightWages_time.push(shiftdata[6]);
+        var NightWages_time = "";
+        NightWages_time = shiftdata[5] + " " + shiftdata[6];
         update.SendNightWagesRange(NightWages_time);
     } else if (ProcessName == "WeekShift_UI") {
         update.SendJobTime("WeekShift", shiftdata);

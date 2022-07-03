@@ -46,7 +46,6 @@ export function CopyJobTime(ProcessName){
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
         result = xhr.responseText;
-        console.log(result);
     }
     if (result == "false"){
         alert("通信に失敗しました");
@@ -70,24 +69,20 @@ export function CopyJobTime(ProcessName){
  *******************************************************************/
 
 export function CopyHourWages(){
-    /*
     var result = "false";
     var data = [];
     data.push("ask");
     data.push("HourWages");
     data.push(id);
-    xhr.open("POST", "./shift.txt", false);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
         result = xhr.responseText;
-        console.log(result);
     }
     if (result == "false"){
         alert("通信に失敗しました");
     }
     return result;
-    */
-    return 1111;
 }        
 
 /*****************************************************************
@@ -98,24 +93,20 @@ export function CopyHourWages(){
  *******************************************************************/
 
 export function CopyTrasCosts(){
-    /*
     var result = "false";
     var data = [];
     data.push("ask");
     data.push("TrasCosts");
     data.push(id);
-    xhr.open("POST", "./shift.txt", false);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
         result = xhr.responseText;
-        console.log(result);
     }
     if (result == "false"){
         alert("通信に失敗しました");
     }
     return result;
-    */
-    return 2222;
 }        
 
 /*****************************************************************
@@ -126,24 +117,20 @@ export function CopyTrasCosts(){
  *******************************************************************/
 
 export function CopyNightWages(){
-    /*
     var result = "false";
     var data = [];
     data.push("ask");
     data.push("NightWages");
     data.push(id);
-    xhr.open("POST", "./shift.txt", false);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
         result = xhr.responseText;
-        console.log(result);
     }
     if (result == "false"){
         alert("通信に失敗しました");
     }
     return result;
-    */
-    return 3333;
 }        
 /*****************************************************************
 ***function name     :CopyNightWagesRange
@@ -153,27 +140,20 @@ export function CopyNightWages(){
  *******************************************************************/
 
 export function CopyNightWagesRange(){
-    /*
     var result = "false";
     var data = [];
     data.push("ask");
-    data.push("HourWages");
+    data.push("NightWagesRange");
     data.push(id);
-    xhr.open("POST", "./shift.txt", false);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
         result = xhr.responseText;
-        console.log(result);
     }
     if (result == "false"){
         alert("通信に失敗しました");
     }
     return result;
-    */
-    var sample = [];
-    sample.push("11:11");
-    sample.push("22:22");
-    return sample;
 }        
 
 /*****************************************************************
@@ -184,22 +164,18 @@ export function CopyNightWagesRange(){
  *******************************************************************/
 
 export function CopyOvertime(){
-    /*
     var result = "false";
     var data = [];
     data.push("ask");
-    data.push("HourWages");
+    data.push("Overtime");
     data.push(id);
-    xhr.open("POST", "./shift.txt", false);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
         result = xhr.responseText;
-        console.log(result);
     }
     if (result == "false"){
         alert("通信に失敗しました");
     }
     return result;
-    */
-    return 4444;
 }        
