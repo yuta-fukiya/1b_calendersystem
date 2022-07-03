@@ -8,8 +8,8 @@ const id = window.location.search.replace("?","");
  *******************************************************************/
 
 export function CopyJobName(){
-    var result = "false";
-    var data = [];
+    var result = "false";         //参照結果を返す変数
+    var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("Jobname");
     data.push(id);
@@ -34,14 +34,12 @@ export function CopyJobName(){
 ********************************************/
 
 export function CopyJobTime(ProcessName){
-    var result = "false";
-    var send_shift = "";
-    var result_shift = [];
-    var data = [];
+    var result = "false";         //参照結果を返す変数
+    var result_shift = [];        //サーバから受け取ったデータをreturnするために変換したものを代入する変数
+    var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push(ProcessName);
     data.push(id);
-    data.push(send_shift);
     xhr.open("POST", "./schedule_shift.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
@@ -69,8 +67,8 @@ export function CopyJobTime(ProcessName){
  *******************************************************************/
 
 export function CopyHourWages(){
-    var result = "false";
-    var data = [];
+    var result = "false";         //参照結果を返す変数
+    var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("HourWages");
     data.push(id);
@@ -93,8 +91,8 @@ export function CopyHourWages(){
  *******************************************************************/
 
 export function CopyTrasCosts(){
-    var result = "false";
-    var data = [];
+    var result = "false";         //参照結果を返す変数
+    var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("TrasCosts");
     data.push(id);
@@ -117,8 +115,8 @@ export function CopyTrasCosts(){
  *******************************************************************/
 
 export function CopyNightWages(){
-    var result = "false";
-    var data = [];
+    var result = "false";         //参照結果を返す変数
+    var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("NightWages");
     data.push(id);
@@ -140,8 +138,8 @@ export function CopyNightWages(){
  *******************************************************************/
 
 export function CopyNightWagesRange(){
-    var result = "false";
-    var data = [];
+    var result = "false";         //参照結果を返す変数
+    var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("NightWagesRange");
     data.push(id);
@@ -164,8 +162,8 @@ export function CopyNightWagesRange(){
  *******************************************************************/
 
 export function CopyOvertime(){
-    var result = "false";
-    var data = [];
+    var result = "false";         //参照結果を返す変数
+    var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("Overtime");
     data.push(id);

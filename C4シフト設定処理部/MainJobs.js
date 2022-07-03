@@ -9,14 +9,14 @@ import * as update from "./UpdateShiftData.js";    //シフト設定処理部
  *******************************************************************/
 
 export function AskJobs(ProcessName){
-    var Shift = [];
+    var Shift = [];                          //ShiftDisplayに返すための配列
     if (ProcessName == "Shift_UI") {
         Shift.push(ask.CopyJobName());
         Shift.push(ask.CopyHourWages());
         Shift.push(ask.CopyTrasCosts());
         Shift.push(ask.CopyNightWages());
         Shift.push(ask.CopyOvertime());
-        var NightWages_time = ask.CopyNightWagesRange().split(" ");
+        var NightWages_time = ask.CopyNightWagesRange().split(" ");    //データベースから参照した情報を分割する
         Shift.push(NightWages_time[0]);
         Shift.push(NightWages_time[1]);
     } else if (ProcessName == "WeekShift_UI") {
@@ -42,7 +42,7 @@ export function UpdateJobs(shiftdata, ProcessName){
         update.SendTrasCosts(shiftdata[2]);
         update.SendNightWages(shiftdata[3]);
         update.SendOvertime(shiftdata[4]);
-        var NightWages_time = "";
+        var NightWages_time = "";            //深夜給になる時間帯に関する情報を一つにまとめる
         NightWages_time = shiftdata[5] + " " + shiftdata[6];
         update.SendNightWagesRange(NightWages_time);
     } else if (ProcessName == "WeekShift_UI") {

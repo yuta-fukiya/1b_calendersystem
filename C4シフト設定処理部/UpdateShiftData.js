@@ -1,5 +1,5 @@
 var xhr = new XMLHttpRequest();
-const id = window.location.search.replace("?","");
+const id = window.location.search.replace("?","");         //ユーザIDの読み取り
 /*****************************************************************
 ***function name     :SendJobName
 ***Designer          :吹谷　優太
@@ -8,7 +8,7 @@ const id = window.location.search.replace("?","");
  *******************************************************************/
 
 export function SendJobName(shiftdata){
-    var data = [];
+    var data = [];                //サーバにデータを送るための配列
     data.push("update");
     data.push("JobName");
     data.push(id);
@@ -28,7 +28,7 @@ export function SendJobName(shiftdata){
 ********************************************/
    
 export function SendJobTime(ProcessName, shiftdata){
-    var data = [];
+    var data = [];                //サーバにデータを送るための配列
     var send_shift = shiftdata.replace(/,/g, " ");
     data.push("update");
     data.push(ProcessName);
@@ -48,7 +48,7 @@ export function SendJobTime(ProcessName, shiftdata){
  *******************************************************************/
 
 export function SendHourWages(shiftdata){
-    var data = [];
+    var data = [];                //サーバにデータを送るための配列
     data.push("update");
     data.push("HourWages");
     data.push(id);
@@ -68,7 +68,7 @@ export function SendHourWages(shiftdata){
  *******************************************************************/
 
 export function SendTrasCosts(shiftdata){
-    var data = [];
+    var data = [];                //サーバにデータを送るための配列
     data.push("update");
     data.push("TrasCosts");
     data.push(id);
@@ -88,7 +88,7 @@ export function SendTrasCosts(shiftdata){
  *******************************************************************/
 
 export function SendNightWages(shiftdata){
-    var data = [];
+    var data = [];                //サーバにデータを送るための配列
     data.push("update");
     data.push("NightWages");
     data.push(id);
@@ -107,7 +107,7 @@ export function SendNightWages(shiftdata){
  *******************************************************************/
 
 export function SendNightWagesRange(shiftdata){
-    var data = [];
+    var data = [];                //サーバにデータを送るための配列
     data.push("update");
     data.push("NightWagesRange");
     data.push(id);
@@ -127,7 +127,7 @@ export function SendNightWagesRange(shiftdata){
  *******************************************************************/
 
 export function SendOvertime(shiftdata){
-    var data = [];
+    var data = [];                //サーバにデータを送るための配列
     data.push("update");
     data.push("OverTime");
     data.push(id);
