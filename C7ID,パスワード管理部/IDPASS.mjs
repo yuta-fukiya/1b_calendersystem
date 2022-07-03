@@ -1,31 +1,43 @@
 import sqlite3 from "sqlite3";
 
-export async function regist(userid, userpass){
-  var result = await checkid(userid);
-  if (result == "none"){
+/*****************************************************************
+***function name     :RegistUser
+***Designer          :吹谷　優太
+***Date              :
+***function          :新規ユーザ情報を登録する
+ *******************************************************************/
+export async function RegistUser(userid, userpass){
+  var result = await CheckID(userid);                       //データベースに入力したIDが存在するか確認
+  if (result == "none"){                                    //存在しなかったとき
     var db = new sqlite3.Database("./C7ID,パスワード管理部/idpass.db");
     db.run("INSERT OR REPLACE INTO user VALUES($id, $pass)", {$id: userid, $pass: userpass});
     db.close();
     result = "success";
-  } else if (result == "already"){
+  } else if (result == "already"){                          //存在したとき
     result = "already";
   } else {
-    result = "false";
+    result = "false";                                       //エラー
   }
-  return result;
+  return result;                                            //success or already or false
 }
 
-export async function check(userid, userpass){
+/*****************************************************************
+***function name     :CheckUser
+***Designer          :吹谷　優太
+***Date              :
+***function          :データベースに入力データがあるかを確かめる
+ *******************************************************************/
+export async function CheckUser(userid, userpass){
   async function check2(){
     return new Promise((resolve) => {
-      var exists;
+      var exists;                                          //入力したIDパスワードが存在するかどうか
       var db = new sqlite3.Database("./C7ID,パスワード管理部/idpass.db");
       db.serialize(() => {
         db.get("SELECT count(*) FROM user WHERE id=$id and pass=$pass", { $id: userid, $pass: userpass }, (err, res) => {
-          if (0 < res["count(*)"]) {
+          if (0 < res["count(*)"]) {                       //存在するとき
             exists = "success";
             resolve(exists);
-          } else {
+          } else {                                         //存在しないとき
             exists = "false";
             resolve(exists);
           }
@@ -36,20 +48,26 @@ export async function check(userid, userpass){
   }
   
   const result = await check2();
-  return result;
+  return result;                                           //success or false
 }
 
-async function checkid(userid){
+/*****************************************************************
+***function name     :CheckID
+***Designer          :吹谷　優太
+***Date              :
+***function          :入力したIDがデータベースに存在するかを確認する
+ *******************************************************************/
+async function CheckID(userid){
   async function check2(){
     return new Promise((resolve) => {
-      var exists;
+      var exists;                                           //入力したIDが存在するかどうか
       var db = new sqlite3.Database("./C7ID,パスワード管理部/idpass.db");
       db.serialize(() => {
         db.get("SELECT count(*) FROM user WHERE id=$id", { $id: userid}, (err, res) => {
           if (0 < res["count(*)"]) {
-            exists = "already";
+            exists = "already";                              //存在する
             resolve(exists);
-          } else {
+          } else {                                           //存在しない
             exists = "none";
             resolve(exists);
           }
@@ -60,5 +78,5 @@ async function checkid(userid){
   }
   
   const result = await check2();
-  return result;
+  return result;                                             //already or none
 }
