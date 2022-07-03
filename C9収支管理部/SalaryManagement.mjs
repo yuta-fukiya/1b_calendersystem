@@ -7,7 +7,7 @@ export async function AskWages(id, DataName){
         var Shiftdata = "";
         if (result == "none"){
             db.serialize(() => {
-                db.run("INSERT OR REPLACE INTO usersalary VALUES($id, 'nothing', 'nothing', 'nothing', 'nothing', 'nothing', 'nothing')", {$id: id});
+                db.run("INSERT OR REPLACE INTO usersalary VALUES($id, 'nothing', 'nothing', 'nothing', 'nothing', 'nothing', 'nothing', 'nothing')", {$id: id});
                 resolve("none");
             })
         } 
