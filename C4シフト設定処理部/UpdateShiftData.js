@@ -13,14 +13,10 @@ export function SendJobName(shiftdata){
     data.push("JobName");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./schedule_shift.txt", true);
+    xhr.open("POST", "./schedule_shift.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText;  //success or false
-            }
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
 }        
 
@@ -38,14 +34,10 @@ export function SendJobTime(ProcessName, shiftdata){
     data.push(ProcessName);
     data.push(id);
     data.push(send_shift);
-    xhr.open("POST", "./schedule_shift.txt", true);
+    xhr.open("POST", "./schedule_shift.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText;  //success or false       
-            }
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
 }
 /*****************************************************************
@@ -61,14 +53,10 @@ export function SendHourWages(shiftdata){
     data.push("HourWages");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./salary.txt", true);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText;  //success or false       
-            }
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
 }        
 
@@ -85,14 +73,10 @@ export function SendTrasCosts(shiftdata){
     data.push("TrasCosts");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./salary.txt", true);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText;  //success or false       
-            }
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
 }        
 
@@ -109,14 +93,10 @@ export function SendNightWages(shiftdata){
     data.push("NightWages");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./salary.txt", true);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText;  //success or false       
-            }
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
 }        
 /*****************************************************************
@@ -132,14 +112,10 @@ export function SendNightWagesRange(shiftdata){
     data.push("NightWagesRange");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./salary.txt", true);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText;  //success or false       
-            }
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
 }        
 
@@ -156,13 +132,9 @@ export function SendOvertime(shiftdata){
     data.push("OverTime");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./salary.txt", true);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText;  //success or false       
-            }
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
 }        

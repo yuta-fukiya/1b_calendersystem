@@ -24,6 +24,7 @@ export function AskJobs(ProcessName){
     } else if (ProcessName == "MonthShift_UI") {
         Shift = ask.CopyJobTime("MonthShift");
     }
+
     return Shift;
 }
 
