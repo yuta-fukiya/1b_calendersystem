@@ -55,18 +55,21 @@ export function ShiftData_update(){
             shiftdata[0] = "アルバイト1";
       }
       for (var i = 1; i < 5; i++){
-            if (shiftdata[i].match(/^[0-9]*$/)){
+            if (shiftdata[i].match(/^[0-9]+$/)){
                   count++;
             }
-            if (shiftdata[i] = ""){
+            if (shiftdata[i] == ""){
                   shiftdata[i]=0;
             }
       }
-
-      if (count == 4 && countstr < 32){
+      if (count == 4 && countstr <= 32){
             UpdateJobs(shiftdata, "Shift_UI");   //シフト設定処理部に収支系の情報をを送る
-            UpdateJobs(localStorage.getItem("Week"), "WeekShift_UI");
-           // UpdateJobs(localStorage.setItem("Month"), "MonthShift_UI");
+            if (localStorage.getItem("Week") != null){
+                  UpdateJobs(localStorage.getItem("Week"), "WeekShift_UI");
+            }
+            if (localStorage.getItem("Month") != null){
+                  UpdateJobs(localStorage.setItem("Month"), "MonthShift_UI");
+            }
             RemoveData();
             window.location.href="./MainDisplay.html"+location.search;
       } else if (countstr > 32){
@@ -77,10 +80,8 @@ export function ShiftData_update(){
 }
 window.ShiftData_update=ShiftData_update;
 
-
-//変更不要
 export function RemoveData(){
       localStorage.removeItem("Week");
-     // localStorage.removeItem("Month");
+      localStorage.removeItem("Month");
 }
 window.RemoveData=RemoveData;
