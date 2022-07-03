@@ -267,9 +267,9 @@ function RouteSetting(req, res) {
           req.on("end", async function(){
             var idpass = postData.split(",");
             if (idpass[0] == "UserRegistration"){
-              result = await IDPASS.regist(idpass[1], idpass[2]);
+              result = await IDPASS.RegistUser(idpass[1], idpass[2]);
             } else if (idpass[0] == "AskRegistration"){
-              result = await IDPASS.check(idpass[1], idpass[2]);
+              result = await IDPASS.CheckUser(idpass[1], idpass[2]);
             }
             fs.writeFileSync("./C7ID,パスワード管理部/login.txt", result);
             login_txt = fs.readFileSync('./C7ID,パスワード管理部/login.txt', 'UTF-8');        
