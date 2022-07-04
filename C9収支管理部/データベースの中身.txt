@@ -10,10 +10,10 @@ id | HourWages | TrasCosts | NightWages | NightWagesRange | Overtime | income | 
 
 
 例・・・
-al20073 | 1000 | 250 | 1250 | 23:00 05:00 | 0 | nothing | nothing
+al20073 | 1000 | 250 | 1250 | 23:00 05:00 | 0 | 0 | 0
 
 
-・nothing(文字列)は初期状態
+・0(文字列)は初期状態
 ・深夜給の範囲は始まりと終わりを半角スペースで分けているので，
 splitなどで個別に分けて使ってください
 ・データの出し入れはmori.mjsの「salary.txt」の部分を参照してください

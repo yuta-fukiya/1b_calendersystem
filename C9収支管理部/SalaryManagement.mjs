@@ -13,8 +13,8 @@ export async function AskWages(id, DataName){
         var Shiftdata = "";                                              //参照結果をreturnするための変数
         if (result == "none"){                                           //レコードがなかった場合に新しいレコードを挿入
             db.serialize(() => {
-                db.run("INSERT OR REPLACE INTO usersalary VALUES($id, 'nothing', 'nothing', 'nothing', 'nothing', 'nothing', 'nothing', 'nothing')", {$id: id});
-                resolve("none");
+                db.run("INSERT OR REPLACE INTO usersalary VALUES($id, '0', '0', '0', '00:00 00:00', '0', '0', '0')", {$id: id});
+                resolve("0");
             })
         } 
         db.serialize(() => {                                             //給料・収支情報参照
