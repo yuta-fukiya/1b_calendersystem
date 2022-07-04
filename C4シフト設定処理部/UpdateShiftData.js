@@ -1,5 +1,5 @@
 var xhr = new XMLHttpRequest();
-const id = window.location.search.replace("?","");
+const id = window.location.search.replace("?","");         //ユーザIDの読み取り
 /*****************************************************************
 ***function name     :SendJobName
 ***Designer          :吹谷　優太
@@ -8,21 +8,15 @@ const id = window.location.search.replace("?","");
  *******************************************************************/
 
 export function SendJobName(shiftdata){
-    var result;
-    var data = [];
+    var data = [];                //サーバにデータを送るための配列
     data.push("update");
     data.push("JobName");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./schedule_shift.txt", true);
+    xhr.open("POST", "./schedule_shift.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                result =  this.responseText;  //success or false
-                return result;
-            }
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
 }        
 
@@ -34,20 +28,16 @@ export function SendJobName(shiftdata){
 ********************************************/
    
 export function SendJobTime(ProcessName, shiftdata){
-    var data = [];
+    var data = [];                //サーバにデータを送るための配列
     var send_shift = shiftdata.replace(/,/g, " ");
     data.push("update");
     data.push(ProcessName);
     data.push(id);
     data.push(send_shift);
-    xhr.open("POST", "./schedule_shift.txt", true);
+    xhr.open("POST", "./schedule_shift.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText;  //success or false       
-            }
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
 }
 /*****************************************************************
@@ -58,22 +48,16 @@ export function SendJobTime(ProcessName, shiftdata){
  *******************************************************************/
 
 export function SendHourWages(shiftdata){
-       /*
-    var result;
-    var data = [];
-    data.push("UHourWages");
+    var data = [];                //サーバにデータを送るための配列
+    data.push("update");
+    data.push("HourWages");
+    data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./shift.txt", true);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText;  //success or false       
-            }
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
-    */
-    shiftdata=0;
 }        
 
 /*****************************************************************
@@ -84,23 +68,16 @@ export function SendHourWages(shiftdata){
  *******************************************************************/
 
 export function SendTrasCosts(shiftdata){
-       /*
-    var result;
-    var data = [];
-    data.push("UTrasCosts");
+    var data = [];                //サーバにデータを送るための配列
+    data.push("update");
+    data.push("TrasCosts");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./shift.txt", true);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText;  //success or false       
-            }
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
-    */
-    shiftdata=0;
 }        
 
 /*****************************************************************
@@ -111,23 +88,16 @@ export function SendTrasCosts(shiftdata){
  *******************************************************************/
 
 export function SendNightWages(shiftdata){
-       /*
-    var result;
-    var data = [];
-    data.push("UNightWages");
+    var data = [];                //サーバにデータを送るための配列
+    data.push("update");
+    data.push("NightWages");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./shift.txt", true);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText;  //success or false       
-            }
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
-    */
-    shiftdata=0;
 }        
 /*****************************************************************
 ***function name     :SendNightWagesRange
@@ -137,23 +107,16 @@ export function SendNightWages(shiftdata){
  *******************************************************************/
 
 export function SendNightWagesRange(shiftdata){
-       /*
-    var result;
-    var data = [];
-    data.push("UNightWagesTime");
+    var data = [];                //サーバにデータを送るための配列
+    data.push("update");
+    data.push("NightWagesRange");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./shift.txt", true);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText;  //success or false       
-            }
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
-    */
-    shiftdata=0;
 }        
 
 /*****************************************************************
@@ -164,21 +127,14 @@ export function SendNightWagesRange(shiftdata){
  *******************************************************************/
 
 export function SendOvertime(shiftdata){
-       /*
-    var result;
-    var data = [];
-    data.push("UOverTime");
+    var data = [];                //サーバにデータを送るための配列
+    data.push("update");
+    data.push("OverTime");
     data.push(id);
     data.push(shiftdata);
-    xhr.open("POST", "./shift.txt", true);
+    xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
-    xhr.onreadystatechange = function (){
-        if(this.readyState === 4){
-            if(this.status === 200 || this.status == 0){
-                return this.responseText;  //success or false       
-            }
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
-    */
-    shiftdata=0;
 }        

@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カレンダー</title>
+    <link rel="icon" href=favicon.ico>
     <link rel="stylesheet" href="MainDisplay.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="MainDisplay.js"></script>
-    <title>メイン画面</title>
 </head>
+
 <body>
-    <div class="title"><h1>もりもりカレンダーシステム</h1></div>
-    <div class="subtitle">
-      <div class="prev-next inline_brock">
-        <button style="font-size:large" onclick="prev()" class="inline_brock">＜</button>
-        <div id="header" class="inline_brock"></div>
-        <button style="font-size: large;" onclick="next()" class="inline_brock">＞</button>
-      </div>
-      <div class="money inline_brock">
-          <div id="income" class="inline_brock"></div>
-          <div id="spending" class="inline_brock"></div>
-      </div>
+    <div class="wrapper">
+        <h1>もりもりカレンダーシステム</h1>
+        <!-- xxxx年xx月を表示 -->
+        <h2 id="header"></h2>
+        <h3>予定を見たい日をクリック</h3>
+
+        <!-- ボタンクリックで月移動 -->
+        <div id="next-prev-button">
+            <button id="prev" onclick="prev()">‹</button>
+            <button id="next" onclick="next()">›</button>
+        </div>
+
+        <!-- カレンダー -->
+        <div id="calendar"></div>
+
+        <!--スケジュール-->
+        <div id = "schedule"></div>
+
     </div>
-
-    <tbody>
-        <div id="calender"></div>
-    </tbody>
-    
-
 </body>
-</html>
