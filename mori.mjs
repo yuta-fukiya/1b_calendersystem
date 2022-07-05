@@ -53,7 +53,7 @@ var schedule_shift_txt;
 var salary_txt;
 
 const hostname = '0.0.0.0';
-const port = 51080;
+const port = 80;
 
 const server = http.createServer(RouteSetting);
 
