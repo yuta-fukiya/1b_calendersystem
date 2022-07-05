@@ -1,6 +1,40 @@
-import { AskWages } from "../C9収支管理部/SalaryManagement.mjs";
-import { CopyScheduleName } from "../C3カレンダー設定処理部/AskSchedule.js";
-import { CopyScheduleTime } from "../C3カレンダー設定処理部/AskSchedule.js";
+var xhr = new XMLHttpRequest();
+const id = window.location.search.replace("?", "");
+
+function expense() {
+    var result = "false";         //参照結果を返す変数
+    var data = [];                //サーバにデータを送るための配列
+    data.push("ask");
+    data.push("expense");
+    data.push(id);
+    xhr.open("POST", "./salary.txt", false);
+    xhr.send(data);
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        result = xhr.responseText;
+    }
+    if (result == "false") {
+        alert("通信に失敗しました");
+    }
+    return result;
+}        
+
+function income() {
+    var result = "false";         //参照結果を返す変数
+    var data = [];                //サーバにデータを送るための配列
+    data.push("ask");
+    data.push("income");
+    data.push(id);
+    xhr.open("POST", "./salary.txt", false);
+    xhr.send(data);
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        result = xhr.responseText;
+    }
+    if (result == "false") {
+        alert("通信に失敗しました");
+    }
+    return result;
+}
+
 
 const week = ["日", "月", "火", "水", "木", "金", "土"];
 const today = new Date();
@@ -28,6 +62,7 @@ function showProcess(date) {
     var year = date.getFullYear();
     var month = date.getMonth();
     document.querySelector('#header').innerHTML = year + "年 " + (month + 1) + "月";
+    document.querySelector('#price').innerHTML = "収支：" + (income() - expense()) + "円"
 
     var calendar = createProcess(year, month);
     document.querySelector('#calendar').innerHTML = calendar;
