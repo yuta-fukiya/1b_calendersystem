@@ -5,14 +5,13 @@
         <title> 時間割詳細設定画面</title>
         <link rel="stylesheet" href="timetabledetail.css">
         <script src="timetable.js">
-            import {TimeTableDetails_update,} from "./TimeTable.js"
+            import {TimeTableDetails_update,RemoveData} from "./TimeTable.js"
         </Script>
     </head>
     <body>
     <div id="page-body">
         <ul id="header">
-        <li><a href="timetable.html">キャンセル</a></li>
-        <li><a href="timetable.html">完了</a></li>
+        <h1>時間割詳細</h1>
         </ul>
 
             <form method="">
@@ -35,7 +34,11 @@
             </tr>
             </table>
             </form>
-
+    </div>
+    <div class="update">
+        <input type="button" value="戻る" onclick="RemoveData();history.back(-1)">
+        <input type="button" value="完了" onclick="ShiftData_update()">
     </div>
    
     </body>
+</html>

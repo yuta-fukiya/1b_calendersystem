@@ -9,12 +9,12 @@ body {
     width: 1000px; margin: 0 auto;
 }
 
-#header li{   
+#header h1{   
     display: inline;
     list-style: none;
     background-color: aquamarine;
     float: left;
-    width: 400px; height: 35px;
+    width: 860px; height: 35px;
     text-align: center;
 }
 
@@ -40,4 +40,12 @@ table.form td{
 
 table.form input{
     font-size: 110%;
+}
+
+.update > input{
+    width: 100px;
+    padding: 3px;
+    font-size: large;
+    background-color: aquamarine;
+    cursor: pointer;
 }
