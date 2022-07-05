@@ -1,3 +1,7 @@
+import { AskWages } from "../C9収支管理部/SalaryManagement.mjs";
+import { CopyScheduleName } from "../C3カレンダー設定処理部/AskSchedule.js";
+import { CopyScheduleTime } from "../C3カレンダー設定処理部/AskSchedule.js";
+
 const week = ["日", "月", "火", "水", "木", "金", "土"];
 const today = new Date();
 // 月末だとずれる可能性があるため、1日固定で取得
@@ -97,6 +101,8 @@ function createSchedule(year, month, day){
         schedule += "</tr>"
     }
 
-    schedule += "<a href = 'daySchedule.html?"+"year="+year+"&month="+month+"&day="+day+"''>新たな予定を設定</a>"
+    schedule += "<a class ='schedule' href = 'daySchedule.html?"+"year="+year+"&month="+month+"&day="+day+"''>新たな予定を設定</a><br>"
+    schedule += "<a class ='shift' href = 'ShiftDisplay.html?" + "year=" + year + "&month=" + month + "&day=" + day + "''>新たなシフトを設定</a><br>"
+    schedule += "<a class ='timetable' href = 'timetable.html?" + "year=" + year + "&month=" + month + "&day=" + day + "''>新たな時間割を設定</a><br>"
     return schedule;
 }

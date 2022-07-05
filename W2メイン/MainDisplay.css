@@ -97,21 +97,44 @@ td:hover{
 }
 
 a{
-    background-color: aqua;
     color: #000;
     font-size: 30px;
     border: 2px solid;
     border-radius: 5px;
     padding-bottom: 0px;
+    margin-right: 5px;
 }
 
 a:hover{
     width: 50px;
     height: 50px;
-    background-color: rgb(57, 214, 214);
     color: #000;
     font-size: 30px;
     border: solid;
+}
+
+a.schedule{
+    background-color: aqua;
+}
+
+a.schedule:hover{
+    background-color: rgb(57, 214, 214);
+}
+
+a.shift{
+    background-color: #92d495;
+}
+
+a.shift:hover{
+    background-color: #609e63;
+}
+
+a.timetable{
+    background-color: rgb(255, 133, 85);
+}
+
+a.timetable:hover{
+    background-color: rgb(204, 95, 52);
 }
 
 table{
@@ -120,4 +143,12 @@ table{
 
 h3{
     text-align: center;
+}
+
+.price{
+    background-color: #666;
+    color:#000;
+    width: 200px;
+    text-align: center;
+    margin: auto;
 }
