@@ -4,38 +4,33 @@
 <HEAD>
     <title>日別予定設定画面</title>
     <link rel="stylesheet" href="daySchedule.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="desctription" content="日別予定設定画面">
-    <meta http-equiv="Content-Style-Type" content="text/css">
-    <script src="daySchedule.js">
-        import {dayschedule_update,RemoveData} from "./daySchedule.js";
+    <script src="daySchedule.js" type = "module">
+        import { scheduleData_update, RemoveData } from "./daySchedule.js";
+         window.onload = function () {
+                // URLを取得
+                const url = new URL(window.location.href);
+
+                // URLSearchParamsオブジェクトを取得
+                const params = url.searchParams;
+
+                // consoleに受け取ったパラメータを出力
+                console.log(params);
+
+                // パラメータから「username」を取得
+                const month = params.get("month");
+                const day = params.get("day");
+
+                // IDを使ってspan要素を取得する
+                /*const span1 = document.getElementById("receivedMonth");
+                const span2 = document.getElementById("receivedDay");*/
+                // 取得したspan要素に受け取ったパラメータを代入
+                //span.innerText = username;
+
+                document.querySelector('#header').innerHTML = month + "月 " + day + "日";
+            }
     </script>
     <meta name="author" content="Ohta">
-    <meta name="generator" content="Visual Studio Code">
-    <script>
-        window.onload = function () {
-            // URLを取得
-            const url = new URL(window.location.href);
-
-            // URLSearchParamsオブジェクトを取得
-            const params = url.searchParams;
-
-            // consoleに受け取ったパラメータを出力
-            console.log(params);
-
-            // パラメータから「username」を取得
-            const month = params.get("month");
-            const day = params.get("day");
-
-            // IDを使ってspan要素を取得する
-            /*const span1 = document.getElementById("receivedMonth");
-            const span2 = document.getElementById("receivedDay");*/
-            // 取得したspan要素に受け取ったパラメータを代入
-            //span.innerText = username;
-
-            document.querySelector('#header').innerHTML = month + "月 " + day + "日";
-        }
-    </script>
 </HEAD>
 
 <body>
@@ -48,19 +43,20 @@
     </p>
     -->
     <!--前半の〇に内容，後半に金額-->
-    <div class="scheduleSet">
-        <p class="name">スケジュール設定</p>
-        <p id="header"></p>
-        <!--日にちは選んだ日を表示する-->
-    </div>
-    <form action="cgi-bin/formmail.cgi" method="post">
-        <p>
-            予定名：<input type="text" name="name" size="40" id="title">
-        </p>
-        <!--後ろに内容を入力できるようにする-->
-        <p>時間：<input type="time" id="time_s">~<input type="time" id="time_e"></p>
-        <!--時間を設定できるようにする-->
-        <!--
+    <div class="wrapper">
+        <div class="scheduleSet">
+            <p class="name">スケジュール設定</p>
+            <p id="header"></p>
+            <!--日にちは選んだ日を表示する-->
+        </div>
+        <form action="cgi-bin/formmail.cgi" method="post">
+            <p>
+                予定名：<input type="text" name="name" size="40" id="title">
+            </p>
+            <!--後ろに内容を入力できるようにする-->
+            <p>時間：<input type="time" id="time_s">~<input type="time" id="time_e"></p>
+            <!--時間を設定できるようにする-->
+            <!--
         <p>
             色：<select name="color">
                 <option value="red">赤</option>
@@ -70,17 +66,18 @@
             </select>
         </p>
         -->
-        <p class="memo">メモ</p><br>
-        <textarea name="memo" rows="30" cols="80" id="memo"></textarea>
-        <div class="button">
-            <button type="button" name="cancel" value="cancel" onclick="RemoveData();history.back(-1)">
-                <font size="2">キャンセル</font>
-            </button>
-            <button type="button" name="accept" value="accept" onclick="scheduleData_update()">
-                <font size="2">決定</font>
-            </button>
-        </div>
-        <!--
+            <p class="memo">メモ</p><br>
+            <textarea name="memo" rows="30" cols="80" id="memo"></textarea>
+            <div class="button">
+                <button type="button" name="cancel" value="cancel" onclick="RemoveData();history.back(-1)">
+                    <font size="2">キャンセル</font>
+                </button>
+                <button type="button" name="accept" value="accept" onclick="scheduleData_update()">
+                    <font size="2">決定</font>
+                </button>
+            </div>
+    </div>
+    <!--
         <script>
             function send(){
                 var input_title = document.getElementById("input_title").value; 

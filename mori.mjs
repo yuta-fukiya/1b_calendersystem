@@ -4,6 +4,7 @@ import * as url from "url";
 import * as IDPASS from "./C7ID,パスワード管理部/IDPASS.mjs";
 import * as Schedule from "./C8スケジュール管理部/ShiftManagement.mjs";
 import * as Salary from "./C9収支管理部/SalaryManagement.mjs";
+import * as daySchedule from "./C8スケジュール管理部/DayScheduleManagement.mjs";
 
 const LoginDisplay_html = fs.readFileSync('./W1ログイン/LoginDisplay.html', 'UTF-8');
 const RegistDisplay_html = fs.readFileSync('./W1ログイン/RegistDisplay.html', 'UTF-8');
@@ -50,6 +51,7 @@ const UpdateShiftData_js = fs.readFileSync('./C4シフト設定処理部/UpdateS
 
 var login_txt;
 var schedule_shift_txt;
+var DaySchedule_txt;
 var salary_txt;
 
 const hostname = '127.0.0.1';  //0.0.0.0
@@ -307,6 +309,34 @@ function RouteSetting(req, res) {
           })
         }
         break;
+
+      case '/DaySchedule.txt':
+          var result = "false";
+          var result2 = [];
+          if (req.method == "POST") {
+              var postData = "";
+              req.on("data", function (chunk) {
+                  postData += chunk;
+              })
+              req.on("end", async function () {
+                  var daySchedule = postData.split(",");
+                  if (daySchedule[0] == "ask") {
+                      result2 = await Schedule.ReturnDayScheduleInformation(daySchedule[2], daySchedule[1]);
+                      result = result2[0];
+                  } else if (daySchedule[0] == "update") {
+                      result = await Schedule.UpdateDayScheduleInformation(daySchedule[2], daySchedule[1], daySchedule[3]);
+                  }
+                  if (result == null || result == "") {
+                      result = "none";
+                  }
+                  fs.writeFileSync("./C8スケジュール管理部/DaySchedule.txt", result);
+                  DaySchedule_txt = fs.readFileSync('./C8スケジュール管理部/DaySchedule.txt', 'UTF-8');
+                  res.writeHead(200, { 'Content-Type': 'text/plain' });
+                  res.write(DaySchedule_txt);
+                  res.end();
+              })
+          }
+          break;
 
     case '/salary.txt':
         var result = "false";
