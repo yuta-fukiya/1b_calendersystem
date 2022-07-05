@@ -52,8 +52,8 @@ var login_txt;
 var schedule_shift_txt;
 var salary_txt;
 
-const hostname = '0.0.0.0';
-const port = 80;
+const hostname = '127.0.0.1';  //0.0.0.0
+const port = 8000;   //80
 
 const server = http.createServer(RouteSetting);
 
