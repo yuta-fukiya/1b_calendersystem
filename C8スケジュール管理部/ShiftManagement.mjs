@@ -5,10 +5,14 @@ export async function ReturnShiftInformation(id, name){
         const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         var Shiftdata = [];
         db.serialize(() => {
-            db.each('SELECT * FROM Shiftdata WHERE id=$id', {$id: id}, function(err, row) {
+            db.each('SELECT count(*), id, JobName, WeekShift, MonthShift FROM Shiftdata WHERE id=$id', {$id: id}, function(err, row) {
                 if (err) {
                     reject(err);
-                } else if (name == 'JobName') {
+                }
+                if (row['count(*)']==0) {
+                    ShiftInsert(id);
+                }
+                if (name == 'JobName') {
                     Shiftdata.push(row.JobName);
                     resolve(Shiftdata);
                 } else if (name == 'WeekShift') {
@@ -61,6 +65,16 @@ export async function UpdateShiftInformation(id, name, Shiftdata){
         db.close();
     }
     return "success";
+}
+
+async function ShiftInsert(id) {
+    const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
+    db.serialize(() => {
+        const stmt = db.prepare('INSERT INTO Shiftdata VALUES (?, ?, ?, ?)');
+        stmt.run(id);
+        stmt.finalize();
+    });
+    db.close();
 }
 
 //------------------------------------------------------------------------------------------
