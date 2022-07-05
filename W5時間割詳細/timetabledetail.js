@@ -26,5 +26,8 @@ export function TimeTableDetails_update(){
         timetabledata[3] = document.getElementById("Professor").ariaPlaceholder;
     }
 }
-
 window.TimeTableDetails_update=TimeTableDetails_update;
+
+export function RemoveData(){
+    localStorage.removeItem()
+}
