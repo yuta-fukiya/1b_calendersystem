@@ -125,7 +125,7 @@ function displaySchedule(year, month, day){
 function createSchedule(year, month, day){
     var schedule = "<h2>"+month+"月"+day+"日"+"の予定"+"</h2>"+"<table><tr class = 'timeTable'>";
     /*ここらへんで予定情報，時間を取得する*/
-    var size = 5;
+    var size = 0;
 
 
     for(var j = 0; j < size; j++){
@@ -137,7 +137,7 @@ function createSchedule(year, month, day){
     }
 
     schedule += "<a class ='schedule' href = 'daySchedule.html?"+"year="+year+"&month="+month+"&day="+day+"''>新たな予定を設定</a><br>"
-    schedule += "<a class ='shift' href = 'ShiftDisplay.html?" + id + "''>新たなシフトを設定</a><br>"
+    schedule += "<a class ='shift' href = 'ShiftDisplay.html?" + id + ">新たなシフトを設定</a><br>"
     schedule += "<a class ='timetable' href = 'timetable.html?" + "year=" + year + "&month=" + month + "&day=" + day + "''>新たな時間割を設定</a><br>"
     return schedule;
 }
