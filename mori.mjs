@@ -52,7 +52,7 @@ var login_txt;
 var schedule_shift_txt;
 var salary_txt;
 
-const hostname = '160.16.141.77';
+const hostname = '0.0.0.0';
 const port = 51080;
 
 const server = http.createServer(RouteSetting);
