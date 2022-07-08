@@ -1,16 +1,16 @@
 import sqlite3 from "sqlite3";
 
-export async function ReturnShiftInformation(id, name){
+export async function ReturnShiftInformation(id, year, month, name){
     return new Promise((resolve, reject) => {
         const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         var Shiftdata = [];
         db.serialize(() => {
-            db.each('SELECT count(*), id, JobName, WeekShift, MonthShift FROM Shiftdata WHERE id=$id', {$id: id}, function(err, row) {
+            db.each('SELECT count(*), id, JobName, WeekShift, MonthShift FROM Shiftdata WHERE id=$id and year=$year and month=$month', {$id: id, $year: year, $month: month}, function(err, row) {
                 if (err) {
                     reject(err);
                 }
                 if (row['count(*)']==0) {
-                    ShiftInsert(id);
+                    ShiftInsert(id, year, month);
                 }
                 if (name == 'JobName') {
                     Shiftdata.push(row.JobName);
@@ -33,7 +33,7 @@ export async function ReturnShiftInformation(id, name){
     })
 }
 
-export async function UpdateShiftInformation(id, name, Shiftdata){
+export async function UpdateShiftInformation(id, year, month, name, Shiftdata){
     var number = -1;
     if(name == 'JobName') {
         number = 0;
@@ -45,20 +45,20 @@ export async function UpdateShiftInformation(id, name, Shiftdata){
     if(number == -1) {
         const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         db.serialize(() => {
-            db.run('CREATE TABLE IF NOT EXISTS Shiftdata (id TEXT, JobName TEXT, WeekShift TEXT, MonthShift TEXT)');
-            const stmt = db.prepare('INSERT INTO Shiftdata VALUES (?, ?, ?, ?)');
-            stmt.run([id, Shiftdata[0], Shiftdata[1], Shiftdata[2]]);
+            db.run('CREATE TABLE IF NOT EXISTS Shiftdata (id TEXT, year TEXT, month TEXT, JobName TEXT, WeekShift TEXT, MonthShift TEXT)');
+            const stmt = db.prepare('INSERT INTO Shiftdata VALUES (?, ?, ?, ?, ?, ?)');
+            stmt.run([id, year, month, Shiftdata[0], Shiftdata[1], Shiftdata[2]]);
             stmt.finalize();
         });
         db.close();
     } else {
         const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         db.serialize(() => {
-            const stmt = db.prepare('UPDATE Shiftdata SET ' + name + ' = ? WHERE id = ?', err => {
+            const stmt = db.prepare('UPDATE Shiftdata SET ' + name + ' = ? WHERE id = ? and year = ? and month = ?', err => {
                 if (err) {
                     throw err;
                 }
-                stmt.run(Shiftdata, id);
+                stmt.run(Shiftdata, id, year, month);
                 stmt.finalize();
             });
         });
@@ -67,11 +67,11 @@ export async function UpdateShiftInformation(id, name, Shiftdata){
     return "success";
 }
 
-async function ShiftInsert(id) {
+async function ShiftInsert(id, year, month) {
     const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
     db.serialize(() => {
-        const stmt = db.prepare('INSERT INTO Shiftdata VALUES (?, ?, ?, ?)');
-        stmt.run(id);
+        const stmt = db.prepare('INSERT INTO Shiftdata VALUES (?, ?, ?, ?, ?, ?)');
+        stmt.run(id, year, month);
         stmt.finalize();
     });
     db.close();
