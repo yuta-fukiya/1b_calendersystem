@@ -4,6 +4,8 @@ import * as url from "url";
 import * as IDPASS from "./C7ID,パスワード管理部/IDPASS.mjs";
 import * as Schedule from "./C8スケジュール管理部/ShiftManagement.mjs";
 import * as Salary from "./C9収支管理部/SalaryManagement.mjs";
+import * as daySchedule from "./C8スケジュール管理部/DayScheduleManagement.mjs";
+import * as timetable from "./C8スケジュール管理部/TimetableManagement.mjs";
 
 const LoginDisplay_html = fs.readFileSync('./W1ログイン/LoginDisplay.html', 'UTF-8');
 const RegistDisplay_html = fs.readFileSync('./W1ログイン/RegistDisplay.html', 'UTF-8');
@@ -48,9 +50,15 @@ const AskShiftData_js = fs.readFileSync('./C4シフト設定処理部/AskShiftDa
 const MainJobs_js = fs.readFileSync('./C4シフト設定処理部/MainJobs.js', 'UTF-8');
 const UpdateShiftData_js = fs.readFileSync('./C4シフト設定処理部/UpdateShiftData.js', 'UTF-8');
 
+const AskTimeTable_js = fs.readFileSync('./C5時間割設定処理部/AskTimeTable.js', 'UTF-8');
+const TimeTableMain_js = fs.readFileSync('./C5時間割設定処理部/TimeTableMain.js', 'UTF-8');
+const UpdateTimeTable_js = fs.readFileSync('./C5時間割設定処理部/UpdateTimeTable.js', 'UTF-8');
+
 var login_txt;
 var schedule_shift_txt;
+var DaySchedule_txt;
 var salary_txt;
+var schedule_timetable_txt;
 
 const hostname = '127.0.0.1';  //0.0.0.0
 const port = 8000;   //80
@@ -257,6 +265,24 @@ function RouteSetting(req, res) {
         res.end();
         break;
 
+    case '/UpdateTimeTable.js':
+        res.writeHead(200, {'Content-Type': 'text/javascript'});
+        res.write(UpdateTimeTable_js);
+        res.end();
+        break;
+
+    case '/AskTimeTable.js':
+        res.writeHead(200, {'Content-Type': 'text/javascript'});
+        res.write(AskTimeTable_js);
+        res.end();
+        break;
+
+    case '/TimeTableMain.js':
+        res.writeHead(200, {'Content-Type': 'text/javascript'});
+        res.write(TimeTableMain_js);
+        res.end();
+        break;
+
     case '/login.txt':
         var result = "false";
         if (req.method == "POST"){
@@ -308,6 +334,34 @@ function RouteSetting(req, res) {
         }
         break;
 
+      case '/DaySchedule.txt':
+          var result = "false";
+          var result2 = [];
+          if (req.method == "POST") {
+              var postData = "";
+              req.on("data", function (chunk) {
+                  postData += chunk;
+              })
+              req.on("end", async function () {
+                  var daySchedule = postData.split(",");
+                  if (daySchedule[0] == "ask") {
+                      result2 = await Schedule.ReturnDayScheduleInformation(daySchedule[2], daySchedule[1]);
+                      result = result2[0];
+                  } else if (daySchedule[0] == "update") {
+                      result = await Schedule.UpdateDayScheduleInformation(daySchedule[2], daySchedule[1], daySchedule[3]);
+                  }
+                  if (result == null || result == "") {
+                      result = "none";
+                  }
+                  fs.writeFileSync("./C8スケジュール管理部/DaySchedule.txt", result);
+                  DaySchedule_txt = fs.readFileSync('./C8スケジュール管理部/DaySchedule.txt', 'UTF-8');
+                  res.writeHead(200, { 'Content-Type': 'text/plain' });
+                  res.write(DaySchedule_txt);
+                  res.end();
+              })
+          }
+          break;
+
     case '/salary.txt':
         var result = "false";
         if (req.method == "POST"){
@@ -330,6 +384,34 @@ function RouteSetting(req, res) {
           })
         }
         break;
+
+        case '/schedule_timetable.txt':
+            var result = "false";
+            var result2 = [];
+            if (req.method == "POST"){
+              var postData = "";
+              req.on("data", function(chunk){
+                postData += chunk;
+              })
+              req.on("end", async function(){
+                var timetable2 = postData.split(",");
+                if (timetable2[4] == "ask"){
+                    result2 = await timetable.ReturnTimetableInformation(timetable2[0], timetable2[2], timetable2[3], timetable2[1]);
+                    result = result2[0];
+                } else if (timetable2[0] == "update"){
+                    result = await timetable.UpdateTimetableInformation(timetable2[0], timetable2[1], timetable2[3]);
+                }
+                if (result == null || result == ""){
+                    result = "none";
+                }
+                fs.writeFileSync("./C8スケジュール管理部/schedule_timetable.txt", result);
+                schedule_timetable_txt = fs.readFileSync('./C8スケジュール管理部/schedule_timetable.txt', 'UTF-8');        
+                res.writeHead(200, {'Content-Type': 'text/plain'});
+                res.write(schedule_timetable_txt);
+                res.end();
+              })
+            }
+            break;
 
     default:
         res.writeHead(200, {'Content-Type': 'text/plain'});

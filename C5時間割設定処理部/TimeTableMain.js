@@ -1,22 +1,24 @@
 import * as ask from "./AskTimeTable";
 import * as update from "./UpdateTimeTable";
 
-export function AskTimeTableJob(ProcessName){
+export function AskTimeTableJob(wday, period){
     var TimeTable = [];
-    if(ProcessName == "TimeTable_UI") {
-        TimeTable.push(ask.CopyClass());
-        TimeTable.push(ask.CopyNumClasses());
-        TimeTable.push(ask.CopyUnit());
-        TimeTable.push(ask.CopyProfessor());
-    }
+        TimeTable.push(ask.CopyClass(wday, period));
+        TimeTable.push(ask.CopyNumClasses(wday, period));
+        TimeTable.push(ask.CopyUnit(wday, period));
+        TimeTable.push(ask.CopyProfessor(wday, period));
+        TimeTable.push(ask.Copywday(wday, period));
+        TimeTable.push(ask.Copyperiod(wday, period));
     return TimeTable;
 }
 
 
 
 export function UpdateTimeTableJob(timetabledata){
-    update.SendClass(timetabledata[0]);
-    update.sendNumClasses(timetabledata[1]);
-    update.sendUnit(timetabledata[2]);
-    update.sendProfessor(timetabledata[3]);
+    update.SendClass(timetabledata);
+    update.sendNumClasses(timetabledata);
+    update.sendUnit(timetabledata);
+    update.sendProfessor(timetabledata);
+    update.sendwday(timetabledata);
+    update.sendperiod(timetabledata);
 }
