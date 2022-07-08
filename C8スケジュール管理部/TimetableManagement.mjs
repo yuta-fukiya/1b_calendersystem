@@ -79,7 +79,7 @@ export async function UpdateTimetableInformation(id, wday, period, name, Timetab
         });
         db.close();
     }
-    return true;
+    return "success";
 }
 async function TimeInsert(id, wday, period) {
     const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');

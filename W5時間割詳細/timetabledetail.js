@@ -33,7 +33,7 @@ export function TimeTableDetails_update(){
     if(timetabledata[3] == ""){
         timetabledata[3] = document.getElementById("Professor").Placeholder;
     }
-    
+
     UpdateTimeTableJob(timetabledata);
 
     window.location.href="./timetable.html?" + id;
