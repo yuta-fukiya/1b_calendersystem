@@ -5,8 +5,8 @@ DBの構成
 
 シフト
 
-1    2         3           4
-id   JobName   WeekShift   MonthShift
+1    2      3       4         5           6
+id   year   month   JobName   WeekShift   MonthShift
 
 --------------------------------------------------------------------------
 
