@@ -6,51 +6,45 @@ import sqlite3 from "sqlite3";
 ***Date              :
 ***function          :給料情報を参照する
  *******************************************************************/
-export async function AskWages(id, DataName){
-    var result = await CheckID(id);                                      //ユーザIDと一致するレコードがあるかを確認
+export async function AskWages(id, year, month, DataName){
+    var result = await CheckID(id, year, month);                                      //ユーザIDと一致するレコードがあるかを確認
     return new Promise((resolve, reject) => {
         const db = new sqlite3.Database('./C9収支管理部/salary.db');
-        var Shiftdata = "";                                              //参照結果をreturnするための変数
+        var Shiftdata = "";                                            //参照結果をreturnするための変数
         if (result == "none"){                                           //レコードがなかった場合に新しいレコードを挿入
             db.serialize(() => {
-                db.run("INSERT OR REPLACE INTO usersalary VALUES($id, '0', '0', '0', '00:00 00:00', '0', '0', '0')", {$id: id});
+                db.run("INSERT OR REPLACE INTO usersalary VALUES($id, $year, $month, '0', '0', '0', '00:00 00:00', '0', '0', '0')", {$id: id, $year: year, $month: month });
                 resolve("0");
             })
         } 
         db.serialize(() => {                                             //給料・収支情報参照
-            db.each('SELECT * FROM usersalary WHERE id=$id', {$id: id}, function(err, row) {
+            db.each('SELECT * FROM usersalary WHERE id=$id and year=$year and month=$month', {$id: id, $year: year, $month: month}, function(err, row) {
                 if (err) {
                     reject(err);
                 } else if (DataName == "HourWages"){                     //時給
                     Shiftdata = row.HourWages;
-                    db.close();
                     resolve(Shiftdata);
                 } else if (DataName == "TrasCosts"){                     //交通費
                     Shiftdata = row.TrasCosts;
-                    db.close();
                     resolve(Shiftdata);
                 } else if (DataName == "NightWages"){                    //深夜給
                     Shiftdata = row.NightWages;
-                    db.close();
                     resolve(Shiftdata);
                 } else if (DataName == "NightWagesRange"){               //深夜給になる時間帯
                     Shiftdata = row.NightWagesRange;
-                    db.close();
                     resolve(Shiftdata);
                 } else if (DataName == "Overtime"){                      //残業代
                     Shiftdata = row.Overtime;
-                    db.close();
                     resolve(Shiftdata);
                 } else if (DataName == "income"){                        //収入
                     Shiftdata = row.income;
-                    db.close();
                     resolve(Shiftdata);
                 } else if (DataName == "expense"){                       //支出
                     Shiftdata = row.expense;
-                    db.close();
                     resolve(Shiftdata);
                 } 
             });
+            db.close();
         });
     })
 }
@@ -61,17 +55,17 @@ export async function AskWages(id, DataName){
 ***Date              :
 ***function          :給料情報を更新する
  *******************************************************************/
-export async function UpdateWages(id, DataName, Data){
+export async function UpdateWages(id, year, month, DataName, Data){
     async function check2(){
         return new Promise((resolve) => {
             var result = "false";
             const db = new sqlite3.Database('./C9収支管理部/salary.db');
             db.serialize(() => {                                            //給料・収支情報更新
-                const stmt = db.prepare('UPDATE usersalary SET ' + DataName + ' = ? WHERE id = ?', err => {
+                const stmt = db.prepare('UPDATE usersalary SET ' + DataName + ' = ? WHERE id = ? and year = ? and month = ?', err => {
                     if (err) {
                         throw err;
                     }
-                    stmt.run(Data, id);
+                    stmt.run(Data, id, year, month);
                     stmt.finalize();
                     result = "success";
                     resolve(result);
@@ -90,13 +84,13 @@ export async function UpdateWages(id, DataName, Data){
 ***Date              :
 ***function          :ユーザIDと一致するレコードがあるか確認する
  *******************************************************************/
-async function CheckID(id){
+async function CheckID(id, year, month){
     async function check2(){
       return new Promise((resolve) => {
         var exists;
         var db = new sqlite3.Database("./C9収支管理部/salary.db");
         db.serialize(() => {
-          db.get("SELECT count(*) FROM usersalary WHERE id=$id", { $id: id}, (err, res) => {
+          db.get("SELECT count(*) FROM usersalary WHERE id=$id and year=$year and $month=month", { $id: id, $year: year, $month: month}, (err, res) => {
             if (0 < res["count(*)"]) {
               exists = "already";                          //既にに存在する
               resolve(exists);

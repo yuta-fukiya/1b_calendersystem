@@ -1,16 +1,16 @@
 table名　usersalary
 
-id | HourWages | TrasCosts | NightWages | NightWagesRange | Overtime | income | expense
+id | year | month | HourWages | TrasCosts | NightWages | NightWagesRange | Overtime | income | expense
 
 -----------------------------------------------------------------------------------------
 以下は説明
 
 詳細・・・
-ユーザid | 時給 | 交通費 | 深夜給 | 深夜給の範囲 | 残業代 | 収入 | 支出
+ユーザid | シフトの年 | シフトの月 |時給 | 交通費 | 深夜給 | 深夜給の範囲 | 残業代 | 収入 | 支出
 
 
 例・・・
-al20073 | 1000 | 250 | 1250 | 23:00 05:00 | 0 | 0 | 0
+al20073 | 2022 | 6 |1000 | 250 | 1250 | 23:00 05:00 | 0 | 0 | 0
 
 
 ・0(文字列)は初期状態

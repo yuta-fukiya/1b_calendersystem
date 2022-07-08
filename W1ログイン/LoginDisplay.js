@@ -41,7 +41,10 @@ export async function AskRegistration(){
     var result = CheckUser(id, pass);                                //認証結果を代入した変数
     console.log(result);
     if(result=="success"){
-        window.location.href = './MainDisplay.html?'+id;
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        window.location.href = './MainDisplay.html?'+id+","+year+","+month;
     }else{
         console.log(result);
         alert("IDまたはパスワードが違います");
