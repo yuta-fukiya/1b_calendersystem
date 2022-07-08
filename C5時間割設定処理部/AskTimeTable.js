@@ -1,12 +1,14 @@
 var xhr = new XMLHttpRequest();
 const id = window.location.search.replace("?","");
 
-export function CopyClass(){
+export function CopyClass(wday, period){
     var result = "false";
     var data = [];
-    data.push("ask");
-    data.push("Class");
     data.push(id);
+    data.push("Class_name");
+    data.push(wday);
+    data.push(period);
+    data.push("ask");
     xhr.open("POST", "./schedule_timetable.txt", false);
     xhr.send(data);
     if(xhr.readyState == 4 && xhr.status == 200){
@@ -14,20 +16,19 @@ export function CopyClass(){
     }
     if(result == "false"){
         alert("通信に失敗しました");
-    } else if(result == "none") {
-        result = "32文字以内で入力して下さい";
     }
     return result;
 }
 
 
-export function CopyNumClasses(){
+export function CopyNumClasses(wday, period){
     var result = "false";
-    var result_timetable = [];
     var data = [];
-    data.push("ask");
-    data.push("NumClasses");
     data.push(id);
+    data.push("Class_num");
+    data.push(wday);
+    data.push(period);
+    data.push("ask");
     xhr.open("POST", "./schedule_timetable.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
@@ -39,13 +40,14 @@ export function CopyNumClasses(){
     return result;
 }
 
-export function CopyUnit(){
+export function CopyUnit(wday, period){
     var result = "false";
-    var result_timetable = [];
     var data = [];
-    data.push("ask");
-    data.push("Unit");
     data.push(id);
+    data.push("Unit_num");
+    data.push(wday);
+    data.push(period);
+    data.push("ask");
     xhr.open("POST", "./schedule_timetable.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
@@ -57,13 +59,52 @@ export function CopyUnit(){
     return result;
 }
 
-export function CopyProfessor(){
+export function CopyProfessor(wday, period){
     var result = "false";
-    var result_timetable = [];
     var data = [];
-    data.push("ask");
-    data.push("Professor");
     data.push(id);
+    data.push("Teacher_name");
+    data.push(wday);
+    data.push(period);
+    data.push("ask");
+    xhr.open("POST", "./schedule_timetable.txt", false);
+    xhr.send(data);
+    if (xhr.readyState == 4 && xhr.status == 200){
+        result = xhr.responseText;
+    }
+    if (result == "false"){
+        alert("通信に失敗しました");
+    }
+    return result;
+}
+
+export function Copywday(wday, period){
+    var result = "false";
+    var data = [];
+    data.push(id);
+    data.push("wday");
+    data.push(wday);
+    data.push(period);
+    data.push("ask");
+    xhr.open("POST", "./schedule_timetable.txt", false);
+    xhr.send(data);
+    if (xhr.readyState == 4 && xhr.status == 200){
+        result = xhr.responseText;
+    }
+    if (result == "false"){
+        alert("通信に失敗しました");
+    }
+    return result;
+}
+
+export function Copyperiod(wday, period){
+    var result = "false";
+    var data = [];
+    data.push(id);
+    data.push("period");
+    data.push(wday);
+    data.push(period);
+    data.push("ask");
     xhr.open("POST", "./schedule_timetable.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){

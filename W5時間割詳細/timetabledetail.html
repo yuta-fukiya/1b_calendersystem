@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <title> 時間割詳細設定画面</title>
         <link rel="stylesheet" href="timetabledetail.css">
-        <script src="timetable.js">
-            import {TimeTableDetails_update,RemoveData} from "./TimeTable.js"
+        <script src="timetabledetail.js">
+            import {TimeTableDetails_update} from "./timetabledetail.js"
         </Script>
     </head>
     <body>
@@ -13,7 +13,6 @@
         <ul id="header">
         <h1>時間割詳細</h1>
         </ul>
-
             <form method="">
             <table class="form">
             <tr>
@@ -26,7 +25,7 @@
             </tr>
             <tr>
             <th>単位数</th>
-            <td><input type="number" id="Unit" calss="Classes"></td>
+            <td><input type="number" id="Unit" calss="Unit"></td>
             </tr>
             <tr>
             <th>担当教授</th>
@@ -36,7 +35,7 @@
             </form>
     </div>
     <div class="update">
-        <input type="button" value="戻る" onclick="RemoveData();history.back(-1)">
+        <input type="button" value="戻る" onclick="history.back(-1)">
         <input type="button" value="完了" onclick="ShiftData_update()">
     </div>
    

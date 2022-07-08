@@ -4,7 +4,7 @@ const id = window.location.search.replace("?","");
 export function SendClass(timetabledata){
     var data = [];
     data.push("update");
-    data.push("Class");
+    data.push("Class_name");
     data.push(id);
     data.push(timetabledata);
     xhr.open("POST", "./schedule_timetable.txt", false);
@@ -16,9 +16,8 @@ export function SendClass(timetabledata){
 
 export function sendNumClasses(timetabledata){
     var data = [];
-    var send_timetable = timetabledata.replace(/,/g, " ");
     data.push("update");
-    data.push("NumClasses");
+    data.push("Class_num");
     data.push(id);
     data.push(timetabledata);
     xhr.open("POST", "./schedule_timetable.txt", false);
@@ -31,7 +30,7 @@ export function sendNumClasses(timetabledata){
 export function sendUnit(timetabledata){
     var data = [];
     data.push("update");
-    data.push("Unit");
+    data.push("Unit_num");
     data.push(id);
     data.push(timetabledata);
     xhr.open("POST", "./schedule_timetable.txt", false);
@@ -44,7 +43,33 @@ export function sendUnit(timetabledata){
 export function sendProfessor(timetabledata){
     var data = [];
     data.push("update");
-    data.push("Professor");
+    data.push("Teacher_name");
+    data.push(id);
+    data.push(timetabledata);
+    xhr.open("POST", "./schedule_timetable.txt", false);
+    xhr.send(data);
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;
+    }
+}
+
+export function sendwday(timetabledata){
+    var data = [];
+    data.push("update");
+    data.push("wday");
+    data.push(id);
+    data.push(timetabledata);
+    xhr.open("POST", "./schedule_timetable.txt", false);
+    xhr.send(data);
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;
+    }
+}
+
+export function sendperiod(timetabledata){
+    var data = [];
+    data.push("update");
+    data.push("period");
     data.push(id);
     data.push(timetabledata);
     xhr.open("POST", "./schedule_timetable.txt", false);
