@@ -1,5 +1,6 @@
 var xhr = new XMLHttpRequest();
-const id = window.location.search.replace("?","");         //ユーザIDの読み取り
+const userinfo = window.location.search.replace("?","");
+var userinfo2 = userinfo.split(",");       //ユーザIDの読み取り
 /*****************************************************************
 ***function name     :SendJobName
 ***Designer          :吹谷　優太
@@ -11,7 +12,9 @@ export function SendJobName(shiftdata){
     var data = [];                //サーバにデータを送るための配列
     data.push("update");
     data.push("JobName");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     data.push(shiftdata);
     xhr.open("POST", "./schedule_shift.txt", false);
     xhr.send(data);
@@ -32,7 +35,9 @@ export function SendJobTime(ProcessName, shiftdata){
     var send_shift = shiftdata.replace(/,/g, " ");
     data.push("update");
     data.push(ProcessName);
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     data.push(send_shift);
     xhr.open("POST", "./schedule_shift.txt", false);
     xhr.send(data);
@@ -51,7 +56,9 @@ export function SendHourWages(shiftdata){
     var data = [];                //サーバにデータを送るための配列
     data.push("update");
     data.push("HourWages");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     data.push(shiftdata);
     xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
@@ -71,7 +78,9 @@ export function SendTrasCosts(shiftdata){
     var data = [];                //サーバにデータを送るための配列
     data.push("update");
     data.push("TrasCosts");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     data.push(shiftdata);
     xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
@@ -91,7 +100,9 @@ export function SendNightWages(shiftdata){
     var data = [];                //サーバにデータを送るための配列
     data.push("update");
     data.push("NightWages");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     data.push(shiftdata);
     xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
@@ -110,7 +121,9 @@ export function SendNightWagesRange(shiftdata){
     var data = [];                //サーバにデータを送るための配列
     data.push("update");
     data.push("NightWagesRange");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     data.push(shiftdata);
     xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
@@ -130,7 +143,9 @@ export function SendOvertime(shiftdata){
     var data = [];                //サーバにデータを送るための配列
     data.push("update");
     data.push("OverTime");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     data.push(shiftdata);
     xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
