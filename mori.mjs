@@ -51,7 +51,7 @@ const MainJobs_js = fs.readFileSync('./C4シフト設定処理部/MainJobs.js', 
 const UpdateShiftData_js = fs.readFileSync('./C4シフト設定処理部/UpdateShiftData.js', 'UTF-8');
 
 const AskTimeTable_js = fs.readFileSync('./C5時間割設定処理部/AskTimeTable.js', 'UTF-8');
-const TimeTableMain_js = fs.readFileSync('./C5時間割設定処理部/MainTimeTable.js', 'UTF-8');
+const TimeTableMain_js = fs.readFileSync('./C5時間割設定処理部/TimeTableMain.js', 'UTF-8');
 const UpdateTimeTable_js = fs.readFileSync('./C5時間割設定処理部/UpdateTimeTable.js', 'UTF-8');
 
 var login_txt;
@@ -394,12 +394,12 @@ function RouteSetting(req, res) {
                 postData += chunk;
               })
               req.on("end", async function(){
-                var timetable = postData.split(",");
-                if (timetable[4] == "ask"){
-                    result2 = await timetable.ReturnTimetableInformation(timetable[0], timetable[2], timetable[3], timetable[1]);
+                var timetable2 = postData.split(",");
+                if (timetable2[4] == "ask"){
+                    result2 = await timetable.ReturnTimetableInformation(timetable2[0], timetable2[2], timetable2[3], timetable2[1]);
                     result = result2[0];
-                } else if (timetable[0] == "update"){
-                    result = await timetable.UpdateTimetableInformation(timetable[0], timetable[1], timetable[3]);
+                } else if (timetable2[0] == "update"){
+                    result = await timetable.UpdateTimetableInformation(timetable2[0], timetable2[1], timetable2[3]);
                 }
                 if (result == null || result == ""){
                     result = "none";
