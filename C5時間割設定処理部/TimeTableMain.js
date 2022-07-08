@@ -1,5 +1,5 @@
-import * as ask from "./AskTimeTable.js";
-import * as update from "./UpdateTimeTable.js";
+import * as ask from "./AskTimeTable";
+import * as update from "./UpdateTimeTable";
 
 export function AskTimeTableJob(wday, period){
     var TimeTable = [];
