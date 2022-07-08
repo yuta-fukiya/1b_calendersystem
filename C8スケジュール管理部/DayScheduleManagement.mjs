@@ -1,11 +1,11 @@
 import sqlite3 from "sqlite3";
 
-export async function ReturnDayScheduleInformation(id, Date, name){
+export async function ReturnDayScheduleInformation(id, Date, name) {
     return new Promise((resolve, reject) => {
         const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         var DayScheduledata = [];
         db.serialize(() => {
-            db.each('SELECT count(*), id, title, S_time, E_time, Memo FROM DayScheduledata WHERE id=$id', {$id: id}, function(err, row) {
+            db.each('SELECT count(*), id, title, S_time, E_time, Memo FROM DayScheduledata WHERE id=$id', { $id: id }, function (err, row) {
                 if (err) {
                     reject(err);
                 }
@@ -13,16 +13,16 @@ export async function ReturnDayScheduleInformation(id, Date, name){
                     DayInsert(id);
                 }
                 if (name == 'title') {
-                    DayScheduledata.push(row.Title);
+                    DayScheduledata.push(row.title);
                     resolve(DayScheduledata);
                 } else if (name == 'S_time') {
-                    DayScheduledata.push(row.t_hour);
+                    DayScheduledata.push(row.S_time);
                     resolve(DayScheduledata);
                 } else if (name == 'E_time') {
-                    DayScheduledata.push(row.t_minute);
+                    DayScheduledata.push(row.E_time);
                     resolve(DayScheduledata);
                 } else if (name == 'Memo') {
-                    DayScheduledata.push(row.memo);
+                    DayScheduledata.push(row.Memo);
                     resolve(DayScheduledata);
                 } else {
                     DayScheduledata.push(row.title);
@@ -37,18 +37,18 @@ export async function ReturnDayScheduleInformation(id, Date, name){
     })
 }
 
-export async function UpdateDayScheduleInformation(id, name, DayScheduledata){
+export async function UpdateDayScheduleInformation(id, name, DayScheduledata) {
     var number = -1;
-    if(name == 'title') {
+    if (name == 'title') {
         number = 0;
-    } else if(name == 'S_time') {
+    } else if (name == 'S_time') {
         number = 1;
     } else if (name == 'E_time') {
         number = 2;
     } else if (name == 'Memo') {
         number = 3;
-    } 
-    if(number == -1) {
+    }
+    if (number == -1) {
         const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         db.serialize(() => {
             db.run('CREATE TABLE IF NOT EXISTS DayScheduledata (id TEXT, title TEXT, S_time TEXT, E_time TEXT, Memo TEXT)');
@@ -87,7 +87,7 @@ async function DayInsert(id) {
 async function test() {
     var DayScheduledata = new Array('水族館', 12, 30, 18, 0, 'チケットを忘れずに', "2022/07/02");
     var id = 'al20116';
-    var name1 = 'NULL'; 
+    var name1 = 'NULL';
     var name2 = 'memo';
     var Date = '2022/07/02';
     var Judge;
