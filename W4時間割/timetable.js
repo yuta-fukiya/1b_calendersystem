@@ -13,13 +13,13 @@ function showtimetable () {
 
 function createTimeTable(){
     var timetable = "<table><tr calss='timetabletitle'>";
-    timetable += "時限";
+    timetable += "<th>時限</th>";
     for(var i=0;i<week.length;i++){
         timetable += "<th>" + week[i] + "</th>";
     }
     timetable += "</tr>";
     for(var i=1;i<=7;i++){
-        timetable += "<tr>" + i + "限";
+        timetable += "<tr><th>" + i + "限</th>";
         for(var j=1;j<=7;j++){
             timetable += "<th>";
             var timeTable = AskTimeTableJob(j,i);
