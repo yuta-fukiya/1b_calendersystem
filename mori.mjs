@@ -127,7 +127,7 @@ function RouteSetting(req, res) {
         res.end();
         break;
 
-    case '/daySchedule.mjs':
+    case '/daySchedule.js':
         res.writeHead(200, {'Content-Type': 'text/javascript'});
         res.write(daySchedule_js);
         res.end();
