@@ -2,7 +2,7 @@ import sqlite3 from "sqlite3";
 
 export async function ReturnTimetableInformation(id, wday, period, name){
     return new Promise((resolve, reject) => {
-        const db = new sqlite3.Database('Schedule.sqlite');
+        const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         var Timetabledata = [];
         db.serialize(() => {
             db.each('SELECT count(*), id, Class_name, Class_num, Unit_num, Teacher_name, wday, period FROM Timetabledata WHERE id=$id and wday=$wday and period=$period', {$id: id, $wday: wday, $period: period}, function(err, row) {
@@ -60,8 +60,9 @@ export async function UpdateTimetableInformation(id, name, Timetabledata){
     } else if (name == 'period') {
         number = 5;
     }
+
     if(number == -1) {
-        const db = new sqlite3.Database('Schedule.sqlite');
+        const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         db.serialize(() => {
             db.run('CREATE TABLE IF NOT EXISTS Timetabledata (id TEXT, Class_name TEXT, Class_num TEXT, Unit_num TEXT, Teacher_name TEXT, wday INTEGER, period INTEGER)');
             const stmt = db.prepare('INSERT INTO Timetabledata VALUES (?, ?, ?, ?, ?, ?, ?)');
@@ -70,7 +71,7 @@ export async function UpdateTimetableInformation(id, name, Timetabledata){
         });
         db.close();
     } else {
-        const db = new sqlite3.Database('Schedule.sqlite');
+        const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         db.serialize(() => {
             const stmt = db.prepare('UPDATE Timetabledata SET ' + name + ' = ? WHERE id = ? and wday = ? and period = ?', err => {
                 if (err) {
