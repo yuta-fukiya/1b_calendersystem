@@ -128,6 +128,7 @@ function displaySchedule(year, month, day){
 }
 
 function createSchedule(year, month, day){
+    month += 1;
     var schedule = "<h2>"+month+"月"+day+"日"+"の予定"+"</h2>"+"<table><tr class = 'timeTable'>";
     /*ここらへんで予定情報，時間を取得する*/
     var size = 0;
