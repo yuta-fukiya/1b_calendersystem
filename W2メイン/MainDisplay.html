@@ -6,7 +6,9 @@
     <title>カレンダー</title>
     <link rel="icon" href=favicon.ico>
     <link rel="stylesheet" href="MainDisplay.css">
-    <script src="MainDisplay.js"></script>
+    <script src="MainDisplay.js" type="module">
+        import * as aaa from "./MainDisplay.js";
+    </script>
 </head>
 
 <body>
@@ -19,8 +21,8 @@
 
         <!-- ボタンクリックで月移動 -->
         <div id="next-prev-button">
-            <button id="prev" onclick="prev()">‹</button>
-            <button id="next" onclick="next()">›</button>
+            <button id="prev" onclick="aaa.prev()">‹</button>
+            <button id="next" onclick="aaa.next()">›</button>
         </div>
 
         <!-- カレンダー -->

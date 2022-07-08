@@ -5,9 +5,11 @@
     <title>日別予定設定画面</title>
     <link rel="stylesheet" href="daySchedule.css">
     <meta name="description" content="日別予定設定画面">
-    <script src="daySchedule.js" type = "module">
-        //import { scheduleData_update, RemoveData } from "./daySchedule.js";
-            window.onload = function () {
+    <script src="daySchedule.js" type="module">
+        import { scheduleData_update, RemoveData } from "./daySchedule.js";
+    </script>
+    <script>    
+        window.onload = function () {
                 // URLを取得
                 const url = new URL(window.location.href);
 
@@ -22,7 +24,7 @@
                 const day = params.get("day");
 
                 document.querySelector('#header').innerHTML = month + "月 " + day + "日";
-                alert(a);
+                alert("a");
                 // IDを使ってspan要素を取得する
                 /*const span1 = document.getElementById("receivedMonth");
                 const span2 = document.getElementById("receivedDay");*/

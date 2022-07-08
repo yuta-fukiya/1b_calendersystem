@@ -1,19 +1,19 @@
 var xhr = new XMLHttpRequest();
 const id = window.location.search.replace("?","");
 /*****************************************************************
-***function name     :CopyScheduleName
+***function name     :CopyDayScheduleName
 ***Designer          :太田　篤
 ***Date              :
 ***function          :予定名をスケジュール管理部に問い合わせる
  *******************************************************************/
 
-export function CopyScheduleName(){
+export function CopyTitle(){
     var result = "false";
     var data = [];
     data.push("ask");
     data.push("Title");
     data.push(id);
-    xhr.open("POST", "./Schedule.txt", false);
+    xhr.open("POST", "./DaySchedule.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
         result = xhr.responseText;
@@ -21,28 +21,84 @@ export function CopyScheduleName(){
     if (result == "false"){
         alert("通信に失敗しました");
     } else if (result == "none"){
-        result = "32文字以内で入力してください";
+        result = "予定なし";
     }       
     return result;
 }
 
+export function CopyS_time() {
+    var result = "false";
+    var data = [];
+    data.push("ask");
+    data.push("S_time");
+    data.push(id);
+    xhr.open("POST", "./DaySchedule.txt", false);
+    xhr.send(data);
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        result = xhr.responseText;
+    }
+    if (result == "false") {
+        alert("通信に失敗しました");
+    } else if (result == "none") {
+        result = "　";
+    }
+    return result;
+}
+
+export function CopyE_time() {
+    var result = "false";
+    var data = [];
+    data.push("ask");
+    data.push("E_time");
+    data.push(id);
+    xhr.open("POST", "./DaySchedule.txt", false);
+    xhr.send(data);
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        result = xhr.responseText;
+    }
+    if (result == "false") {
+        alert("通信に失敗しました");
+    } else if (result == "none") {
+        result = "　";
+    }
+    return result;
+}
+
+export function CopyMemo() {
+    var result = "false";
+    var data = [];
+    data.push("ask");
+    data.push("Memo");
+    data.push(id);
+    xhr.open("POST", "./DaySchedule.txt", false);
+    xhr.send(data);
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        result = xhr.responseText;
+    }
+    if (result == "false") {
+        alert("通信に失敗しました");
+    } else if (result == "none") {
+        result = "　";
+    }
+    return result;
+}
 /*******************************************
-***function name     :CopyScheduleTime
+***function name     :CopyDayScheduleTime
 ***Designer          :太田　篤
 ***Date              :
 ***function          :スケジュールの時間をスケジュール管理部に問い合わせる
 ********************************************/
 
-export function CopyScheduleTime(ProcessName){
+/*export function CopyDayScheduleTime(ProcessName){
     var result = "false";
-    var send_schedule = "";
-    var result_schedule = [];
+    var send_DaySchedule = "";
+    var result_DaySchedule = [];
     var data = [];
     data.push("ask");
     data.push(ProcessName);
     data.push(id);
-    data.push(send_schedule);
-    xhr.open("POST", "./schedule.txt", false);
+    data.push(send_DaySchedule);
+    xhr.open("POST", "./DaySchedule.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
         result = xhr.responseText;
@@ -60,7 +116,8 @@ export function CopyScheduleTime(ProcessName){
 
     } 
      else {
-        result_schedule = result.split(" ");
+        result_DaySchedule = result.split(" ");
     }
-    return result_schedule;
+    return result_DaySchedule;
 }
+*/

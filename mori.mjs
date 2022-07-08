@@ -4,7 +4,7 @@ import * as url from "url";
 import * as IDPASS from "./C7ID,パスワード管理部/IDPASS.mjs";
 import * as Schedule from "./C8スケジュール管理部/ShiftManagement.mjs";
 import * as Salary from "./C9収支管理部/SalaryManagement.mjs";
-import * as daySchedule from "./C8スケジュール管理部/DayScheduleManagement.mjs";
+import * as DaySchedule from "./C8スケジュール管理部/DayScheduleManagement.mjs";
 import * as timetable from "./C8スケジュール管理部/TimetableManagement.mjs";
 
 const LoginDisplay_html = fs.readFileSync('./W1ログイン/LoginDisplay.html', 'UTF-8');
@@ -127,7 +127,7 @@ function RouteSetting(req, res) {
         res.end();
         break;
 
-    case '/daySchedule.js':
+    case '/daySchedule.mjs':
         res.writeHead(200, {'Content-Type': 'text/javascript'});
         res.write(daySchedule_js);
         res.end();
@@ -345,10 +345,10 @@ function RouteSetting(req, res) {
               req.on("end", async function () {
                   var daySchedule = postData.split(",");
                   if (daySchedule[0] == "ask") {
-                      result2 = await Schedule.ReturnDayScheduleInformation(daySchedule[2], daySchedule[1]);
+                      result2 = await DaySchedule.ReturnDayScheduleInformation(daySchedule[2], daySchedule[1]);
                       result = result2[0];
                   } else if (daySchedule[0] == "update") {
-                      result = await Schedule.UpdateDayScheduleInformation(daySchedule[2], daySchedule[1], daySchedule[3]);
+                      result = await DaySchedule.UpdateDayScheduleInformation(daySchedule[2], daySchedule[1], daySchedule[3]);
                   }
                   if (result == null || result == "") {
                       result = "none";

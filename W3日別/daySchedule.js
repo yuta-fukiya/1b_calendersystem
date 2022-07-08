@@ -1,7 +1,6 @@
 import { UpdateSchedule } from "./MainSchedule.js";
 
 export function scheduleData_update() {
-    
     // URLを取得
     const url = new URL(window.location.href);
 
@@ -35,7 +34,9 @@ export function scheduleData_update() {
     // UpdateJobs(localStorage.setItem("Month"), "Monthschedule_UI");
     RemoveData();
     window.location.href = "./MainDisplay.html" + location.search;
-//alert('daySchedule.js/scheduleData_update');
+  
+    alert('daySchedule.js/scheduleData_update');
+
 }
 
 window.scheduleData_update = scheduleData_update;

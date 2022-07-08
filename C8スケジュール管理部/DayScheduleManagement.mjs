@@ -2,13 +2,17 @@ import sqlite3 from "sqlite3";
 
 export async function ReturnDayScheduleInformation(id, Date, name){
     return new Promise((resolve, reject) => {
-        const db = new sqlite3.Database('Schedule.sqlite');
+        const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         var DayScheduledata = [];
         db.serialize(() => {
-            db.each('SELECT id, Title, f_hour, f_minute, t_hour, t_minute, memo, Date FROM DayScheduledata WHERE id=$id and Date=$Date', {$id: id, $Date: Date}, function(err, row) {
+            db.each('SELECT count(*), id, Title, f_hour, f_minute, t_hour, t_minute, memo, Date FROM DayScheduledata WHERE id=$id and Date=$Date', {$id: id, $Date: Date}, function(err, row) {
                 if (err) {
                     reject(err);
-                } else if (name == 'Title') {
+                }
+                if(row['count(*)'] == 0){
+                    DayInsert(id, Date);
+                }
+                if (name == 'Title') {
                     DayScheduledata.push(row.Title);
                     resolve(DayScheduledata);
                 } else if (name == 'f_hour') {
@@ -63,7 +67,7 @@ export async function UpdateDayScheduleInformation(id, name, DayScheduledata){
         number = 6;
     }
     if(number == -1) {
-        const db = new sqlite3.Database('Schedule.sqlite');
+        const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         db.serialize(() => {
             db.run('CREATE TABLE IF NOT EXISTS DayScheduledata (id TEXT, Title TEXT, f_hour INTEGER, f_minute INTEGER, t_hour INTEGER, t_minute INTEGER, memo TEXT, Date TEXT)');
             const stmt = db.prepare('INSERT INTO DayScheduledata VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
@@ -72,7 +76,7 @@ export async function UpdateDayScheduleInformation(id, name, DayScheduledata){
         });
         db.close();
     } else {
-        const db = new sqlite3.Database('Schedule.sqlite');
+        const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         db.serialize(() => {
             const stmt = db.prepare('UPDATE DayScheduledata SET ' + name + ' = ? WHERE id = ? and Date = ?', err => {
                 if (err) {
@@ -85,6 +89,16 @@ export async function UpdateDayScheduleInformation(id, name, DayScheduledata){
         db.close();
     }
     return true;
+}
+
+async function DayInsert(id, Date) {
+    const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
+    db.serialize(() => {
+        const stmt = db.prepare('INSERT INTO Shiftdata VALUES (?, ?, ?, ?, ?, ?)');
+        stmt.run(id, Date);
+        stmt.finalize();
+    });
+    db.close();
 }
 
 //-----------------------------------------------------------------------------------------------
@@ -105,5 +119,7 @@ async function test() {
     c = await ReturnDayScheduleInformation(id, Date, name2);
     console.log(c);
 }
+
+
 
 //test();

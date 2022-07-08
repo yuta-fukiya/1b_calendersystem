@@ -1,7 +1,9 @@
+import { AskSchedule } from "./MainSchedule.js";
+
 var xhr = new XMLHttpRequest();
 var userinfo  = window.location.search.replace("?","");
 var userinfo2 = userinfo.split(",");
-id = userinfo2[0];
+var id = userinfo2[0];
 function expense() {
     var result = "false";         //参照結果を返す変数
     var data = [];                //サーバにデータを送るための配列
@@ -51,16 +53,16 @@ window.onload = function () {
     showProcess(today, calendar);
 };
 // 前の月表示
-function prev() {
+export function prev() {
     showDate.setMonth(showDate.getMonth() - 1);
     showProcess(showDate);
-}
+}window.prev = prev;
 
 // 次の月表示
-function next() {
+export function next() {
     showDate.setMonth(showDate.getMonth() + 1);
     showProcess(showDate);
-}
+}window.prev = prev;
 
 // カレンダー表示
 function showProcess(date) {
@@ -122,24 +124,26 @@ function createProcess(year, month) {
     return calendar;
 }
 
-function displaySchedule(year, month, day){
+export function displaySchedule(year, month, day){
     var schedule = createSchedule(year, month, day);
     document.querySelector('#schedule').innerHTML = schedule;
-}
+}window.displaySchedule = displaySchedule;
 
 function createSchedule(year, month, day){
     month += 1;
     var schedule = "<h2>"+month+"月"+day+"日"+"の予定"+"</h2>"+"<table><tr class = 'timeTable'>";
     /*ここらへんで予定情報，時間を取得する*/
-    var size = 0;
+    var infomation = AskSchedule("Schedule_UI");
+
+    var size = infomation.length;
 
 
     for(var j = 0; j < size; j++){
-        schedule += "<tr>";
-        for(var i = 0; i < 2; i++){
-            schedule += "<td>"+ i*j +"</td>";
+        schedule += "<th>";
+        for(var i = 0; i < 1; i++){
+            schedule += "<td>"+infomation[i]+"</td>";
         }
-        schedule += "</tr>"
+        schedule += "</th>"
     }
 
     schedule += "<a class ='schedule' href = 'daySchedule.html?"+"year="+year+"&month="+month+"&day="+day+"''>新たな予定を設定</a><br>"

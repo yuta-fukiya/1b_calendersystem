@@ -1,5 +1,5 @@
-//import * as ask from "./AskScheduleData.js";      //予定設定処理部
-//import * as update from "./UpdateScheduleData.js";    //予定設定処理部
+import * as ask from "./AskSchedule.js";      //予定設定処理部
+import * as update from "./UpdateSchedule.js";    //予定設定処理部
 
 /*****************************************************************
 ***function name     :Askschedules
@@ -15,7 +15,7 @@ export function AskSchedule(ProcessName){
         Schedule.push(ask.CopyS_time());
         Schedule.push(ask.CopyE_time());
         Schedule.push(ask.CopyMemo());
-        Schedule.push(ask.CopyDate());
+        //Schedule.push(ask.CopyDate());
     }
     return Schedule;
 }
@@ -28,12 +28,13 @@ export function AskSchedule(ProcessName){
 ********************************************/
 
 export function UpdateSchedule(Scheduledata, ProcessName){
+    alert("MainSchedule.js/UpdateSchedule");
     if (ProcessName == "Schedule_UI") {
         update.SendTitle(Scheduledata[0]);
         update.SendS_Time(Scheduledata[1]);
         update.SendE_minute(Scheduledata[2]);
         update.SendMemo(Scheduledata[3]);
     }
-   //alert('aaa');
+   alert('if end');
 }
 
