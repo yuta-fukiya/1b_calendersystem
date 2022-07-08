@@ -9,7 +9,7 @@ export async function ReturnTimetableInformation(id, wday, period, name){
                 if (err) {
                     reject(err);
                 } 
-                if (row['count(*)']==0){
+                if (row['count(*)']==0 && wday!="" &&period!=""){
                     TimeInsert(id, wday, period);
                 }
                 if (name == 'Class_name') {
@@ -24,19 +24,11 @@ export async function ReturnTimetableInformation(id, wday, period, name){
                 } else if (name == 'Teacher_name') {
                     Timetabledata.push(row.Teacher_name);
                     resolve(Timetabledata);
-                } else if (name == 'wday') {
-                    Timetabledata.push(row.wday);
-                    resolve(Timetabledata);
-                } else if (name == 'period') {
-                    Timetabledata.push(row.period);
-                    resolve(Timetabledata);
                 } else {
                     Timetabledata.push(row.Class_name);
                     Timetabledata.push(row.Class_num);
                     Timetabledata.push(row.Unit_num);
                     Timetabledata.push(row.Teacher_name);
-                    Timetabledata.push(row.wday);
-                    Timetabledata.push(row.period);
                     resolve(Timetabledata);
                 }
             });
@@ -62,7 +54,7 @@ export async function UpdateTimetableInformation(id, wday, period, name, Timetab
         db.serialize(() => {
             db.run('CREATE TABLE IF NOT EXISTS Timetabledata (id TEXT, Class_name TEXT, Class_num TEXT, Unit_num TEXT, Teacher_name TEXT, wday INTEGER, period INTEGER)');
             const stmt = db.prepare('INSERT INTO Timetabledata VALUES (?, ?, ?, ?, ?, ?, ?)');
-            stmt.run([id, Timetabledata[0], Timetabledata[1], Timetabledata[2], Timetabledata[3], wday, period ]);
+            stmt.run([id, wday, period, Timetabledata[0], Timetabledata[1], Timetabledata[2], Timetabledata[3]]);
             stmt.finalize();
         });
         db.close();
@@ -85,7 +77,7 @@ async function TimeInsert(id, wday, period) {
     const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
     db.serialize(() => {
         const stmt = db.prepare('INSERT INTO Timetabledata VALUES (?, ?, ?, ?, ?, ?, ?)');
-        stmt.run(id, "", "", "", "", wday, period);
+        stmt.run(id, wday, period);
         stmt.finalize();
     });
     db.close();
