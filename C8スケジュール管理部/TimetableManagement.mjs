@@ -45,7 +45,7 @@ export async function ReturnTimetableInformation(id, wday, period, name){
     })
 }
 
-export async function UpdateTimetableInformation(id, name, Timetabledata){
+export async function UpdateTimetableInformation(id, wday, period, name, Timetabledata){
     var number = -1;
     if(name == 'Class_name') {
         number = 0;
@@ -55,10 +55,6 @@ export async function UpdateTimetableInformation(id, name, Timetabledata){
         number = 2;
     } else if (name == 'Teacher_name') {
         number = 3;
-    } else if (name == 'wday') {
-        number = 4;
-    } else if (name == 'period') {
-        number = 5;
     }
 
     if(number == -1) {
@@ -66,7 +62,7 @@ export async function UpdateTimetableInformation(id, name, Timetabledata){
         db.serialize(() => {
             db.run('CREATE TABLE IF NOT EXISTS Timetabledata (id TEXT, Class_name TEXT, Class_num TEXT, Unit_num TEXT, Teacher_name TEXT, wday INTEGER, period INTEGER)');
             const stmt = db.prepare('INSERT INTO Timetabledata VALUES (?, ?, ?, ?, ?, ?, ?)');
-            stmt.run([id, Timetabledata[0], Timetabledata[1], Timetabledata[2], Timetabledata[3], Timetabledata[4], Timetabledata[5]]);
+            stmt.run([id, Timetabledata[0], Timetabledata[1], Timetabledata[2], Timetabledata[3], wday, period ]);
             stmt.finalize();
         });
         db.close();
@@ -77,7 +73,7 @@ export async function UpdateTimetableInformation(id, name, Timetabledata){
                 if (err) {
                     throw err;
                 }
-                stmt.run(Timetabledata[number], id, Timetabledata[4], Timetabledata[5]);
+                stmt.run(Timetabledata, id, wday, period);
                 stmt.finalize();
             });
         });

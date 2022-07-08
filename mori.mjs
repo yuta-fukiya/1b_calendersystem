@@ -399,7 +399,7 @@ function RouteSetting(req, res) {
                     result2 = await timetable.ReturnTimetableInformation(timetable2[0], timetable2[2], timetable2[3], timetable2[1]);
                     result = result2[0];
                 } else if (timetable2[0] == "update"){
-                    result = await timetable.UpdateTimetableInformation(timetable2[0], timetable2[1], timetable2[3]);
+                    result = await timetable.UpdateTimetableInformation(timetable2[2], timetable2[3], timetable2[4], timetable2[1], timetable2[5]);
                 }
                 if (result == null || result == ""){
                     result = "none";
