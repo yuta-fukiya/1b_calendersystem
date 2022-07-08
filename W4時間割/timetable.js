@@ -1,4 +1,4 @@
-import { AskTimeTableJob } from "./TimeTableMain.js";
+import {AskTimetableJob} from "./TimeTableMain.js";
 
 const week = ["日", "月", "火", "水", "木", "金", "土"];
 
@@ -22,7 +22,7 @@ function createTimeTable(){
         timetable += "<tr>" + i + "限";
         for(var j=1;j<=7;j++){
             timetable += "<th>";
-            var timeTable = AskTimeTableJob(j,i);
+            var timeTable = AskTimetableJob(j,i);
             timetable += "<a href = 'timetable.html?" + "wday"+j+"period"+i+"''>" + timeTable[0] + "\n" + timeTable[1] + "\n" + timeTable[2] + "\n" + timeTable[3] + "</a>";
             timetable += "</th>";
         }
