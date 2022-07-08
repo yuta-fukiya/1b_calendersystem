@@ -4,10 +4,10 @@
 <HEAD>
     <title>日別予定設定画面</title>
     <link rel="stylesheet" href="daySchedule.css">
-    <meta name="desctription" content="日別予定設定画面">
+    <meta name="description" content="日別予定設定画面">
     <script src="daySchedule.js" type = "module">
-        import { scheduleData_update, RemoveData } from "./daySchedule.js";
-         window.onload = function () {
+        //import { scheduleData_update, RemoveData } from "./daySchedule.js";
+            window.onload = function () {
                 // URLを取得
                 const url = new URL(window.location.href);
 
@@ -21,16 +21,18 @@
                 const month = params.get("month");
                 const day = params.get("day");
 
+                document.querySelector('#header').innerHTML = month + "月 " + day + "日";
+                alert(a);
                 // IDを使ってspan要素を取得する
                 /*const span1 = document.getElementById("receivedMonth");
                 const span2 = document.getElementById("receivedDay");*/
                 // 取得したspan要素に受け取ったパラメータを代入
                 //span.innerText = username;
 
-                document.querySelector('#header').innerHTML = month + "月 " + day + "日";
             }
     </script>
     <meta name="author" content="Ohta">
+    <meta charset="UTF-8">
 </HEAD>
 
 <body>
@@ -47,6 +49,7 @@
         <div class="scheduleSet">
             <p class="name">スケジュール設定</p>
             <p id="header"></p>
+            
             <!--日にちは選んだ日を表示する-->
         </div>
         <form action="cgi-bin/formmail.cgi" method="post">

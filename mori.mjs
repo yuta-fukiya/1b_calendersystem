@@ -317,10 +317,10 @@ function RouteSetting(req, res) {
           req.on("end", async function(){
             var shift = postData.split(",");
             if (shift[0] == "ask"){
-                result2 = await Schedule.ReturnShiftInformation(shift[2], shift[1]);
+                result2 = await Schedule.ReturnShiftInformation(shift[2], shift[3], shift[4], shift[1]);
                 result = result2[0];
             } else if (shift[0] == "update"){
-                result = await Schedule.UpdateShiftInformation(shift[2], shift[1], shift[3]);
+                result = await Schedule.UpdateShiftInformation(shift[2], shift[3], shift[4], shift[1], shift[5]);
             }
             if (result == null || result == ""){
                 result = "none";
@@ -372,9 +372,9 @@ function RouteSetting(req, res) {
           req.on("end", async function(){
             var salary = postData.split(",");
             if (salary[0] == "ask"){
-                result = await Salary.AskWages(salary[2], salary[1]);
+                result = await Salary.AskWages(salary[2],salary[3], salary[4], salary[1]);
             } else if (salary[0] == "update"){
-                result = await Salary.UpdateWages(salary[2], salary[1], salary[3]);
+                result = await Salary.UpdateWages(salary[2], salary[3], salary[4],salary[1], salary[5]);
             }
             fs.writeFileSync("./C9収支管理部/salary.txt", result);
             salary_txt = fs.readFileSync('./C9収支管理部/salary.txt', 'UTF-8');        

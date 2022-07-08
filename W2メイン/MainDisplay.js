@@ -1,12 +1,15 @@
 var xhr = new XMLHttpRequest();
-const id = window.location.search.replace("?", "");
-
+var userinfo  = window.location.search.replace("?","");
+var userinfo2 = userinfo.split(",");
+id = userinfo2[0];
 function expense() {
     var result = "false";         //参照結果を返す変数
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("expense");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200) {
@@ -23,7 +26,9 @@ function income() {
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("income");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200) {
@@ -123,6 +128,7 @@ function displaySchedule(year, month, day){
 }
 
 function createSchedule(year, month, day){
+    month += 1;
     var schedule = "<h2>"+month+"月"+day+"日"+"の予定"+"</h2>"+"<table><tr class = 'timeTable'>";
     /*ここらへんで予定情報，時間を取得する*/
     var size = 0;
@@ -137,7 +143,7 @@ function createSchedule(year, month, day){
     }
 
     schedule += "<a class ='schedule' href = 'daySchedule.html?"+"year="+year+"&month="+month+"&day="+day+"''>新たな予定を設定</a><br>"
-    schedule += "<a class ='shift' href = 'ShiftDisplay.html?" + id + "'>新たなシフトを設定</a><br>"
+    schedule += "<a class ='shift' href = 'ShiftDisplay.html?" + id +","+year+","+month+ "'>新たなシフトを設定</a><br>"
     schedule += "<a class ='timetable' href = 'timetable.html?" + id + "'>新たな時間割を設定</a><br>"
     return schedule;
 }

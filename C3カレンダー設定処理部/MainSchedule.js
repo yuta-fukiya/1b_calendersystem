@@ -8,7 +8,7 @@
 ***function          :予定情報をデータ管理部に問い合わせる
  *******************************************************************/
 
-/*export function AskSchedule(ProcessName){
+export function AskSchedule(ProcessName){
     var Schedule = [];
     if (ProcessName == "Schedule_UI") {
         Schedule.push(ask.CopyTitle());
@@ -18,7 +18,7 @@
         Schedule.push(ask.CopyDate());
     }
     return Schedule;
-}*/
+}
 
 /*******************************************
 ***function name     :UpdateJobs
@@ -34,6 +34,6 @@ export function UpdateSchedule(Scheduledata, ProcessName){
         update.SendE_minute(Scheduledata[2]);
         update.SendMemo(Scheduledata[3]);
     }
-   alert('aaa');
+   //alert('aaa');
 }
 

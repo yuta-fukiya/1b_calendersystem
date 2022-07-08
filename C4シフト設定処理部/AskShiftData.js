@@ -1,5 +1,6 @@
 var xhr = new XMLHttpRequest();
-const id = window.location.search.replace("?","");
+const userinfo = window.location.search.replace("?","");
+var userinfo2 = userinfo.split(",");
 /*****************************************************************
 ***function name     :CopyJobName
 ***Designer          :吹谷　優太
@@ -12,7 +13,9 @@ export function CopyJobName(){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("Jobname");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     xhr.open("POST", "./schedule_shift.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
@@ -39,7 +42,9 @@ export function CopyJobTime(ProcessName){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push(ProcessName);
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     xhr.open("POST", "./schedule_shift.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
@@ -71,7 +76,9 @@ export function CopyHourWages(){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("HourWages");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
@@ -95,7 +102,9 @@ export function CopyTrasCosts(){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("TrasCosts");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
@@ -119,7 +128,9 @@ export function CopyNightWages(){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("NightWages");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
@@ -142,7 +153,9 @@ export function CopyNightWagesRange(){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("NightWagesRange");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
@@ -166,7 +179,9 @@ export function CopyOvertime(){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("Overtime");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
