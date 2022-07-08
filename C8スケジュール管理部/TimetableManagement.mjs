@@ -5,10 +5,14 @@ export async function ReturnTimetableInformation(id, wday, period, name){
         const db = new sqlite3.Database('Schedule.sqlite');
         var Timetabledata = [];
         db.serialize(() => {
-            db.each('SELECT id, Class_name, Class_num, Unit_num, Teacher_name, wday, period FROM Timetabledata WHERE id=$id and wday=$wday and period=$period', {$id: id, $wday: wday, $period: period}, function(err, row) {
+            db.each('SELECT count(*), id, Class_name, Class_num, Unit_num, Teacher_name, wday, period FROM Timetabledata WHERE id=$id and wday=$wday and period=$period', {$id: id, $wday: wday, $period: period}, function(err, row) {
                 if (err) {
                     reject(err);
-                } else if (name == 'Class_name') {
+                } 
+                if (row['count(*)']==0){
+                    TimeInsert(id, wday, period);
+                }
+                if (name == 'Class_name') {
                     Timetabledata.push(row.Class_name);
                     resolve(Timetabledata);
                 } else if (name == 'Class_num') {
@@ -80,6 +84,16 @@ export async function UpdateTimetableInformation(id, name, Timetabledata){
     }
     return true;
 }
+async function TimeInsert(id, wday, period) {
+    const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
+    db.serialize(() => {
+        const stmt = db.prepare('INSERT INTO Timetabledata VALUES (?, ?, ?, ?, ?, ?, ?)');
+        stmt.run(id, wday, period);
+        stmt.finalize();
+    });
+    db.close();
+}
+
 
 //-----------------------------------------------------------------------------------------------
 async function test() {
