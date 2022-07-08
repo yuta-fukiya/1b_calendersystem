@@ -1,7 +1,12 @@
 var xhr = new XMLHttpRequest();
-const id = window.location.search.replace("?","");
 
-export function CopyClass(wday, period){
+var userinfo  = window.location.search.replace("?","");
+var userinfo2 = userinfo.split(",");
+var id = userinfo2[0];
+var wday = userinfo2[1];
+var period = userinfo2[2];
+
+export function CopyClass(){
     var result = "false";
     var data = [];
     data.push(id);
@@ -21,7 +26,7 @@ export function CopyClass(wday, period){
 }
 
 
-export function CopyNumClasses(wday, period){
+export function CopyNumClasses(){
     var result = "false";
     var data = [];
     data.push(id);
@@ -40,7 +45,7 @@ export function CopyNumClasses(wday, period){
     return result;
 }
 
-export function CopyUnit(wday, period){
+export function CopyUnit(){
     var result = "false";
     var data = [];
     data.push(id);
@@ -59,7 +64,7 @@ export function CopyUnit(wday, period){
     return result;
 }
 
-export function CopyProfessor(wday, period){
+export function CopyProfessor(){
     var result = "false";
     var data = [];
     data.push(id);
@@ -78,7 +83,7 @@ export function CopyProfessor(wday, period){
     return result;
 }
 
-export function Copywday(wday, period){
+export function Copywday(){
     var result = "false";
     var data = [];
     data.push(id);
@@ -97,7 +102,7 @@ export function Copywday(wday, period){
     return result;
 }
 
-export function Copyperiod(wday, period){
+export function Copyperiod(){
     var result = "false";
     var data = [];
     data.push(id);

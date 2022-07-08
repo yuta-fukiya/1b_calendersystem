@@ -1,8 +1,13 @@
-import {AskTimetableJob, UpdateTimeTableJob} from "/TimeTableMain.js";
+import {AskTimeTableJob, UpdateTimeTableJob} from "/TimeTableMain.js";
 
+var userinfo  = window.location.search.replace("?","");
+var userinfo2 = userinfo.split(",");
+var id = userinfo2[0];
+var wday = userinfo2[1];
+var period = userinfo2[2];
 
 function TimeTableDetails_init(){
-    var timetabledata = AskTimetableJob();
+    var timetabledata = AskTimeTableJob(wday,period);
     document.getElementById("Class").paceholder = timetabledata[0];
     document.getElementById("NumClasses").paceholder = timetabledata[1];
     document.getElementById("Unit").paceholder = timetabledata[2];
@@ -28,8 +33,10 @@ export function TimeTableDetails_update(){
     if(timetabledata[3] == ""){
         timetabledata[3] = document.getElementById("Professor").Placeholder;
     }
-    var countstr = timetabledata[0].length;
+
     UpdateTimeTableJob(timetabledata);
+
+    window.location.href="./timetable.html?" + id;
 }
 window.TimeTableDetails_update=TimeTableDetails_update;
 

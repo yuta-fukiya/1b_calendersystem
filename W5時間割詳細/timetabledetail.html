@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title> 時間割詳細設定画面</title>
         <link rel="stylesheet" href="timetabledetail.css">
-        <script src="timetabledetail.js">
+        <script src="timetabledetail.js" type="module">
             import {TimeTableDetails_update} from "./timetabledetail.js"
         </Script>
     </head>
@@ -36,7 +36,7 @@
     </div>
     <div class="update">
         <input type="button" value="戻る" onclick="history.back(-1)">
-        <input type="button" value="完了" onclick="ShiftData_update()">
+        <input type="button" value="完了" onclick="TimeTableDetails_update()">
     </div>
    
     </body>
