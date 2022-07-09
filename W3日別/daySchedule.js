@@ -9,6 +9,9 @@ export function scheduleData_update() {
 
     // consoleに受け取ったパラメータを出力
     console.log(params);
+    const id = params.get("id");
+    const year = params.get("year");
+    const month = params.get("month");
     
     // パラメータから「username」を取得
     var scheduledata = [];
@@ -33,7 +36,7 @@ export function scheduleData_update() {
     //UpdateDaySchedule(localStorage.getItem("Week"), "Weekschedule_UI");
     // UpdateJobs(localStorage.setItem("Month"), "Monthschedule_UI");
     RemoveData();
-    window.location.href = "./MainDisplay.html" + location.search;
+    window.location.href = "./MainDisplay.html?" + id + "," + year + "," + month;
   
     //alert('daySchedule.js/scheduleData_update');
 
