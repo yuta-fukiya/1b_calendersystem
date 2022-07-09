@@ -59,13 +59,14 @@ export function SendS_Time(scheduledata) {
     data.push(send_schedule);
     xhr.open("POST", "./DaySchedule.txt", true);
     xhr.send(data);
-    xhr.onreadystatechange = function () {
-        if (this.readyState === 4) {
-            if (this.status === 200 || this.status == 0) {
-                return this.responseText;  //success or false       
-            }
+
+    if (xhr.readyState === 4) {
+        if (xhr.status === 200 || xhr.status == 0) {
+            result = xhr.responseText;  //success or false
+            return result;
         }
     }
+
 }
 
 export function SendE_Time(scheduledata) {
@@ -78,13 +79,14 @@ export function SendE_Time(scheduledata) {
     data.push(send_schedule);
     xhr.open("POST", "./DaySchedule.txt", true);
     xhr.send(data);
-    xhr.onreadystatechange = function () {
-        if (this.readyState === 4) {
-            if (this.status === 200 || this.status == 0) {
-                return this.responseText;  //success or false       
-            }
+
+    if (xhr.readyState === 4) {
+        if (xhr.status === 200 || xhr.status == 0) {
+            result = xhr.responseText;  //success or false
+            return result;
         }
     }
+
 }
 
 export function SendMemo(scheduledata) {
@@ -97,11 +99,12 @@ export function SendMemo(scheduledata) {
     data.push(send_schedule);
     xhr.open("POST", "./DaySchedule.txt", true);
     xhr.send(data);
-    xhr.onreadystatechange = function () {
-        if (this.readyState === 4) {
-            if (this.status === 200 || this.status == 0) {
-                return this.responseText;  //success or false       
-            }
+
+    if (xhr.readyState === 4) {
+        if (xhr.status === 200 || xhr.status == 0) {
+            result = xhr.responseText;  //success or false
+            return result;
         }
     }
+
 }
