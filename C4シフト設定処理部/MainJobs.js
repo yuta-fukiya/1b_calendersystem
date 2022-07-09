@@ -8,21 +8,21 @@ import * as update from "./UpdateShiftData.js";    //シフト設定処理部
 ***function          :シフト情報をデータ管理部に問い合わせる
  *******************************************************************/
 
-export function AskJobs(ProcessName){
+export function AskJobs(ProcessName, year, month){
     var Shift = [];                          //ShiftDisplayに返すための配列
     if (ProcessName == "Shift_UI") {
-        Shift.push(ask.CopyJobName());
-        Shift.push(ask.CopyHourWages());
-        Shift.push(ask.CopyTrasCosts());
-        Shift.push(ask.CopyNightWages());
-        Shift.push(ask.CopyOvertime());
-        var NightWages_time = ask.CopyNightWagesRange().split(" ");    //データベースから参照した情報を分割する
+        Shift.push(ask.CopyJobName(year, month));
+        Shift.push(ask.CopyHourWages(year, month));
+        Shift.push(ask.CopyTrasCosts(year, month));
+        Shift.push(ask.CopyNightWages(year, month));
+        Shift.push(ask.CopyOvertime(year, month));
+        var NightWages_time = ask.CopyNightWagesRange(year, month).split(" ");    //データベースから参照した情報を分割する
         Shift.push(NightWages_time[0]);
         Shift.push(NightWages_time[1]);
     } else if (ProcessName == "WeekShift_UI") {
-        Shift = ask.CopyJobTime("WeekShift");
+        Shift = ask.CopyJobTime("WeekShift", year, month);
     } else if (ProcessName == "MonthShift_UI") {
-        Shift = ask.CopyJobTime("MonthShift");
+        Shift = ask.CopyJobTime("MonthShift", year, month);
     }
 
     return Shift;
