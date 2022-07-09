@@ -148,7 +148,7 @@ function createSchedule(year, month, day){
         schedule += "</th>"
     }
 
-    schedule += "<a class ='schedule' href = 'daySchedule.html?"+"year="+year+"&month="+month+"&day="+day+"''>新たな予定を設定</a><br>"
+    schedule += "<a class ='schedule' href = 'daySchedule.html?id="+id+"&year="+year+"&month="+month+"&day="+day+"''>新たな予定を設定</a><br>"
     schedule += "<a class ='shift' href = 'ShiftDisplay.html?" + id +","+year+","+month+ "'>新たなシフトを設定</a><br>"
     schedule += "<a class ='timetable' href = 'timetable.html?" + id + "'>新たな時間割を設定</a><br>"
     return schedule;

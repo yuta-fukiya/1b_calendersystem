@@ -1,6 +1,6 @@
 import sqlite3 from "sqlite3";
 
-export async function ReturnDayScheduleInformation(id, Date, name) {
+export async function ReturnDayScheduleInformation(id, name) {
     return new Promise((resolve, reject) => {
         const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         var DayScheduledata = [];
@@ -14,7 +14,6 @@ export async function ReturnDayScheduleInformation(id, Date, name) {
                 }
                 if (name == 'title') {
                     DayScheduledata.push(row.title);
-                    console.log(DayScheduledata);
                     resolve(DayScheduledata);
                 } else if (name == 'S_time') {
                     DayScheduledata.push(row.S_time);
@@ -65,7 +64,7 @@ export async function UpdateDayScheduleInformation(id, name, DayScheduledata) {
                 if (err) {
                     throw err;
                 }
-                stmt.run(DayScheduledata[number], id);
+                stmt.run(DayScheduledata, id);
                 stmt.finalize();
             });
         });
