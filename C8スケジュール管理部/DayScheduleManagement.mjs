@@ -5,7 +5,7 @@ export async function ReturnDayScheduleInformation(id, Date, name) {
         const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         var DayScheduledata = [];
         db.serialize(() => {
-            db.each('SELECT count(*), id, Date, title, S_time, E_time, Memo FROM DayScheduledata WHERE id=$id', { $id: id, $Date: Date }, function (err, row) {
+            db.each('SELECT count(*), id, Date, title, S_time, E_time, Memo FROM DayScheduledata WHERE id=$id and Date=$Date', { $id: id, $Date: Date }, function (err, row) {
                 if (err) {
                     reject(err);
                 }
