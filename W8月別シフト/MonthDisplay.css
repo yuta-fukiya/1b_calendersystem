@@ -5,7 +5,7 @@
     margin: 0 auto;
     color: #666;
 }
-#header {
+#header, h2 {
     text-align: center;
     font-size: 24px;
     width: 100%;
@@ -16,6 +16,24 @@
     text-align: center;
     width: 100%;
 }
+
+#button {
+    width: 100%;
+}
+
+#Shift {
+    text-align: center;
+    margin-top: 4rem;
+    margin-left: 30%;
+    width: 40%;
+}
+
+.Shift-after {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #333333;
+}
+
 table {
     outline: 2px solid #ddd;
     border-collapse: collapse;
