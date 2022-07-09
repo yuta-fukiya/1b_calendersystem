@@ -62,7 +62,7 @@ export function prev() {
 export function next() {
     showDate.setMonth(showDate.getMonth() + 1);
     showProcess(showDate);
-}window.prev = prev;
+}window.next = next;
 
 // カレンダー表示
 function showProcess(date) {
