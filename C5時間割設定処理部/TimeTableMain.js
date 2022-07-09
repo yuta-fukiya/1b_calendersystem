@@ -1,14 +1,12 @@
 import * as ask from "./AskTimeTable.js";
 import * as update from "./UpdateTimeTable.js";
 
-export function AskTimeTableJob(){
+export function AskTimeTableJob(wday, period){
     var TimeTable = [];
-        TimeTable.push(ask.CopyClass());
-        TimeTable.push(ask.CopyNumClasses());
-        TimeTable.push(ask.CopyUnit());
-        TimeTable.push(ask.CopyProfessor());
-        TimeTable.push(ask.Copywday());
-        TimeTable.push(ask.Copyperiod());
+        TimeTable.push(ask.CopyClass(wday, period));
+        TimeTable.push(ask.CopyNumClasses(wday, period));
+        TimeTable.push(ask.CopyUnit(wday, period));
+        TimeTable.push(ask.CopyProfessor(wday, period));
     return TimeTable;
 }
 
