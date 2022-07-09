@@ -345,10 +345,10 @@ function RouteSetting(req, res) {
               req.on("end", async function () {
                   var daySchedule = postData.split(",");
                   if (daySchedule[0] == "ask") {
-                      result2 = await DaySchedule.ReturnDayScheduleInformation(daySchedule[2], daySchedule[1]);
+                      result2 = await DaySchedule.ReturnDayScheduleInformation(daySchedule[2], daySchedule[3], daySchedule[1]);
                       result = result2[0];
                   } else if (daySchedule[0] == "update") {
-                      result = await DaySchedule.UpdateDayScheduleInformation(daySchedule[2], daySchedule[1], daySchedule[3]);
+                      result = await DaySchedule.UpdateDayScheduleInformation(daySchedule[2], daySchedule[3], daySchedule[1], daySchedule[4]);
                   }
                   if (result == null || result == "") {
                       result = "none";
