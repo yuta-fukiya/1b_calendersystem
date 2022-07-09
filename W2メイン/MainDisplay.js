@@ -1,45 +1,14 @@
 import { AskSchedule } from "./MainSchedule.js";
+import { AskSalary, SetIncome} from "/MainSalary.js";
 
-var xhr = new XMLHttpRequest();
 var userinfo  = window.location.search.replace("?","");
 var userinfo2 = userinfo.split(",");
 var id = userinfo2[0];
-function expense() {
-    var result = "false";         //参照結果を返す変数
-    var data = [];                //サーバにデータを送るための配列
-    data.push("ask");
-    data.push("expense");
-    data.push(userinfo2[0]);
-    data.push(userinfo2[1]);
-    data.push(userinfo2[2]);
-    xhr.open("POST", "./salary.txt", false);
-    xhr.send(data);
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        result = xhr.responseText;
-    }
-    if (result == "false") {
-        alert("通信に失敗しました");
-    }
-    return result;
-}        
 
-function income() {
-    var result = "false";         //参照結果を返す変数
-    var data = [];                //サーバにデータを送るための配列
-    data.push("ask");
-    data.push("income");
-    data.push(userinfo2[0]);
-    data.push(userinfo2[1]);
-    data.push(userinfo2[2]);
-    xhr.open("POST", "./salary.txt", false);
-    xhr.send(data);
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        result = xhr.responseText;
-    }
-    if (result == "false") {
-        alert("通信に失敗しました");
-    }
-    return result;
+function ShiftData_init(year, month){
+    var shiftdata = AskSalary(year, month);
+    document.getElementById("income").value = shiftdata[0];
+    document.getElementById("expense").value = shiftdata[1];
 }
 
 
@@ -68,8 +37,13 @@ export function next() {
 function showProcess(date) {
     var year = date.getFullYear();
     var month = date.getMonth();
+
+    var day = new Date(year, month + 1, 0).getDate();
+    SetIncome(year, month + 1, day);
+    ShiftData_init(year, month + 1);
+
     document.querySelector('#header').innerHTML = year + "年 " + (month + 1) + "月";
-    document.querySelector('#price').innerHTML = "収支：" + (income() - expense()) + "円"
+    document.querySelector('#price').innerHTML = "収支：" + (document.getElementById("income").value - document.getElementById("expense").value) + "円"
 
     var calendar = createProcess(year, month);
     document.querySelector('#calendar').innerHTML = calendar;

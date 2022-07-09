@@ -1,11 +1,14 @@
 var xhr = new XMLHttpRequest();
-const id = window.location.search.replace("?","");
+const userinfo = window.location.search.replace("?","");
+var userinfo2 = userinfo.split(",");  
 
 export function Sendincome(salary){
     var data = [];
     data.push("update");
     data.push("income");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     data.push(salary);
     xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
@@ -18,7 +21,9 @@ export function Sendexpense(salary){
     var data = [];
     data.push("update");
     data.push("expense");
-    data.push(id);
+    data.push(userinfo2[0]);
+    data.push(userinfo2[1]);
+    data.push(userinfo2[2]);
     data.push(salary);
     xhr.open("POST", "./salary.txt", false);
     xhr.send(data);
