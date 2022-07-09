@@ -1,5 +1,9 @@
 import {AskJobs, UpdateJobs} from "/MainJobs.js";
 
+const userinfo = window.location.search.replace("?","");
+var userinfo2 = userinfo.split(",");
+const year = userinfo2[1];
+const month = userinfo2[2];
 /********************************************************* 
 ***function name  :ShiftData_init
 ***Designer       :吹谷　優太
@@ -7,7 +11,7 @@ import {AskJobs, UpdateJobs} from "/MainJobs.js";
 ***Function       :シフト設定処理部へデータを受け取り画面に反映する
 **********************************************************/
 function ShiftData_init(){
-      var shiftdata = AskJobs("Shift_UI");   //シフト設定処理部に収支系情報の問い合わせ
+      var shiftdata = AskJobs("Shift_UI", year, month);   //シフト設定処理部に収支系情報の問い合わせ
       document.getElementById("JobName").placeholder = shiftdata[0];   //アルバイト名
       document.getElementById("HourWages").placeholder = shiftdata[1];   //時給
       document.getElementById("TrasCosts").placeholder = shiftdata[2];   //交通費
