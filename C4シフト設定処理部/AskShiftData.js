@@ -56,8 +56,10 @@ export function CopyJobTime(ProcessName, year, month){
         for (var i = 0; i < 14; i++){
             result_shift.push("00:00");
         }
-    } else if (result === "none" && ProcessName == "MonthShift"){
-    
+    } else if (result == "none" && ProcessName == "MonthShift"){
+        for (var i = 0; i < 62; i++){
+            result_shift.push("00:00");
+        }
     } else {
         result_shift = result.split(" ");
     }
