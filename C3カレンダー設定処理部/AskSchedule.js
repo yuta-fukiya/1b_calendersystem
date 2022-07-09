@@ -11,7 +11,7 @@ export function CopyTitle(){
     var result = "false";
     var data = [];
     data.push("ask");
-    data.push("Title");
+    data.push("title");
     data.push(id);
     xhr.open("POST", "./DaySchedule.txt", false);
     xhr.send(data);
