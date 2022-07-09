@@ -9,6 +9,11 @@ console.log(params);
 
 // パラメータから「username」を取得
 const id = params.get("id");
+const Year = params.get("year");
+const Month = params.get("month");
+const Day = params.get("day");
+
+const arrayData = Year + "/" + Month + "/" + Day;
 /*****************************************************************
 ***function name     :SendTitle
 ***Designer          :太田　篤
@@ -24,7 +29,6 @@ export function SendTitle(scheduledata) {
     data.push("title");
     data.push(id);
     data.push(scheduledata);
-    alert(scheduledata)
     xhr.open("POST", "./DaySchedule.txt", false);
     xhr.send(data);
 
