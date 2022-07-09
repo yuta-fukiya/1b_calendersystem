@@ -32,6 +32,9 @@ export function UpdateSchedule(Scheduledata, ProcessName){
         update.SendS_Time(Scheduledata[1]);
         update.SendE_Time(Scheduledata[2]);
         update.SendMemo(Scheduledata[3]);
+        update.SendYear(Scheduledata[4]);
+        update.SendMonth(Scheduledata[5]);
+        update.SendDay(Scheduledata[6]);
     }
 }
 

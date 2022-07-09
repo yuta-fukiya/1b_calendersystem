@@ -9,6 +9,11 @@ console.log(params);
 
 // パラメータから「username」を取得
 const id = params.get("id");
+const Year = params.get("year");
+const Month = params.get("month");
+const Day = params.get("day");
+
+const arrayData = Year + "/" + Month + "/" + Day;
 /*****************************************************************
 ***function name     :CopyDayScheduleName
 ***Designer          :太田　篤
@@ -32,7 +37,6 @@ export function CopyTitle(){
     } else if (result == "none"){
         result = "予定なし";
     }       
-    alert(result);
     return result;
 }
 
@@ -92,6 +96,7 @@ export function CopyMemo() {
     }
     return result;
 }
+
 /*******************************************
 ***function name     :CopyDayScheduleTime
 ***Designer          :太田　篤
