@@ -72,7 +72,7 @@ export function ShiftData_update(){
                   UpdateJobs(localStorage.getItem("Week"), "WeekShift_UI");
             }
             if (localStorage.getItem("Month") != null){
-                  UpdateJobs(localStorage.setItem("Month"), "MonthShift_UI");
+                  UpdateJobs(localStorage.getItem("Month"), "MonthShift_UI");
             }
             RemoveData();
             window.location.href="./MainDisplay.html"+location.search;
