@@ -38,49 +38,63 @@ export async function ReturnDayScheduleInformation(id, Date, name) {
 }
 
 export async function UpdateDayScheduleInformation(id, Date, name, DayScheduledata) {
-    var number = -1;
-    if (name == 'title') {
-        number = 0;
-    } else if (name == 'S_time') {
-        number = 1;
-    } else if (name == 'E_time') {
-        number = 2;
-    } else if (name == 'Memo') {
-        number = 3;
-    }
-    if (number == -1) {
-        const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
-        db.serialize(() => {
-            db.run('CREATE TABLE IF NOT EXISTS DayScheduledata (id TEXT, Date TEXT, title TEXT, S_time TEXT, E_time TEXT, Memo TEXT)');
-            const stmt = db.prepare('INSERT INTO DayScheduledata VALUES (?, ?, ?, ?, ?, ?)');
-            stmt.run([id, Date, DayScheduledata[0], DayScheduledata[1], DayScheduledata[2], DayScheduledata[3]]);
-            stmt.finalize();
-        });
-        db.close();
-    } else {
-        const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
-        db.serialize(() => {
-            const stmt = db.prepare('UPDATE DayScheduledata SET ' + name + ' = ? WHERE id = ? and Date = ?', err => {
-                if (err) {
-                    throw err;
-                }
-                stmt.run(DayScheduledata, id, Date);
+    async function wait(){
+    return new Promise((resolve, reject) => {
+        var number = -1;
+        if (name == 'title') {
+            number = 0;
+        } else if (name == 'S_time') {
+            number = 1;
+        } else if (name == 'E_time') {
+            number = 2;
+        } else if (name == 'Memo') {
+            number = 3;
+        }
+        if (number == -1) {
+            const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
+            db.serialize(() => {
+                db.run('CREATE TABLE IF NOT EXISTS DayScheduledata (id TEXT, Date TEXT, title TEXT, S_time TEXT, E_time TEXT, Memo TEXT)');
+                const stmt = db.prepare('INSERT INTO DayScheduledata VALUES (?, ?, ?, ?, ?, ?)');
+                stmt.run([id, Date, DayScheduledata[0], DayScheduledata[1], DayScheduledata[2], DayScheduledata[3]]);
                 stmt.finalize();
+                resolve("success");
             });
-        });
-        db.close();
+            db.close();
+        } else {
+            const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
+            db.serialize(() => {
+                const stmt = db.prepare('UPDATE DayScheduledata SET ' + name + ' = ? WHERE id = ? and Date = ?', err => {
+                    if (err) {
+                        throw err;
+                    }
+                    stmt.run(DayScheduledata, id, Date);
+                    stmt.finalize();
+                    resolve("success");
+                });
+            });
+            db.close();
+        }
+    })
     }
-    return "success";
+    const result = await wait();
+    return result;    
 }
 
 async function DayInsert(id, Date) {
-    const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
-    db.serialize(() => {
-        const stmt = db.prepare('INSERT INTO DayScheduledata VALUES (?, ?, ?, ?, ?, ?)');
-        stmt.run(id, Date);
-        stmt.finalize();
-    });
-    db.close();
+    async function wait(){
+        return new Promise((resolve) => {
+            const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
+            db.serialize(() => {
+                const stmt = db.prepare('INSERT INTO DayScheduledata VALUES (?, ?, ?, ?, ?, ?)');
+                stmt.run(id, Date);
+                stmt.finalize();
+                resolve();
+            });
+            db.close();
+        })
+    }
+    const result = await wait();
+    return result;    
 }
 
 //-----------------------------------------------------------------------------------------------
