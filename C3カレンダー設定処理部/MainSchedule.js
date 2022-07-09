@@ -8,13 +8,13 @@ import * as update from "./UpdateSchedule.js";    //予定設定処理部
 ***function          :予定情報をデータ管理部に問い合わせる
  *******************************************************************/
 
-export function AskSchedule(ProcessName){
+export function AskSchedule(ProcessName, year, month, day){
     var Schedule = [];
     if (ProcessName == "Schedule_UI") {
-        Schedule.push(ask.CopyTitle());
-        Schedule.push(ask.CopyS_time());
-        Schedule.push(ask.CopyE_time());
-        Schedule.push(ask.CopyMemo());
+        Schedule.push(ask.CopyTitle(year, month, day));
+        Schedule.push(ask.CopyS_time(year, month, day));
+        Schedule.push(ask.CopyE_time(year, month, day));
+        Schedule.push(ask.CopyMemo(year, month, day));
     }
     return Schedule;
 }

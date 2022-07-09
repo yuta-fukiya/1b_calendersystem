@@ -1,19 +1,8 @@
 var xhr = new XMLHttpRequest();
 const url = new URL(window.location.href);
-
-// URLSearchParamsオブジェクトを取得
-const params = url.searchParams;
-
-// consoleに受け取ったパラメータを出力
-console.log(params);
-
-// パラメータから「username」を取得
-const id = params.get("id");
-const Year = params.get("year");
-const Month = params.get("month");
-const Day = params.get("day");
-
-const arrayData = Year + "/" + Month + "/" + Day;
+const userinfo = window.location.search.replace("?", "");
+var userinfo2 = userinfo.split(","); 
+const id = userinfo2[0];
 /*****************************************************************
 ***function name     :CopyDayScheduleName
 ***Designer          :太田　篤
@@ -21,7 +10,8 @@ const arrayData = Year + "/" + Month + "/" + Day;
 ***function          :予定名をスケジュール管理部に問い合わせる
  *******************************************************************/
 
-export function CopyTitle(){
+export function CopyTitle(year, month, day){
+    const arrayData = year + "/" + month + "/" + day;
     var result = "false";
     var data = [];
     data.push("ask");
@@ -41,7 +31,8 @@ export function CopyTitle(){
     return result;
 }
 
-export function CopyS_time() {
+export function CopyS_time(year, month, day) {
+    const arrayData = year + "/" + month + "/" + day;
     var result = "false";
     var data = [];
     data.push("ask");
@@ -61,7 +52,8 @@ export function CopyS_time() {
     return result;
 }
 
-export function CopyE_time() {
+export function CopyE_time(year, month, day) {
+    const arrayData = year + "/" + month + "/" + day;
     var result = "false";
     var data = [];
     data.push("ask");
@@ -81,7 +73,8 @@ export function CopyE_time() {
     return result;
 }
 
-export function CopyMemo() {
+export function CopyMemo(year, month, day) {
+    const arrayData = year + "/" + month + "/" + day;
     var result = "false";
     var data = [];
     data.push("ask");

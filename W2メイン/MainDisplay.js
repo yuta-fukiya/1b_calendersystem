@@ -133,7 +133,7 @@ function createSchedule(year, month, day){
     month += 1;
     var schedule = "<h2>"+month+"月"+day+"日"+"の予定"+"</h2>"+"<table><tr class = 'timeTable'>";
     /*ここらへんで予定情報，時間を取得する*/
-    var infomation = AskSchedule("Schedule_UI");
+    var infomation = AskSchedule("Schedule_UI", year, month, day);
 
     var size = infomation.length;
     console.log(infomation);
