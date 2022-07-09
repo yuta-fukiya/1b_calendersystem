@@ -28,6 +28,7 @@ export function SendTitle(scheduledata) {
     data.push("update");
     data.push("title");
     data.push(id);
+    data.push(arrayData);
     data.push(scheduledata);
     xhr.open("POST", "./DaySchedule.txt", false);
     xhr.send(data);
@@ -54,6 +55,7 @@ export function SendS_Time(scheduledata) {
     data.push("update");
     data.push("S_time");
     data.push(id);
+    data.push(arrayData);
     data.push(send_schedule);
     xhr.open("POST", "./DaySchedule.txt", true);
     xhr.send(data);
@@ -72,6 +74,7 @@ export function SendE_Time(scheduledata) {
     data.push("update");
     data.push("E_time");
     data.push(id);
+    data.push(arrayData);
     data.push(send_schedule);
     xhr.open("POST", "./DaySchedule.txt", true);
     xhr.send(data);
@@ -90,6 +93,7 @@ export function SendMemo(scheduledata) {
     data.push("update");
     data.push("Memo");
     data.push(id);
+    data.push(arrayData);
     data.push(send_schedule);
     xhr.open("POST", "./DaySchedule.txt", true);
     xhr.send(data);

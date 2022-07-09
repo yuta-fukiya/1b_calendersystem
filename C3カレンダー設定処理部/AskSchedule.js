@@ -27,6 +27,7 @@ export function CopyTitle(){
     data.push("ask");
     data.push("title");
     data.push(id);
+    data.push(arrayData);
     xhr.open("POST", "./DaySchedule.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200){
@@ -46,6 +47,7 @@ export function CopyS_time() {
     data.push("ask");
     data.push("S_time");
     data.push(id);
+    data.push(arrayData);
     xhr.open("POST", "./DaySchedule.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200) {
@@ -65,6 +67,7 @@ export function CopyE_time() {
     data.push("ask");
     data.push("E_time");
     data.push(id);
+    data.push(arrayData);
     xhr.open("POST", "./DaySchedule.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200) {
@@ -84,6 +87,7 @@ export function CopyMemo() {
     data.push("ask");
     data.push("Memo");
     data.push(id);
+    data.push(arrayData);
     xhr.open("POST", "./DaySchedule.txt", false);
     xhr.send(data);
     if (xhr.readyState == 4 && xhr.status == 200) {
