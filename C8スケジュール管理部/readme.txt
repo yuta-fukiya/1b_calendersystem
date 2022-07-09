@@ -12,14 +12,14 @@ id   year   month   JobName   WeekShift   MonthShift
 
 時間割
 
-1    2            3           4          5              6      7
-id   Class_name   Class_num   Unit_num   Teacher_name   wday   period
+1    2      3        4            5           6          7
+id   wday   period   Class_name   Class_num   Unit_num   Teacher_name
 
 --------------------------------------------------------------------------
 
 日付
 
-1　　2       3        4         5        6          7      8
-id   Title   f_hour   f_minute  t_hour   t_minute   memo   Date
+1　　2       3        4          5   
+id   title   S_time   E_time     Memo   
 
 --------------------------------------------------------------------------
