@@ -22,7 +22,6 @@ const arrayData = Year + "/" + Month + "/" + Day;
  *******************************************************************/
 
 export function SendTitle(scheduledata) {
-    var result;
     alert(id);
     var data = [];
     data.push("update");
@@ -32,12 +31,8 @@ export function SendTitle(scheduledata) {
     data.push(scheduledata);
     xhr.open("POST", "./DaySchedule.txt", false);
     xhr.send(data);
-
-    if (xhr.readyState === 4) {
-        if (xhr.status === 200 || xhr.status == 0) {
-            result = xhr.responseText;  //success or false
-            return result;
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
 
 }
@@ -59,14 +54,9 @@ export function SendS_Time(scheduledata) {
     data.push(send_schedule);
     xhr.open("POST", "./DaySchedule.txt", true);
     xhr.send(data);
-
-    if (xhr.readyState === 4) {
-        if (xhr.status === 200 || xhr.status == 0) {
-            result = xhr.responseText;  //success or false
-            return result;
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
-
 }
 
 export function SendE_Time(scheduledata) {
@@ -79,14 +69,9 @@ export function SendE_Time(scheduledata) {
     data.push(send_schedule);
     xhr.open("POST", "./DaySchedule.txt", true);
     xhr.send(data);
-
-    if (xhr.readyState === 4) {
-        if (xhr.status === 200 || xhr.status == 0) {
-            result = xhr.responseText;  //success or false
-            return result;
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
-
 }
 
 export function SendMemo(scheduledata) {
@@ -99,12 +84,7 @@ export function SendMemo(scheduledata) {
     data.push(send_schedule);
     xhr.open("POST", "./DaySchedule.txt", true);
     xhr.send(data);
-
-    if (xhr.readyState === 4) {
-        if (xhr.status === 200 || xhr.status == 0) {
-            result = xhr.responseText;  //success or false
-            return result;
-        }
+    if(xhr.readyState == 4 && xhr.status == 200){
+        return xhr.responseText;  //success or false
     }
-
 }
