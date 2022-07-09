@@ -2,9 +2,9 @@ import {AskJobs} from "/MainJobs.js";
 
 export function calculate(year, month, day) {
     var income = 0.0;
-    var Week = null; //AskJobs("WeekShift_UI");
+    var Week = AskJobs("WeekShift_UI", year, month);
     var Month = AskJobs("MonthShift_UI", year, month);
-    
+
     if (Week != null) {
         income += calWeek(year, month, day);
     }
@@ -95,7 +95,7 @@ function calWeek(year, month, day) {
         }
     }
     
-    for (let i=0; i<Day*2; i=i+2) {
+    for (let i=0; i<day*2; i=i+2) {
         start = Week[i%14].split(":");
         end = Week[(i+1)%14].split(":");
         var temp2 = income;
@@ -151,7 +151,6 @@ function calWeek(year, month, day) {
             income += TrasCosts;
         }
     }
-
     return income;
 }
 
@@ -291,7 +290,6 @@ function calMonth(year, month, day) {
             income += TrasCosts;
         }
     }
-
     return income;
 
 }
