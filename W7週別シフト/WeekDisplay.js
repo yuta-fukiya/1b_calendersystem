@@ -1,4 +1,8 @@
 import {AskJobs} from "./MainJobs.js";           //シフト設定処理部
+const userinfo = window.location.search.replace("?","");
+var userinfo2 = userinfo.split(",");
+const year = userinfo2[1];
+const month = userinfo2[2];
 /*****************************************************************
 ***function name     :Week_DataSave
 ***Designer          :吹谷　優太
@@ -9,7 +13,7 @@ import {AskJobs} from "./MainJobs.js";           //シフト設定処理部
 function Week_DataInit(){
     var week = localStorage.getItem("Week");
     if (week == null){
-        var weekshift = AskJobs("WeekShift_UI");    //週間シフト情報をシフト設定処理部に問い合わせ
+        var weekshift = AskJobs("WeekShift_UI", year, month);    //週間シフト情報をシフト設定処理部に問い合わせ
 
         document.getElementById("weekshift_sun_s").value = weekshift[0];  //日曜日の深夜給時間帯の始まり
         document.getElementById("weekshift_sun_f").value = weekshift[1];  //日曜日の深夜給時間帯の終わり
