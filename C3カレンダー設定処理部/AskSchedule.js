@@ -23,6 +23,7 @@ export function CopyTitle(){
     } else if (result == "none"){
         result = "予定なし";
     }       
+    alert(result);
     return result;
 }
 

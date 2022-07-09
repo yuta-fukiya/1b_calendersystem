@@ -14,6 +14,7 @@ export async function ReturnDayScheduleInformation(id, Date, name) {
                 }
                 if (name == 'title') {
                     DayScheduledata.push(row.title);
+                    console.log(DayScheduledata);
                     resolve(DayScheduledata);
                 } else if (name == 'S_time') {
                     DayScheduledata.push(row.S_time);
@@ -70,7 +71,7 @@ export async function UpdateDayScheduleInformation(id, name, DayScheduledata) {
         });
         db.close();
     }
-    return true;
+    return "success";
 }
 
 async function DayInsert(id) {

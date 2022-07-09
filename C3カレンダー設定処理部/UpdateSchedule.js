@@ -15,6 +15,7 @@ export function SendTitle(scheduledata) {
     data.push("title");
     data.push(id);
     data.push(scheduledata);
+    alert(scheduledata)
     xhr.open("POST", "./DaySchedule.txt", false);
     xhr.send(data);
 
@@ -34,14 +35,15 @@ export function SendTitle(scheduledata) {
 ***function          :予定時間をスケジュール管理部に送る
 ********************************************/
 
-export function SendS_Time(Pscheduledata) {
+export function SendS_Time(scheduledata) {
     var data = [];
-    alert(id);
+    //alert(id);
     var send_schedule = scheduledata.replace(/,/g, " ");
     data.push("update");
     data.push("S_time");
     data.push(id);
     data.push(send_schedule);
+    alert(send_schedule);
     xhr.open("POST", "./DaySchedule.txt", true);
     xhr.send(data);
     xhr.onreadystatechange = function () {
@@ -53,9 +55,9 @@ export function SendS_Time(Pscheduledata) {
     }
 }
 
-export function SendT_Time(scheduledata) {
+export function SendE_Time(scheduledata) {
     var data = [];
-    alert(id);
+    //alert(id);
     var send_schedule = scheduledata.replace(/,/g, " ");
     data.push("update");
     data.push("E_time");
@@ -74,7 +76,7 @@ export function SendT_Time(scheduledata) {
 
 export function SendMemo(scheduledata) {
     var data = [];
-    alert(id);
+    //alert(id);
     var send_schedule = scheduledata.replace(/,/g, " ");
     data.push("update");
     data.push("Memo");

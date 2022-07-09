@@ -136,12 +136,14 @@ function createSchedule(year, month, day){
     var infomation = AskSchedule("Schedule_UI");
 
     var size = infomation.length;
+    console.log(infomation);
 
+    
 
     for(var j = 0; j < size; j++){
         schedule += "<th>";
         for(var i = 0; i < 1; i++){
-            schedule += "<td>"+infomation[i]+"</td>";
+            schedule += "<td>"+infomation[j]+"</td>";
         }
         schedule += "</th>"
     }

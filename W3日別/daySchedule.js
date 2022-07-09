@@ -29,13 +29,13 @@ export function scheduleData_update() {
         scheduledata[3] = document.getElementById("memo").placeholder;
     }
 
-    UpdateSchedule(scheduledata, "schedule_UI");   //カレンダー設定処理部に収支系の情報をを送る
+    UpdateSchedule(scheduledata, "Schedule_UI");   //カレンダー設定処理部に収支系の情報をを送る
     //UpdateDaySchedule(localStorage.getItem("Week"), "Weekschedule_UI");
     // UpdateJobs(localStorage.setItem("Month"), "Monthschedule_UI");
     RemoveData();
     window.location.href = "./MainDisplay.html" + location.search;
   
-    alert('daySchedule.js/scheduleData_update');
+    //alert('daySchedule.js/scheduleData_update');
 
 }
 

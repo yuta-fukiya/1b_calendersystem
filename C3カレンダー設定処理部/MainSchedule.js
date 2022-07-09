@@ -28,13 +28,13 @@ export function AskSchedule(ProcessName){
 ********************************************/
 
 export function UpdateSchedule(Scheduledata, ProcessName){
-    alert("MainSchedule.js/UpdateSchedule");
+    //alert("MainSchedule.js/UpdateSchedule");
     if (ProcessName == "Schedule_UI") {
         update.SendTitle(Scheduledata[0]);
         update.SendS_Time(Scheduledata[1]);
-        update.SendE_minute(Scheduledata[2]);
+        update.SendE_Time(Scheduledata[2]);
         update.SendMemo(Scheduledata[3]);
     }
-   alert('if end');
+   //alert('if end');
 }
 
