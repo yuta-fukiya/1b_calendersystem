@@ -12,10 +12,10 @@ table{
     text-align: center;
   }
   td:first-child{
-    background-color: #f1d3d3;
+    background-color: #f5cece;
   }
   td:last-child{
-    background-color: rgb(205, 212, 241);
+    background-color: rgb(203, 208, 245);
   }
   th:first-child{
     color: red;
