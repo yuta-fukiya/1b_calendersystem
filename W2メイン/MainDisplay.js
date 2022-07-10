@@ -121,10 +121,10 @@ function createSchedule(year, month, day){
     var number = [0, 1, 2, 3, 4, 5, 6];
     var date = new Date(year, month, day+4);
     var date2 = number[date.getDay()];
-    alert(date2);
-    alert(shift_information2[date2]);
-    alert(shift_information2);
-    var shift_array = shift_information2.split(',');
+    //alert(date2);
+    //alert(shift_information2[date2]);
+    //alert(shift_information2);
+    var shift_array = shift_information2;
 
     for(var j = 0; j < size; j++){
         schedule += "<th>";
