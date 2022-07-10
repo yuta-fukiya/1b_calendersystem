@@ -15,17 +15,17 @@ function showtimetable () {
 
 function createTimeTable(){
     var timetable = "<table><tr calss='timetabletitle'>";
-    timetable += "<th>時限</th>";
+    timetable += "<th id='per'>時限</th>";
     for(var i=0;i<week.length;i++){
-        timetable += "<th>" + week[i] + "</th>";
+        timetable += "<th class='day'>" + week[i] + "</th>";
     }
     timetable += "</tr>";
     for(var i=1;i<=7;i++){
-        timetable += "<tr><th>" + i + "限</th>";
+        timetable += "<tr><th id='per'>" + i + "限</th>";
         for(var j=1;j<=7;j++){
-            timetable += "<th>";
+            timetable += "<th id='class'>";
             var timeTable = AskTimeTableJob(j,i);
-            timetable += "<a href = './timetabledetail.html?" + id + ","+j+","+i+"'>" + timeTable[0] + "\n" + timeTable[1] + "\n" + timeTable[2] + "\n" + timeTable[3] + "</a>";
+            timetable += "<a href = './timetabledetail.html?" + id + ","+j+","+i+"'>" + timeTable[0] + "<br>" + timeTable[1] + "コマ<br>" + timeTable[2] + "単位<br>" + timeTable[3] + "";
             timetable += "</th>";
         }
         timetable += "</tr>";
