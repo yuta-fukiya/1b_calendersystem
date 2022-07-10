@@ -1,7 +1,6 @@
 var xhr = new XMLHttpRequest();
 const userinfo = window.location.search.replace("?","");
 var userinfo2 = userinfo.split(",");
-const id = userinfo2[0];
 /*****************************************************************
 ***function name     :CopyJobName
 ***Designer          :吹谷　優太
@@ -14,7 +13,7 @@ export function CopyJobName(year, month){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("Jobname");
-    data.push(id);
+    data.push(userinfo2[0]);
     data.push(year);
     data.push(month);
     xhr.open("POST", "./schedule_shift.txt", false);
@@ -43,7 +42,7 @@ export function CopyJobTime(ProcessName, year, month){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push(ProcessName);
-    data.push(id);
+    data.push(userinfo2[0]);
     data.push(year);
     data.push(month);
     xhr.open("POST", "./schedule_shift.txt", false);
@@ -57,8 +56,10 @@ export function CopyJobTime(ProcessName, year, month){
         for (var i = 0; i < 14; i++){
             result_shift.push("00:00");
         }
-    } else if (result === "none" && ProcessName == "MonthShift"){
-    
+    } else if (result == "none" && ProcessName == "MonthShift"){
+        for (var i = 0; i < 62; i++){
+            result_shift.push("00:00");
+        }
     } else {
         result_shift = result.split(" ");
     }
@@ -77,7 +78,7 @@ export function CopyHourWages(year, month){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("HourWages");
-    data.push(id);
+    data.push(userinfo2[0]);
     data.push(year);
     data.push(month);
     xhr.open("POST", "./salary.txt", false);
@@ -103,7 +104,7 @@ export function CopyTrasCosts(year, month){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("TrasCosts");
-    data.push(id);
+    data.push(userinfo2[0]);
     data.push(year);
     data.push(month);
     xhr.open("POST", "./salary.txt", false);
@@ -129,7 +130,7 @@ export function CopyNightWages(year, month){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("NightWages");
-    data.push(id);
+    data.push(userinfo2[0]);
     data.push(year);
     data.push(month);
     xhr.open("POST", "./salary.txt", false);
@@ -154,7 +155,7 @@ export function CopyNightWagesRange(year, month){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("NightWagesRange");
-    data.push(id);
+    data.push(userinfo2[0]);
     data.push(year);
     data.push(month);
     xhr.open("POST", "./salary.txt", false);
@@ -180,7 +181,7 @@ export function CopyOvertime(year, month){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("Overtime");
-    data.push(id);
+    data.push(userinfo2[0]);
     data.push(year);
     data.push(month);
     xhr.open("POST", "./salary.txt", false);

@@ -54,6 +54,11 @@ const AskTimeTable_js = fs.readFileSync('./C5時間割設定処理部/AskTimeTab
 const TimeTableMain_js = fs.readFileSync('./C5時間割設定処理部/TimeTableMain.js', 'UTF-8');
 const UpdateTimeTable_js = fs.readFileSync('./C5時間割設定処理部/UpdateTimeTable.js', 'UTF-8');
 
+const AskSalaryData_js = fs.readFileSync('./C6収支計算処理部/AskSalaryData.js', 'UTF-8');
+const CalculateSalary_js = fs.readFileSync('./C6収支計算処理部/CalculateSalary.js', 'UTF-8');
+const MainSalary_js = fs.readFileSync('./C6収支計算処理部/MainSalary.js', 'UTF-8');
+const UpdateSalaryData_js = fs.readFileSync('./C6収支計算処理部/UpdateSalaryData.js', 'UTF-8');
+
 var login_txt;
 var schedule_shift_txt;
 var DaySchedule_txt;
@@ -280,6 +285,30 @@ function RouteSetting(req, res) {
     case '/TimeTableMain.js':
         res.writeHead(200, {'Content-Type': 'text/javascript'});
         res.write(TimeTableMain_js);
+        res.end();
+        break;
+        
+    case '/MainSalary.js':
+        res.writeHead(200, {'Content-Type': 'text/javascript'});
+        res.write(MainSalary_js);
+        res.end();
+        break;
+
+    case '/AskSalaryData.js':
+        res.writeHead(200, {'Content-Type': 'text/javascript'});
+        res.write(AskSalaryData_js);
+        res.end();
+        break;
+
+    case '/UpdateSalaryData.js':
+        res.writeHead(200, {'Content-Type': 'text/javascript'});
+        res.write(UpdateSalaryData_js);
+        res.end();
+        break;
+
+    case '/CalculateSalary.js':
+        res.writeHead(200, {'Content-Type': 'text/javascript'});
+        res.write(CalculateSalary_js);
         res.end();
         break;
 

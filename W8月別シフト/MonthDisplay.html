@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="MonthDisplay.css">
-    <script src="MonthDisplay.js"></script>
+    <script src="MonthDisplay.js" type="module">
+        import {back} from "./MonthDisplay.js";
+    </script>
     <title>月のシフト設定画面</title>
 </head>
 <body>
@@ -12,14 +14,14 @@
 
         <h1 id="header"></h1>
     
-        <div id="calendar"></div>
+        <div id="shiftmonth"></div>
 
+        <div id="calendar"></div>
+        <br>
         <div id="Button">
-            <button id="prev" onclick="prev()">‹</button>
-            <button id="next" onclick="next()">›</button>
-            <!--<button id="back" onclick="location.href='../W6シフト/ShiftDisplay.html'">戻る</button>-->
             <button id="back" onclick="back()">戻る</button>
         </div>
     </div>
+
 </body>
 </html>

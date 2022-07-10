@@ -16,7 +16,7 @@ export function AskJobs(ProcessName, year, month){
         Shift.push(ask.CopyTrasCosts(year, month));
         Shift.push(ask.CopyNightWages(year, month));
         Shift.push(ask.CopyOvertime(year, month));
-        var NightWages_time = ask.CopyNightWagesRange().split(" ");    //データベースから参照した情報を分割する
+        var NightWages_time = ask.CopyNightWagesRange(year, month).split(" ");    //データベースから参照した情報を分割する
         Shift.push(NightWages_time[0]);
         Shift.push(NightWages_time[1]);
     } else if (ProcessName == "WeekShift_UI") {

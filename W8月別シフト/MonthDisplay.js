@@ -1,31 +1,33 @@
+import {AskJobs} from "./MainJobs.js";  
+
 const week = ["日", "月", "火", "水", "木", "金", "土"];
-const today = new Date();
-var showDate = new Date(today.getFullYear(), today.getMonth(), 1);
+const userinfo = window.location.search.replace("?","");
+var userinfo2 = userinfo.split(",");
+const year = userinfo2[1];
+const month = userinfo2[2];
+var showDate = new Date(year, month-1, 1);
+var main_count = 0;
 
 window.onload = function () {
-    showProcess(today, calendar);
+    var month_shift = localStorage.getItem("Month");
+    var month_shift2;
+    if (month_shift == null){
+        month_shift2 = AskJobs("MonthShift_UI", year, month);
+    } else {
+        month_shift2 = month_shift.split(",");
+    } 
+    showProcess(showDate, month_shift2);
 };
 
-function prev(){
-    showDate.setMonth(showDate.getMonth() - 1);
-    showProcess(showDate);
-}
-
-function next(){
-    showDate.setMonth(showDate.getMonth() + 1);
-    showProcess(showDate);
-}
-
-function showProcess(date) {
+function showProcess(date, month_shift) {
     var year = date.getFullYear();
     var month = date.getMonth();
-    document.querySelector('#header').innerHTML = year + "年 " + (month + 1) + "月";
-
-    var calendar = createProcess(year, month);
+    document.querySelector('#header').innerHTML = year + "年 " + (month+1)+ "月";
+    var calendar = createProcess(year, month, month_shift);
     document.querySelector('#calendar').innerHTML = calendar;
 }
 
-function createProcess(year, month) {
+function createProcess(year, month, month_shift) {
     var calendar = "<table><tr class='dayOfWeek'>";
     for (var i = 0; i < week.length; i++) {
         calendar += "<th>" + week[i] + "</th>";
@@ -34,10 +36,11 @@ function createProcess(year, month) {
 
     var count = 0;
     var startDayOfWeek = new Date(year, month, 1).getDay();
-    var endDate = new Date(year, month + 1, 0).getDate();
+    var endDate = new Date(year, month+1, 0).getDate();
     var lastMonthEndDate = new Date(year, month, 0).getDate();
     var row = Math.ceil((startDayOfWeek + endDate) / week.length);
-
+    var startId;
+    var endId;
     for (var i = 0; i < row; i++) {
         calendar += "<tr>";
         for (var j = 0; j < week.length; j++) {
@@ -45,25 +48,42 @@ function createProcess(year, month) {
                 calendar += "<td class='disabled'>" + (lastMonthEndDate - startDayOfWeek + j + 1) + "</td>";
             } else if (count >= endDate) {
                 count++;
-                calendar += "<td class='disabled'>" + (count - endDate) + "</td>";
+                calendar += "<td class='disabled'>" + (count - endDate) +"</td>";
             } else {
+                startId = "monthshift_" + (main_count*2) + "_s";
+                endId = "monthshift_" + (main_count*2+1) + "_f";
+                if (month_shift[main_count*2]!=month_shift[main_count*2+1]){
+                    calendar += "<td class='exist'>";
+                } else if ( (month_shift[main_count*2] == month_shift[main_count*2+1]) && (month_shift[main_count*2] != "00:00") ){
+                    calendar += "<td class='time'>";
+                    month_shift[main_count*2] = "00:00";
+                    month_shift[main_count*2+1] = "00:00";
+                } else {
+                    calendar += "<td class='time'>";
+                }
+                calendar += (count+1) +  "<br><input type='time' value='" + month_shift[main_count*2] + "' id='" + startId + "'><br>～<br><input type='time' value='"+ month_shift[main_count*2+1] +"' id='" + endId + "'></td>";
                 count++;
-                calendar += "<td onclick='clickBtn()'>" + count + "</td>";
+                main_count++;
             }
         }
         calendar += "</tr>";
     }
+    calendar += "</table>";
+
     return calendar;
 }
 
-function clickBtn(){
-    const start = prompt("開始時刻","9:00");
-    if(start==null) return;
-    const end = prompt("終了時刻","18:00");
-    if(end==null) return;
-
-}
-
-function back(){
+export function back(){
+    var MonthShift = [];
+    var startId;
+    var endId;
+    for (var i=0; i<main_count; i++){
+        startId = '#monthshift_' + (i*2) + '_s';
+        endId = '#monthshift_' + ((i*2)+1) + '_f';
+        MonthShift.push(document.querySelector(startId).value);
+        MonthShift.push(document.querySelector(endId).value);
+    }
+    localStorage.setItem("Month", MonthShift);
     window.close();
 }
+window.back = back;

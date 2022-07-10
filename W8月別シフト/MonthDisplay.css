@@ -2,75 +2,83 @@
 
 .wrapper{
     width: 80%;
-    margin: 0 auto;
+
     color: #666;
 }
-#header {
+#header, h2 {
     text-align: center;
     font-size: 24px;
     width: 100%;
-    margin: 1rem 0 0;
 }
 
 #calendar {
     text-align: center;
     width: 100%;
 }
+
+#button {
+    width: 100%;
+}
+
 table {
     outline: 2px solid #ddd;
+    border-spacing: 0;
     border-collapse: collapse;
-    width: 100%;
 }
 th {
     color: #000;
-}
-th, td {
     outline: 1px solid #ddd;
-    padding-top: 10px;
-    padding-bottom: 10px;
     text-align: center;
 }
 td {
-    padding-bottom: 30px;
+    outline: 1px solid #ddd;
+    text-align: center;
+    padding: 20px;
 }
 
+th:first-child {
+    color: red;
+}
+
+th:last-child {
+    color: blue;
+}
 td:first-child {
     color: red;
+    background-color: #f5e3e3;
 }
 
 td:last-child {
     color: blue;
+    background-color: rgb(226, 230, 244);
 }
-
 td.disabled {
     color: #ccc;
 }
-
-#Button {
-    position: relative;
+td.exist{
+    background-color: rgb(243, 241, 206);
+}
+.exist input{
+    width: 75px;
+    padding: 1px;
+    font-size: 15px;
+}
+.time input{
+    width: 75px;
+    padding: 1px;
+    font-size: 15px;
 }
 #Button Button{
-    border: 1px solid rgb(99, 99, 99);
-    font-size: 1rem;
-    padding: 0.5rem 2rem;
-    margin: 1rem 0;
+    width: 100px;
+    padding: 3px;
+    font-size: large;
+    background-color: #46ee8c;
+    cursor: pointer;
 }
 #Button button:hover{
-    background-color: #C0C0C0;
-    border-color: #C0C0C0;
-}
-#prev {
-    margin-left: 10%;
-    float: left;
-}
-#next {
-    float: left;
-}
-
-#back {
-    float: right;
+    background-color: #b4ffd9;
 }
 
 #title {
-    background: linear-gradient(transparent 70%, #71b4f0 70%);
+    background: linear-gradient(transparent 70%, #46ee8c 70%);
 }

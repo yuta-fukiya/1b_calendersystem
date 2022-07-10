@@ -21,7 +21,7 @@ export function CopyClass(wday, period){
         alert("通信に失敗しました");
     }
     else if(result == "none") {
-        result = " ";
+        result = "----";
     }
     return result;
 }
@@ -44,7 +44,7 @@ export function CopyNumClasses(wday, period){
         alert("通信に失敗しました");
     }
     else if(result == "none") {
-        result = " ";
+        result = "--";
     }
     return result;
 }
@@ -66,7 +66,7 @@ export function CopyUnit(wday, period){
         alert("通信に失敗しました");
     }
     else if(result == "none") {
-        result = " ";
+        result = "--";
     }
     return result;
 }

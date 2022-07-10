@@ -20,7 +20,7 @@ p{
     border-collapse: collapse;
 }
 
-table.timetable {
+table {
     padding: 10px;
     width: 1000px;
     background-color: rgb(217, 217, 233);
@@ -29,22 +29,26 @@ table.timetable {
     border-collapse: collapse;
 }
 
-.day {
-    background-color: #0004ff;
-    color: aliceblue;
-    font-weight: 100;
-    border: solid 1px #000000;
-    empty-cells: show;
-}
-
-th {
-    width: 1px;
+th#class {
     background-color: aqua;
     border: solid 1px #000000;
     empty-cells: show;
 }
 
-td {
+th.day {
+    background-color: #0004ff;
+    color: aliceblue;
     border: solid 1px #000000;
     empty-cells: show;
+}
+
+th#per {
+    background-color: #c4c4c4;
+    border: solid 1px #000000;
+    empty-cells: show;
+}
+
+a {
+    display: block;
+    text-decoration: none;
 }
