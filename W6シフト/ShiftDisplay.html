@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="main">
-        <h1>シフト設定</h1>
+        <h1 id="header"></h1>
         <br>
         <label>アルバイト名　</label>
         <input type="text" id="JobName" class="JobName">
@@ -53,5 +53,13 @@
         <input type="button" value="戻る" onclick="RemoveData();history.back(-1)">　　　　
         <input type="button" value="完了" onclick="ShiftData_update()">
     </div>
+    <script>
+        const userinfo = window.location.search.replace("?","");
+        var userinfo2 = userinfo.split(",");
+        const year = userinfo2[1];
+        const month = userinfo2[2];
+
+        document.querySelector('#header').innerHTML = "シフト設定　" + year + "年 " + month + "月分";
+    </script>
 </body>
 </html>
