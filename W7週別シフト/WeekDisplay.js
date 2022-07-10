@@ -11,43 +11,28 @@ const month = userinfo2[2];
 *******************************************************************/
 
 function Week_DataInit(){
-    var week = localStorage.getItem("Week");
+    var startId;
+    var endId;
+    var week = localStorage.getItem("Week");                        //ローカルストレージに問い合わせ
+    var week_name = ["sun", "mon", "tue", "wed", "thu", "fri", "sut"];   //曜日の配列
     if (week == null){
-        var weekshift = AskJobs("WeekShift_UI", year, month);    //週間シフト情報をシフト設定処理部に問い合わせ
-
-        document.getElementById("weekshift_sun_s").value = weekshift[0];  //日曜日の深夜給時間帯の始まり
-        document.getElementById("weekshift_sun_f").value = weekshift[1];  //日曜日の深夜給時間帯の終わり
-        document.getElementById("weekshift_mon_s").value = weekshift[2];  //月曜日の深夜給時間帯の始まり
-        document.getElementById("weekshift_mon_f").value = weekshift[3];  //月曜日の深夜給時間帯の終わり
-        document.getElementById("weekshift_tue_s").value = weekshift[4];  //火曜日の深夜給時間帯の始まり
-        document.getElementById("weekshift_tue_f").value = weekshift[5];  //火曜日の深夜給時間帯の終わり
-        document.getElementById("weekshift_wed_s").value = weekshift[6];  //水曜日の深夜給時間帯の始まり
-        document.getElementById("weekshift_wed_f").value = weekshift[7];  //水曜日の深夜給時間帯の終わり
-        document.getElementById("weekshift_thu_s").value = weekshift[8];  //木曜日の深夜給時間帯の始まり
-        document.getElementById("weekshift_thu_f").value = weekshift[9];  //木曜日の深夜給時間帯の終わり
-        document.getElementById("weekshift_fri_s").value = weekshift[10];  //金曜日の深夜給時間帯の始まり
-        document.getElementById("weekshift_fri_f").value = weekshift[11];  //金曜日の深夜給時間帯の始まり
-        document.getElementById("weekshift_sut_s").value = weekshift[12];  //土曜日の深夜給時間帯の終わり
-        document.getElementById("weekshift_sut_f").value = weekshift[13];  //土曜日の深夜給時間帯の終わり
-       
+        var weekshift = AskJobs("WeekShift_UI", year, month);       //週間シフト情報をシフト設定処理部に問い合わせ
+        for (var i = 0; i < 7; i++){
+            startId = "weekshift_" + week_name[i] + "_s";
+            endId = "weekshift_" + week_name[i] + "_f";
+            document.getElementById(startId).value = weekshift[i*2];  //日曜日から土曜日の深夜給になる時間帯の始まり
+            document.getElementById(endId).value = weekshift[i*2+1];  //日曜日から土曜日の深夜給になる時間帯の終わり
+        }
     } else {
         var week2 = week.split(",");
-        document.getElementById("weekshift_sun_s").value = week2[0];  //日曜日の深夜給時間帯の始まり
-        document.getElementById("weekshift_sun_f").value = week2[1];  //日曜日の深夜給時間帯の終わり
-        document.getElementById("weekshift_mon_s").value = week2[2];  //月曜日の深夜給時間帯の始まり
-        document.getElementById("weekshift_mon_f").value = week2[3];  //月曜日の深夜給時間帯の終わり
-        document.getElementById("weekshift_tue_s").value = week2[4];  //火曜日の深夜給時間帯の始まり
-        document.getElementById("weekshift_tue_f").value = week2[5];  //火曜日の深夜給時間帯の終わり
-        document.getElementById("weekshift_wed_s").value = week2[6];  //水曜日の深夜給時間帯の始まり
-        document.getElementById("weekshift_wed_f").value = week2[7];  //水曜日の深夜給時間帯の終わり
-        document.getElementById("weekshift_thu_s").value = week2[8];  //木曜日の深夜給時間帯の始まり
-        document.getElementById("weekshift_thu_f").value = week2[9];  //木曜日の深夜給時間帯の終わり
-        document.getElementById("weekshift_fri_s").value = week2[10];  //金曜日の深夜給時間帯の始まり
-        document.getElementById("weekshift_fri_f").value = week2[11];  //金曜日の深夜給時間帯の始まり
-        document.getElementById("weekshift_sut_s").value = week2[12];  //土曜日の深夜給時間帯の終わり
-        document.getElementById("weekshift_sut_f").value = week2[13];  //土曜日の深夜給時間帯の終わり
-        
-}
+        var weekshift = AskJobs("WeekShift_UI", year, month);       //週間シフト情報をシフト設定処理部に問い合わせ
+        for (var i = 0; i < 7; i++){
+            startId = "weekshift_" + week_name[i] + "_s";
+            endId = "weekshift_" + week_name[i] + "_f";
+            document.getElementById(startId).value = week2[i*2];  //日曜日から土曜日の深夜給になる時間帯の始まり
+            document.getElementById(endId).value = week2[i*2+1];  //日曜日から土曜日の深夜給になる時間帯の終わり
+        }
+    }
 }
 window.onload = Week_DataInit;
      
@@ -58,21 +43,20 @@ window.onload = Week_DataInit;
 ***function          :シフト設定処理部に週別シフト情報を送る
 ********************************************/
 function Week_DataSave(){
+    var startId;
+    var endId;
     var weekshift = [];   //週間シフト情報をまとめるための配列
-    weekshift.push(document.getElementById("weekshift_sun_s").value);
-    weekshift.push(document.getElementById("weekshift_sun_f").value);
-    weekshift.push(document.getElementById("weekshift_mon_s").value);
-    weekshift.push(document.getElementById("weekshift_mon_f").value);
-    weekshift.push(document.getElementById("weekshift_tue_s").value);
-    weekshift.push(document.getElementById("weekshift_tue_f").value);
-    weekshift.push(document.getElementById("weekshift_wed_s").value);
-    weekshift.push(document.getElementById("weekshift_wed_f").value);
-    weekshift.push(document.getElementById("weekshift_thu_s").value); 
-    weekshift.push(document.getElementById("weekshift_thu_f").value);
-    weekshift.push(document.getElementById("weekshift_fri_s").value);
-    weekshift.push(document.getElementById("weekshift_fri_f").value);
-    weekshift.push(document.getElementById("weekshift_sut_s").value);
-    weekshift.push(document.getElementById("weekshift_sut_f").value);
+    var week_name = ["sun", "mon", "tue", "wed", "thu", "fri", "sut"];   //曜日の配列
+    for (var i = 0; i < 7; i++){
+        startId = "weekshift_" + week_name[i] + "_s";
+        endId = "weekshift_" + week_name[i] + "_f";
+        weekshift.push(document.getElementById(startId).value);  //日曜日から土曜日の深夜給になる時間帯の始まり
+        weekshift.push(document.getElementById(endId).value);    //日曜日から土曜日の深夜給になる時間帯の終わり
+        if ( (weekshift[i*2] == weekshift[i*2+1]) && (weekshift[i*2] != "00:00") ){
+            weekshift[i*2] = "00:00";
+            weekshift[i*2+1] = "00:00";
+        }
+    }
     localStorage.setItem("Week", weekshift);
     window.close();
 }
