@@ -138,7 +138,7 @@ function createSchedule(year, month, day){
 
     
     schedule+="<th>";
-    schedule+="<td>"+shift_information+"</td>";
+    schedule+="<td>"+shift_information[0]+"</td>";
     schedule+="<td>"+shift_array[date2*2]+"</td>";
     schedule += "<td>" + shift_array[date2*2+1] + "</td>";
     //schedule+="<td>"+shift_information3+"</td>";
