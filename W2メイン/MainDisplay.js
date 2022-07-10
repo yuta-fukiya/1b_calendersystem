@@ -1,4 +1,5 @@
 import { AskSchedule } from "./MainSchedule.js";
+import { AskJobs } from "./MainJobs.js";
 import { AskSalary, SetIncome} from "/MainSalary.js";
 
 var userinfo  = window.location.search.replace("?","");
@@ -107,20 +108,38 @@ function createSchedule(year, month, day){
     month += 1;
     var schedule = "<h2>"+month+"月"+day+"日"+"の予定"+"</h2>"+"<table><tr class = 'timeTable'>";
     /*ここらへんで予定情報，時間を取得する*/
-    var infomation = AskSchedule("Schedule_UI", year, month, day);
+    var schedule_information = AskSchedule("Schedule_UI", year, month, day);
+    var shift_information2 = AskJobs("WeekShift_UI", year, month);
+    var shift_information = AskJobs("Shift_UI", year, month);
+    var shift_information3 = AskJobs("MonthShift_UI", year, month); 
 
-    var size = infomation.length;
-    console.log(infomation);
+    var size = schedule_information.length;
+    console.log(schedule_information);
 
+    console.log(shift_information);
     
+    var number = [0, 1, 2, 3, 4, 5, 6];
+    var date = new Date(year, month, day+4);
+    var date2 = number[date.getDay()];
+    var shift_array = shift_information2;
 
     for(var j = 0; j < size; j++){
         schedule += "<th>";
         for(var i = 0; i < 1; i++){
-            schedule += "<td>"+infomation[j]+"</td>";
+            schedule += "<td>"+schedule_information[j]+"</td>";
         }
         schedule += "</th>"
     }
+
+    schedule += "<table><tr class = 'timeTable'>"
+
+    
+    schedule+="<th>";
+    schedule+="<td>"+shift_information[0]+"</td>";
+    schedule+="<td>"+shift_array[date2*2]+"</td>";
+    schedule += "<td>" + shift_array[date2*2+1] + "</td>";
+    //schedule+="<td>"+shift_information3+"</td>";
+    schedule+="</th>"
 
     schedule += "<a class ='schedule' href = 'daySchedule.html?id="+id+"&year="+year+"&month="+month+"&day="+day+"''>新たな予定を設定</a><br>"
     schedule += "<a class ='shift' href = 'ShiftDisplay.html?" + id +","+year+","+month+ "'>新たなシフトを設定</a><br>"

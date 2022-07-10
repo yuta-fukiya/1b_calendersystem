@@ -1,6 +1,13 @@
 div.scheduleSet {
-    outline: solid 1px #696969;
+    outline: solid 3px #696969;
     width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p{
+    text-align: center;
+    color: rgb(0, 0, 0);
 }
 
 div.scheduleSet p {
@@ -52,9 +59,31 @@ div.colorSet {
 }
 
 .button button {
+    margin-top: 20px;
     font-size: 18px;
     margin-right: 50px;
     margin-left: 50px;
     width: 150px;
     height: 50px;
+}
+
+.name {
+   text-align: center;
+}
+
+.time {
+   text-align: center;
+}
+
+.memo {
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#memo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
