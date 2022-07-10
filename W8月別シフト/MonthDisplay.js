@@ -22,7 +22,6 @@ window.onload = function () {
 function showProcess(date, month_shift) {
     var year = date.getFullYear();
     var month = date.getMonth();
-    document.querySelector('#header').innerHTML = year + "年 12月";
     document.querySelector('#header').innerHTML = year + "年 " + (month+1)+ "月";
     var calendar = createProcess(year, month, month_shift);
     document.querySelector('#calendar').innerHTML = calendar;
@@ -53,7 +52,16 @@ function createProcess(year, month, month_shift) {
             } else {
                 startId = "monthshift_" + (main_count*2) + "_s";
                 endId = "monthshift_" + (main_count*2+1) + "_f";
-                calendar += "<td class='time'>" + (count+1) +  "<br><input type='time' value='" + month_shift[main_count*2] + "' id='" + startId + "'><br>～<br><input type='time' value='"+ month_shift[main_count*2+1] +"' id='" + endId + "'></td>";
+                if (month_shift[main_count*2]!=month_shift[main_count*2+1]){
+                    calendar += "<td class='exist'>";
+                } else if ( (month_shift[main_count*2] == month_shift[main_count*2+1]) && (month_shift[main_count*2] != "00:00") ){
+                    calendar += "<td class='time'>";
+                    month_shift[main_count*2] = "00:00";
+                    month_shift[main_count*2+1] = "00:00";
+                } else {
+                    calendar += "<td class='time'>";
+                }
+                calendar += (count+1) +  "<br><input type='time' value='" + month_shift[main_count*2] + "' id='" + startId + "'><br>～<br><input type='time' value='"+ month_shift[main_count*2+1] +"' id='" + endId + "'></td>";
                 count++;
                 main_count++;
             }

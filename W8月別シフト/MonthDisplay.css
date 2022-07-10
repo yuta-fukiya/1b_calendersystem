@@ -55,6 +55,14 @@ td:last-child {
 td.disabled {
     color: #ccc;
 }
+td.exist{
+    background-color: rgb(243, 241, 206);
+}
+.exist input{
+    width: 75px;
+    padding: 1px;
+    font-size: 15px;
+}
 .time input{
     width: 75px;
     padding: 1px;
