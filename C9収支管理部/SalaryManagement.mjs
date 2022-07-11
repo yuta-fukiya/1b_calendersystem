@@ -1,10 +1,19 @@
+/*******************************************************************
+***  File Name    : SalaryManagement.mjs
+***  Version      : V1.5
+***  Designer     : 吹谷優太
+***  Date         : 2022.7.11
+***  Purpose      : ID,パスワードを登録・参照する
+*******************************************************************/
+
 import sqlite3 from "sqlite3";
 
 /*****************************************************************
-***function name     :AskWages
-***Designer          :吹谷　優太
-***Date              :
-***function          :給料情報を参照する
+***function name     : AskWages
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 給料情報を参照する
+***Return:           : 参照結果
  *******************************************************************/
 export async function AskWages(id, year, month, DataName){
     var result = await CheckID(id, year, month);                                      //ユーザIDと一致するレコードがあるかを確認
@@ -50,10 +59,11 @@ export async function AskWages(id, year, month, DataName){
 }
 
 /*****************************************************************
-***function name     :UpdateWages
-***Designer          :吹谷　優太
-***Date              :
-***function          :給料情報を更新する
+***function name     : UpdateWages
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 給料情報を更新する
+***Return            : 更新結果
  *******************************************************************/
 export async function UpdateWages(id, year, month, DataName, Data){
     async function check2(){
@@ -79,10 +89,11 @@ export async function UpdateWages(id, year, month, DataName, Data){
 }
 
 /*****************************************************************
-***function name     :CheckID
-***Designer          :吹谷　優太
-***Date              :
-***function          :ユーザIDと一致するレコードがあるか確認する
+***function name     : CheckID
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : ユーザIDと一致するレコードがあるか確認する
+***Return            : 確認結果
  *******************************************************************/
 async function CheckID(id, year, month){
     async function check2(){

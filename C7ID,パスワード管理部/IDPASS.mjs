@@ -1,10 +1,18 @@
+/*******************************************************************
+***  File Name    : IDPASS.mjs
+***  Version      : V1.1
+***  Designer     : 吹谷優太
+***  Date         : 2022.5.31
+***  Purpose      : ID,パスワードを登録・参照する
+*******************************************************************/
 import sqlite3 from "sqlite3";
 
 /*****************************************************************
-***function name     :RegistUser
-***Designer          :吹谷　優太
-***Date              :
-***function          :新規ユーザ情報を登録する
+***function name     : RegistUser
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 新規ユーザ情報を登録する
+***return            : 登録結果
  *******************************************************************/
 export async function RegistUser(userid, userpass){
   var result = await CheckID(userid);                       //データベースに入力したIDが存在するか確認
@@ -22,10 +30,11 @@ export async function RegistUser(userid, userpass){
 }
 
 /*****************************************************************
-***function name     :CheckUser
-***Designer          :吹谷　優太
-***Date              :
-***function          :データベースに入力データがあるかを確かめる
+***function name     : CheckUser
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : データベースに入力データがあるかを確かめる
+***Return            : 参照結果
  *******************************************************************/
 export async function CheckUser(userid, userpass){
   async function check2(){
@@ -52,10 +61,11 @@ export async function CheckUser(userid, userpass){
 }
 
 /*****************************************************************
-***function name     :CheckID
-***Designer          :吹谷　優太
-***Date              :
-***function          :入力したIDがデータベースに存在するかを確認する
+***function name     : CheckID
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 入力したIDがデータベースに存在するかを確認する
+***Return            : 確認結果
  *******************************************************************/
 async function CheckID(userid){
   async function check2(){

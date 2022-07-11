@@ -1,11 +1,20 @@
+/*******************************************************************
+***  File Name    : MainJobs.js
+***  Version      : V1.5
+***  Designer     : 吹谷優太
+***  Date         : 2022.7.11
+***  Purpose      : シフト設定処理部の情報をまとめて返す
+*******************************************************************/
+
 import * as ask from "./AskShiftData.js";      //シフト設定処理部
 import * as update from "./UpdateShiftData.js";    //シフト設定処理部
 
 /*****************************************************************
-***function name     :AskJobs
-***Designer          :吹谷　優太
-***Date              :
-***function          :シフト情報をデータ管理部に問い合わせる
+***function name     : AskJobs
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : シフト情報をデータ管理部に問い合わせる
+***Return            : シフト情報
  *******************************************************************/
 
 export function AskJobs(ProcessName, year, month){
@@ -29,10 +38,10 @@ export function AskJobs(ProcessName, year, month){
 }
 
 /*******************************************
-***function name     :UpdateJobs
-***Designer          :吹谷　優太
-***Date              :
-***function          :シフト情報をに週別シフトのデータを送る
+***function name     : UpdateJobs
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : シフト情報をに週別シフトのデータを送る
 ********************************************/
 
 export function UpdateJobs(shiftdata, ProcessName){

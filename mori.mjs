@@ -1,3 +1,11 @@
+/*******************************************************************
+***  File Name    : mori.mjs
+***  Version      : V1.7
+***  Designer     : 吹谷　優太
+***  Date         : 2022.7.11
+***  Purpose      : もりもりカレンダーシステムのファイルを読み取って実行
+*******************************************************************/
+
 import * as http from "http";
 import * as fs from "fs";
 import * as url from "url";
@@ -76,6 +84,12 @@ server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
 
+/********************************************************* 
+***function name  : RouteSetting
+***Designer       : 吹谷　優太
+***Date           : 2022.7.11
+***Function       : ファイルを読み込む
+**********************************************************/
 function RouteSetting(req, res) {
   const url_parts = url.parse(req.url);
   switch (url_parts.pathname) {

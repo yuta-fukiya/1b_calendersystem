@@ -1,11 +1,20 @@
+/*******************************************************************
+***  File Name    : UpdateShiftData.js
+***  Version      : V1.5
+***  Designer     : 吹谷優太
+***  Date         : 2022.7.11
+***  Purpose      : シフト情報を管理部に送る
+*******************************************************************/
+
 var xhr = new XMLHttpRequest();
-const userinfo = window.location.search.replace("?","");
-var userinfo2 = userinfo.split(",");       //ユーザIDの読み取り
+const userinfo = window.location.search.replace("?","");    //URLパラメータを取得する
+var userinfo2 = userinfo.split(",");                        //ユーザIDの読み取り
+
 /*****************************************************************
-***function name     :SendJobName
-***Designer          :吹谷　優太
-***Date              :
-***function          :アルバイト名をスケジュール管理部に送る
+***function name     : SendJobName
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : アルバイト名をスケジュール管理部に送る
  *******************************************************************/
 
 export function SendJobName(shiftdata){
@@ -20,14 +29,14 @@ export function SendJobName(shiftdata){
     xhr.send(data);
     if(xhr.readyState == 4 && xhr.status == 200){
         return xhr.responseText;  //success or false
-    }
+    } 
 }        
 
 /*******************************************
-***function name     :SendJobTime
-***Designer          :吹谷　優太
-***Date              :
-***function          :シフト時間をスケジュール管理部に送る
+***function name     : SendJobTime
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : シフト時間をスケジュール管理部に送る
 ********************************************/
    
 export function SendJobTime(ProcessName, shiftdata){
@@ -46,10 +55,10 @@ export function SendJobTime(ProcessName, shiftdata){
     }
 }
 /*****************************************************************
-***function name     :SendHourWages
-***Designer          :吹谷　優太
-***Date              :
-***function          :時給を収支管理部に送る
+***function name     : SendHourWages
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 時給を収支管理部に送る
  *******************************************************************/
 
 export function SendHourWages(shiftdata){
@@ -68,10 +77,10 @@ export function SendHourWages(shiftdata){
 }        
 
 /*****************************************************************
-***function name     :SendTrasCosts
-***Designer          :吹谷　優太
-***Date              :
-***function          :交通費を収支管理部に送る
+***function name     : SendTrasCosts
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 交通費を収支管理部に送る
  *******************************************************************/
 
 export function SendTrasCosts(shiftdata){
@@ -90,10 +99,10 @@ export function SendTrasCosts(shiftdata){
 }        
 
 /*****************************************************************
-***function name     :SendNightWages
-***Designer          :吹谷　優太
-***Date              :
-***function          :深夜給を収支管理部に送る
+***function name     : SendNightWages
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 深夜給を収支管理部に送る
  *******************************************************************/
 
 export function SendNightWages(shiftdata){
@@ -111,10 +120,10 @@ export function SendNightWages(shiftdata){
     }
 }        
 /*****************************************************************
-***function name     :SendNightWagesRange
-***Designer          :吹谷　優太
-***Date              :
-***function          :深夜給時間帯を収支管理部に送る
+***function name     : SendNightWagesRange
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 深夜給時間帯を収支管理部に送る
  *******************************************************************/
 
 export function SendNightWagesRange(shiftdata){
@@ -133,10 +142,10 @@ export function SendNightWagesRange(shiftdata){
 }        
 
 /*****************************************************************
-***function name     :SendOvertime
-***Designer          :吹谷　優太
-***Date              :
-***function          :残業代を収支管理部に送る
+***function name     : SendOvertime
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 残業代を収支管理部に送る
  *******************************************************************/
 
 export function SendOvertime(shiftdata){

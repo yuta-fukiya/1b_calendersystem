@@ -1,15 +1,24 @@
-import {AskJobs} from "./MainJobs.js";           //シフト設定処理部
-const userinfo = window.location.search.replace("?","");
-var userinfo2 = userinfo.split(",");
-const year = userinfo2[1];
-const month = userinfo2[2];
-/*****************************************************************
-***function name     :Week_DataSave
-***Designer          :吹谷　優太
-***Date              :
-***function          :現在カレンダーに反映しているシフト時間をシフト設定画面に反映する
+/*******************************************************************
+***  File Name    : WeekDisplay.js
+***  Version      : V1.5
+***  Designer     : 吹谷　優太
+***  Date         : 2022.7.11
+***  Purpose      : 週別シフト情報を参照・一時保存する
 *******************************************************************/
 
+
+import {AskJobs} from "./MainJobs.js";           //シフト設定処理部
+const userinfo = window.location.search.replace("?","");          //URLパラメータを取得する
+var userinfo2 = userinfo.split(",");        //取得したURLパラメータを","で区切る
+const year = userinfo2[1];      //入力する年
+const month = userinfo2[2];     //入力する月
+
+/*****************************************************************
+***function name     : Week_DataSave
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 現在カレンダーに反映しているシフト時間をシフト設定画面に反映する
+*******************************************************************/
 function Week_DataInit(){
     var startId;
     var endId;
@@ -37,10 +46,10 @@ function Week_DataInit(){
 window.onload = Week_DataInit;
      
 /*******************************************
-***function name     :Week_DataSave
-***Designer          :吹谷　優太
-***Date              :
-***function          :シフト設定処理部に週別シフト情報を送る
+***function name     : Week_DataSave
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : シフト設定処理部に週別シフト情報を送る
 ********************************************/
 function Week_DataSave(){
     var startId;
