@@ -26,25 +26,24 @@ export function CopyClass(wday, period){
     return result;
 }
 
-
-export function CopyNumClasses(wday, period){
+export function CopyClassroom(wday, period){
     var result = "false";
     var data = [];
     data.push(id);
-    data.push("Class_num");
+    data.push("Class_room");
     data.push(wday);
     data.push(period);
     data.push("ask");
     xhr.open("POST", "./schedule_timetable.txt", false);
     xhr.send(data);
-    if (xhr.readyState == 4 && xhr.status == 200){
+    if(xhr.readyState == 4 && xhr.status == 200){
         result = xhr.responseText;
     }
-    if (result == "false"){
+    if(result == "false"){
         alert("通信に失敗しました");
     }
     else if(result == "none") {
-        result = "--";
+        result = "----";
     }
     return result;
 }

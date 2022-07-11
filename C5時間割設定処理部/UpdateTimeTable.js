@@ -21,10 +21,10 @@ export function SendClass(timetabledata){
     }
 }
 
-export function sendNumClasses(timetabledata){
+export function sendClassroom(timetabledata){
     var data = [];
     data.push("update");
-    data.push("Class_num");
+    data.push("Class_room");
     data.push(id);
     data.push(wday);
     data.push(period);

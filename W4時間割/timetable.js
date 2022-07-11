@@ -25,7 +25,7 @@ function createTimeTable(){
         for(var j=1;j<=7;j++){
             timetable += "<th id='class'>";
             var timeTable = AskTimeTableJob(j,i);
-            timetable += "<a href = './timetabledetail.html?" + id + ","+j+","+i+"'>" + timeTable[0] + "<br>" + timeTable[1] + "コマ<br>" + timeTable[2] + "単位<br>" + timeTable[3] + "";
+            timetable += "<a href = './timetabledetail.html?" + id + ","+j+","+i+"'>" + timeTable[0] + "<br>" + timeTable[1] + "教室<br>" + timeTable[2] + "単位<br>" + timeTable[3] + "";
             timetable += "</th>";
         }
         timetable += "</tr>";

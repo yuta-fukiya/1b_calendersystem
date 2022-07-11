@@ -5,7 +5,7 @@ export async function ReturnTimetableInformation(id, wday, period, name){
         const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         var Timetabledata = [];
         db.serialize(() => {
-            db.each('SELECT count(*), id, Class_name, Class_num, Unit_num, Teacher_name, wday, period FROM Timetabledata WHERE id=$id and wday=$wday and period=$period', {$id: id, $wday: wday, $period: period}, function(err, row) {
+            db.each('SELECT count(*), id, Class_name, Class_room, Unit_num, Teacher_name, wday, period FROM Timetabledata WHERE id=$id and wday=$wday and period=$period', {$id: id, $wday: wday, $period: period}, function(err, row) {
                 if (err) {
                     reject(err);
                 } 
@@ -15,8 +15,8 @@ export async function ReturnTimetableInformation(id, wday, period, name){
                 if (name == 'Class_name') {
                     Timetabledata.push(row.Class_name);
                     resolve(Timetabledata);
-                } else if (name == 'Class_num') {
-                    Timetabledata.push(row.Class_num);
+                } else if (name == 'Class_room') {
+                    Timetabledata.push(row.Class_room);
                     resolve(Timetabledata);
                 } else if (name == 'Unit_num') {
                     Timetabledata.push(row.Unit_num);
@@ -26,7 +26,7 @@ export async function ReturnTimetableInformation(id, wday, period, name){
                     resolve(Timetabledata);
                 } else {
                     Timetabledata.push(row.Class_name);
-                    Timetabledata.push(row.Class_num);
+                    Timetabledata.push(row.Class_room);
                     Timetabledata.push(row.Unit_num);
                     Timetabledata.push(row.Teacher_name);
                     resolve(Timetabledata);
@@ -41,7 +41,7 @@ export async function UpdateTimetableInformation(id, wday, period, name, Timetab
     var number = -1;
     if(name == 'Class_name') {
         number = 0;
-    } else if(name == 'Class_num') {
+    } else if(name == 'Class_room') {
         number = 1;
     } else if (name == 'Unit_num') {
         number = 2;
@@ -52,7 +52,7 @@ export async function UpdateTimetableInformation(id, wday, period, name, Timetab
     if(number == -1) {
         const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         db.serialize(() => {
-            db.run('CREATE TABLE IF NOT EXISTS Timetabledata (id TEXT, Class_name TEXT, Class_num TEXT, Unit_num TEXT, Teacher_name TEXT, wday INTEGER, period INTEGER)');
+            db.run('CREATE TABLE IF NOT EXISTS Timetabledata (id TEXT, Class_name TEXT, Class_room TEXT, Unit_num TEXT, Teacher_name TEXT, wday INTEGER, period INTEGER)');
             const stmt = db.prepare('INSERT INTO Timetabledata VALUES (?, ?, ?, ?, ?, ?, ?)');
             stmt.run([id, wday, period, Timetabledata[0], Timetabledata[1], Timetabledata[2], Timetabledata[3]]);
             stmt.finalize();
