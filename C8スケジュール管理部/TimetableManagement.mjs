@@ -16,7 +16,7 @@ export async function ReturnTimetableInformation(id, wday, period, name){
                     Timetabledata.push(row.Class_name);
                     resolve(Timetabledata);
                 } else if (name == 'Class_room') {
-                    Timetabledata.push(row.Class_room);
+                    Timetabledata.push(row.Class_num);
                     resolve(Timetabledata);
                 } else if (name == 'Unit_num') {
                     Timetabledata.push(row.Unit_num);
@@ -52,7 +52,7 @@ export async function UpdateTimetableInformation(id, wday, period, name, Timetab
     if(number == -1) {
         const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         db.serialize(() => {
-            db.run('CREATE TABLE IF NOT EXISTS Timetabledata (id TEXT, Class_name TEXT, Class_room TEXT, Unit_num TEXT, Teacher_name TEXT, wday INTEGER, period INTEGER)');
+            db.run('CREATE TABLE IF NOT EXISTS Timetabledata (id TEXT, wday TEXT, period TEXT, Class_name TEXT, Class_room TEXT, Unit_num TEXT, Teacher_name TEXT)');
             const stmt = db.prepare('INSERT INTO Timetabledata VALUES (?, ?, ?, ?, ?, ?, ?)');
             stmt.run([id, wday, period, Timetabledata[0], Timetabledata[1], Timetabledata[2], Timetabledata[3]]);
             stmt.finalize();
