@@ -5,7 +5,7 @@ export async function ReturnTimetableInformation(id, wday, period, name){
         const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
         var Timetabledata = [];
         db.serialize(() => {
-            db.each('SELECT count(*), id, Class_name, Class_room, Unit_num, Teacher_name, wday, period FROM Timetabledata WHERE id=$id and wday=$wday and period=$period', {$id: id, $wday: wday, $period: period}, function(err, row) {
+            db.each('SELECT count(*), id, wday, period, Class_name, Class_room, Unit_num, Teacher_name FROM Timetabledata WHERE id=$id and wday=$wday and period=$period', {$id: id, $wday: wday, $period: period}, function(err, row) {
                 if (err) {
                     reject(err);
                 } 
@@ -16,7 +16,7 @@ export async function ReturnTimetableInformation(id, wday, period, name){
                     Timetabledata.push(row.Class_name);
                     resolve(Timetabledata);
                 } else if (name == 'Class_room') {
-                    Timetabledata.push(row.Class_num);
+                    Timetabledata.push(row.Class_room);
                     resolve(Timetabledata);
                 } else if (name == 'Unit_num') {
                     Timetabledata.push(row.Unit_num);
