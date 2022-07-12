@@ -6,7 +6,7 @@ var userinfo  = window.location.search.replace("?","");
 var userinfo2 = userinfo.split(",");
 var id = userinfo2[0];
 
-function ShiftData_init(year, month){
+function ShiftData_init(year, month){　//収入，支出を得る関数
     var shiftdata = AskSalary(year, month);
     document.getElementById("income").value = shiftdata[0];
     document.getElementById("expense").value = shiftdata[1];
@@ -99,15 +99,15 @@ function createProcess(year, month) {
     return calendar;
 }
 
-export function displaySchedule(year, month, day){
+export function displaySchedule(year, month, day){//スケジュールを表示
     var schedule = createSchedule(year, month, day);
     document.querySelector('#schedule').innerHTML = schedule;
 }window.displaySchedule = displaySchedule;
 
-function createSchedule(year, month, day){
+function createSchedule(year, month, day){//スケジュール表示領域を作成
     month += 1;
     var schedule = "<h2>"+month+"月"+day+"日"+"の予定"+"</h2>"+"<table><tr class = 'timeTable'>";
-    /*ここらへんで予定情報，時間を取得する*/
+    /*予定情報，時間を取得する*/
     var schedule_information = AskSchedule("Schedule_UI", year, month, day);
     var shift_information2 = AskJobs("WeekShift_UI", year, month);
     var shift_information = AskJobs("Shift_UI", year, month);

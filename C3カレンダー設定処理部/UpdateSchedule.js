@@ -38,10 +38,10 @@ export function SendTitle(scheduledata) {
 }
 
 /*******************************************
-***function name     :SendJobTime
+***function name     :SendS_Time
 ***Designer          :太田　篤
 ***Date              :
-***function          :予定時間をスケジュール管理部に送る
+***function          :予定開始時間をスケジュール管理部に送る
 ********************************************/
 
 export function SendS_Time(scheduledata) {
@@ -59,6 +59,13 @@ export function SendS_Time(scheduledata) {
     }
 }
 
+/*****************************************************************
+***function name     :SendE_time
+***Designer          :太田　篤
+***Date              :
+***function          :予定終了時間をスケジュール管理部に問い合わせる
+ *******************************************************************/
+
 export function SendE_Time(scheduledata) {
     var data = [];
     var send_schedule = scheduledata.replace(/,/g, " ");
@@ -73,6 +80,13 @@ export function SendE_Time(scheduledata) {
         return xhr.responseText;  //success or false
     }
 }
+
+/*****************************************************************
+***function name     :SendMemo
+***Designer          :太田　篤
+***Date              :
+***function          :予定のメモをスケジュール管理部に問い合わせる
+ *******************************************************************/
 
 export function SendMemo(scheduledata) {
     var data = [];
