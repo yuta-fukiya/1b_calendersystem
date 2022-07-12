@@ -1,10 +1,18 @@
+/*******************************************************************
+***  File Name    : LoginDisplay.js
+***  Version      : V1.2
+***  Designer     : 吹谷優太
+***  Date         : 2022.7.11
+***  Purpose      : 入力ID，パスワードが一致しているか確かめる
+*******************************************************************/
+
 import {CheckUser} from "./MainLogin.js";
 
 /*****************************************************************
-***function name     :AskResistration
-***Designer          :吹谷　優太
-***Date              :
-***function          :認証処理部から認証結果を受け取る
+***function name     : AskResistration
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 認証処理部から認証結果を受け取る
  *******************************************************************/
 export async function AskRegistration(){
     const id = document.getElementById("userID").value;              //入力したID

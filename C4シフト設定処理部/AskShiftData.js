@@ -1,11 +1,20 @@
+/*******************************************************************
+***  File Name    : AskShiftData.js
+***  Version      : V1.5
+***  Designer     : 吹谷優太
+***  Date         : 2022.7.11
+***  Purpose      : シフト情報を管理部に問い合わせる
+*******************************************************************/
+
 var xhr = new XMLHttpRequest();
-const userinfo = window.location.search.replace("?","");
-var userinfo2 = userinfo.split(",");
+const userinfo = window.location.search.replace("?","");      //URLパラメータの取得
+var userinfo2 = userinfo.split(",");                          //取得したパラメータを","で区切る
 /*****************************************************************
-***function name     :CopyJobName
-***Designer          :吹谷　優太
-***Date              :
-***function          :アルバイト名をスケジュール管理部に問い合わせる
+***function name     : CopyJobName
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : アルバイト名をスケジュール管理部に問い合わせる
+***Return            : 問い合わせ結果
  *******************************************************************/
 
 export function CopyJobName(year, month){
@@ -13,7 +22,7 @@ export function CopyJobName(year, month){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("Jobname");
-    data.push(userinfo2[0]);
+    data.push(userinfo2[0]);      //ユーザID
     data.push(year);
     data.push(month);
     xhr.open("POST", "./schedule_shift.txt", false);
@@ -30,10 +39,11 @@ export function CopyJobName(year, month){
 }
 
 /*******************************************
-***function name     :CopyJobTime
-***Designer          :吹谷　優太
-***Date              :
-***function          :シフト時間をスケジュール管理部に問い合わせる
+***function name     : CopyJobTime
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : シフト時間をスケジュール管理部に問い合わせる
+***Return            : 問い合わせ結果
 ********************************************/
 
 export function CopyJobTime(ProcessName, year, month){
@@ -42,7 +52,7 @@ export function CopyJobTime(ProcessName, year, month){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push(ProcessName);
-    data.push(userinfo2[0]);
+    data.push(userinfo2[0]);      //ユーザID
     data.push(year);
     data.push(month);
     xhr.open("POST", "./schedule_shift.txt", false);
@@ -67,10 +77,11 @@ export function CopyJobTime(ProcessName, year, month){
 }
 
 /*****************************************************************
-***function name     :CopyHourWages
-***Designer          :吹谷　優太
-***Date              :
-***function          :時給を収支管理部に問い合わせる
+***function name     : CopyHourWages
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 時給を収支管理部に問い合わせる
+***Return            : 問い合わせ結果
  *******************************************************************/
 
 export function CopyHourWages(year, month){
@@ -78,7 +89,7 @@ export function CopyHourWages(year, month){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("HourWages");
-    data.push(userinfo2[0]);
+    data.push(userinfo2[0]);      //ユーザID
     data.push(year);
     data.push(month);
     xhr.open("POST", "./salary.txt", false);
@@ -93,10 +104,11 @@ export function CopyHourWages(year, month){
 }        
 
 /*****************************************************************
-***function name     :CopyTrasCosts
-***Designer          :吹谷　優太
-***Date              :
-***function          :交通費を収支管理部に問い合わせる
+***function name     : CopyTrasCosts
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 交通費を収支管理部に問い合わせる
+***Return            : 問い合わせ結果
  *******************************************************************/
 
 export function CopyTrasCosts(year, month){
@@ -104,7 +116,7 @@ export function CopyTrasCosts(year, month){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("TrasCosts");
-    data.push(userinfo2[0]);
+    data.push(userinfo2[0]);      //ユーザID
     data.push(year);
     data.push(month);
     xhr.open("POST", "./salary.txt", false);
@@ -119,10 +131,11 @@ export function CopyTrasCosts(year, month){
 }        
 
 /*****************************************************************
-***function name     :CopyNightWages
-***Designer          :吹谷　優太
-***Date              :
-***function          :深夜給を収支管理部に問い合わせる
+***function name     : CopyNightWages
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 深夜給を収支管理部に問い合わせる
+***Return            : 問い合わせ結果
  *******************************************************************/
 
 export function CopyNightWages(year, month){
@@ -130,7 +143,7 @@ export function CopyNightWages(year, month){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("NightWages");
-    data.push(userinfo2[0]);
+    data.push(userinfo2[0]);      //ユーザID
     data.push(year);
     data.push(month);
     xhr.open("POST", "./salary.txt", false);
@@ -144,10 +157,11 @@ export function CopyNightWages(year, month){
     return result;
 }        
 /*****************************************************************
-***function name     :CopyNightWagesRange
-***Designer          :吹谷　優太
-***Date              :
-***function          :深夜給時間帯を収支管理部に問い合わせる
+***function name     : CopyNightWagesRange
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 深夜給時間帯を収支管理部に問い合わせる
+***Return            : 問い合わせ結果
  *******************************************************************/
 
 export function CopyNightWagesRange(year, month){
@@ -155,7 +169,7 @@ export function CopyNightWagesRange(year, month){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("NightWagesRange");
-    data.push(userinfo2[0]);
+    data.push(userinfo2[0]);      //ユーザID
     data.push(year);
     data.push(month);
     xhr.open("POST", "./salary.txt", false);
@@ -170,10 +184,11 @@ export function CopyNightWagesRange(year, month){
 }        
 
 /*****************************************************************
-***function name     :CopyOvertime
-***Designer          :吹谷　優太
-***Date              :
-***function          :残業代を収支管理部に問い合わせる
+***function name     : CopyOvertime
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : 残業代を収支管理部に問い合わせる
+***Return            : 問い合わせ結果
  *******************************************************************/
 
 export function CopyOvertime(year, month){
@@ -181,7 +196,7 @@ export function CopyOvertime(year, month){
     var data = [];                //サーバにデータを送るための配列
     data.push("ask");
     data.push("Overtime");
-    data.push(userinfo2[0]);
+    data.push(userinfo2[0]);      //ユーザID
     data.push(year);
     data.push(month);
     xhr.open("POST", "./salary.txt", false);

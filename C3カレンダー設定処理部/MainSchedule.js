@@ -23,7 +23,7 @@ export function AskSchedule(ProcessName, year, month, day){
 ***function name     :UpdateJobs
 ***Designer          :太田　篤
 ***Date              :
-***function          :予定情報をに週別予定のデータを送る
+***function          :データ管理部に予定情報データを送る
 ********************************************/
 
 export function UpdateSchedule(Scheduledata, ProcessName){

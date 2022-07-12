@@ -31,6 +31,13 @@ export function CopyTitle(year, month, day){
     return result;
 }
 
+/*****************************************************************
+***function name     :CopyS_time
+***Designer          :太田　篤
+***Date              :
+***function          :予定開始時間をスケジュール管理部に問い合わせる
+ *******************************************************************/
+
 export function CopyS_time(year, month, day) {
     const arrayData = year + "/" + month + "/" + day;
     var result = "false";
@@ -51,6 +58,14 @@ export function CopyS_time(year, month, day) {
     }
     return result;
 }
+
+
+/*****************************************************************
+***function name     :CopyE_time
+***Designer          :太田　篤
+***Date              :
+***function          :予定終了をスケジュール管理部に問い合わせる
+ *******************************************************************/
 
 export function CopyE_time(year, month, day) {
     const arrayData = year + "/" + month + "/" + day;
@@ -73,6 +88,14 @@ export function CopyE_time(year, month, day) {
     return result;
 }
 
+
+/*****************************************************************
+***function name     :CopyMemo
+***Designer          :太田　篤
+***Date              :
+***function          :予定のメモをスケジュール管理部に問い合わせる
+ *******************************************************************/
+
 export function CopyMemo(year, month, day) {
     const arrayData = year + "/" + month + "/" + day;
     var result = "false";
@@ -93,43 +116,3 @@ export function CopyMemo(year, month, day) {
     }
     return result;
 }
-
-/*******************************************
-***function name     :CopyDayScheduleTime
-***Designer          :太田　篤
-***Date              :
-***function          :スケジュールの時間をスケジュール管理部に問い合わせる
-********************************************/
-
-/*export function CopyDayScheduleTime(ProcessName){
-    var result = "false";
-    var send_DaySchedule = "";
-    var result_DaySchedule = [];
-    var data = [];
-    data.push("ask");
-    data.push(ProcessName);
-    data.push(id);
-    data.push(send_DaySchedule);
-    xhr.open("POST", "./DaySchedule.txt", false);
-    xhr.send(data);
-    if (xhr.readyState == 4 && xhr.status == 200){
-        result = xhr.responseText;
-        console.log(result);
-    }
-    if (result == "false"){
-        alert("通信に失敗しました");
-    } else if (result == "none" && ProcessName == "s_time"){
-        
-    } else if (result === "none" && ProcessName == "e_time"){
-    
-    } else if (result == "none" && ProcessName == "memo") {
-
-    } else if (result == "none" && ProcessName == "date") {
-
-    } 
-     else {
-        result_DaySchedule = result.split(" ");
-    }
-    return result_DaySchedule;
-}
-*/

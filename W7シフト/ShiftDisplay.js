@@ -1,14 +1,23 @@
+/*******************************************************************
+***  File Name    : ShiftDisplay.js
+***  Version      : V1.5
+***  Designer     : 吹谷　優太
+***  Date         : 2022.7.11
+***  Purpose      : シフト情報を更新・参照する
+*******************************************************************/
+
 import {AskJobs, UpdateJobs} from "/MainJobs.js";
 
-const userinfo = window.location.search.replace("?","");
-var userinfo2 = userinfo.split(",");
-const year = userinfo2[1];
-const month = userinfo2[2];
+const userinfo = window.location.search.replace("?","");   //URLパラメータを取得する
+var userinfo2 = userinfo.split(",");                       //取得したURLパラメータを","で区切る
+const year = userinfo2[1];                                 //入力する年
+const month = userinfo2[2];                                //入力する月
+
 /********************************************************* 
-***function name  :ShiftData_init
-***Designer       :吹谷　優太
-***Date           :
-***Function       :シフト設定処理部へデータを受け取り画面に反映する
+***function name  : ShiftData_init
+***Designer       : 吹谷　優太
+***Date           : 2022.7.11
+***Function       : シフト設定処理部へデータを受け取り画面に反映する
 **********************************************************/
 function ShiftData_init(){
       var shiftdata = AskJobs("Shift_UI", year, month);   //シフト設定処理部に収支系情報の問い合わせ
@@ -23,10 +32,10 @@ function ShiftData_init(){
 window.onload = ShiftData_init;
 
 /******************************************************
-***function name  :ShiftData_update
-***Designer       :吹谷　優太
-***Date           :
-***Function       :シフト設定処理部へ入力されたデータを送る
+***function name  : ShiftData_update
+***Designer       : 吹谷　優太
+***Date           : 2022.7.11
+***Function       : シフト設定処理部へ入力されたデータを送る
 *******************************************************/
 
 export function ShiftData_update(){
@@ -84,6 +93,12 @@ export function ShiftData_update(){
 }
 window.ShiftData_update=ShiftData_update;
 
+/******************************************************
+***function name  : RemoveData
+***Designer       : 吹谷　優太
+***Date           : 2022.7.11
+***Function       : ローカルストレージ内のデータを削除する
+*******************************************************/
 export function RemoveData(){
       localStorage.removeItem("Week");
       localStorage.removeItem("Month");
