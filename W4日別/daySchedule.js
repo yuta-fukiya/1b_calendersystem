@@ -1,3 +1,11 @@
+/*******************************************************************
+***  File Name    : daySchedule.js
+***  Version      : V1.2
+***  Designer     : 太田篤
+***  Date         : 2022.7.11
+***  Purpose      : 入力されたスケジュール情報を更新する．
+*******************************************************************/
+
 import { UpdateSchedule } from "./MainSchedule.js";
 
 export function scheduleData_update() {
@@ -33,13 +41,8 @@ export function scheduleData_update() {
     }
 
     UpdateSchedule(scheduledata, "Schedule_UI");   //カレンダー設定処理部に収支系の情報をを送る
-    //UpdateDaySchedule(localStorage.getItem("Week"), "Weekschedule_UI");
-    // UpdateJobs(localStorage.setItem("Month"), "Monthschedule_UI");
     RemoveData();
     window.location.href = "./MainDisplay.html?" + id + "," + year + "," + month;
-  
-    //alert('daySchedule.js/scheduleData_update');
-
 }
 
 window.scheduleData_update = scheduleData_update;

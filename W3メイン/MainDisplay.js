@@ -1,3 +1,11 @@
+/*******************************************************************
+***  File Name    : MainDisplay.js
+***  Version      : V1.2
+***  Designer     : 太田篤
+***  Date         : 2022.7.11
+***  Purpose      : カレンダーを作成，表示する
+*******************************************************************/
+
 import { AskSchedule } from "./MainSchedule.js";
 import { AskJobs } from "./MainJobs.js";
 import { AskSalary, SetIncome} from "/MainSalary.js";
