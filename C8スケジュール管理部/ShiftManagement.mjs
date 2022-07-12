@@ -1,4 +1,20 @@
+/*******************************************************************
+***  File Name    : ShiftManagement.mjs
+***  Version      : V1.0
+***  Designer     : 猪腰大樹
+***  Date         : 2022.7.12
+***  Purpose      : シフト情報を登録・参照する
+*******************************************************************/
+
 import sqlite3 from "sqlite3";
+
+/*****************************************************************
+***function name     : ReturnShiftInformation
+***Designer          : 猪腰大樹
+***Date              : 2022.7.12
+***function          : シフト情報を参照する
+***Return:           : 参照結果
+ *******************************************************************/
 
 export async function ReturnShiftInformation(id, year, month, name){
     return new Promise((resolve, reject) => {
@@ -12,13 +28,13 @@ export async function ReturnShiftInformation(id, year, month, name){
                 if (row['count(*)']==0) {
                     ShiftInsert(id, year, month);
                 }
-                if (name == 'JobName') {
+                if (name == 'JobName') {    // アルバイト名
                     Shiftdata.push(row.JobName);
                     resolve(Shiftdata);
-                } else if (name == 'WeekShift') {
+                } else if (name == 'WeekShift') {   // 週別シフト時間
                     Shiftdata.push(row.WeekShift);
                     resolve(Shiftdata);
-                } else if (name == 'MonthShift') {
+                } else if (name == 'MonthShift') {  // 月別シフト時間
                     Shiftdata.push(row.MonthShift);
                     resolve(Shiftdata);
                 } else {
@@ -33,13 +49,21 @@ export async function ReturnShiftInformation(id, year, month, name){
     })
 }
 
+/*****************************************************************
+***function name     : UpdateShiftInformation
+***Designer          : 猪腰大樹
+***Date              : 2022.7.12
+***function          : シフト情報を更新する
+***Return            : 更新結果
+ *******************************************************************/
+
 export async function UpdateShiftInformation(id, year, month, name, Shiftdata){
     var number = -1;
-    if(name == 'JobName') {
+    if(name == 'JobName') { // アルバイト名
         number = 0;
-    } else if(name == 'WeekShift') {
+    } else if(name == 'WeekShift') {    // 週別シフト時間
         number = 1;
-    } else if (name == 'MonthShift') {
+    } else if (name == 'MonthShift') {  // 月別シフト時間
         number = 2;
     }
     if(number == -1) {
@@ -67,6 +91,13 @@ export async function UpdateShiftInformation(id, year, month, name, Shiftdata){
     return "success";
 }
 
+/*****************************************************************
+***function name     : ShiftInsert
+***Designer          : 猪腰大樹
+***Date              : 2022.7.12
+***function          : シフト情報を新規登録する
+ *******************************************************************/
+
 async function ShiftInsert(id, year, month) {
     const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
     db.serialize(() => {
@@ -76,23 +107,3 @@ async function ShiftInsert(id, year, month) {
     });
     db.close();
 }
-
-//------------------------------------------------------------------------------------------
-async function test() {
-    var Shiftdata = new Array('塾', '11:11,22:22', '11:11,22:22,12:12,21:21');
-    var id = 'al20116';
-    var name1 = '';
-    var name2 = 'WeekShift';
-    var Judge;
-    Judge = await UpdateShiftInformation(id, name1, Shiftdata);
-    if (Judge == true) {
-        console.log('true');
-    } else {
-        console.log('false');
-    }
-    var c = [];
-    c = await ReturnShiftInformation(id, name2);
-    console.log(c);
-}
-
-//test();

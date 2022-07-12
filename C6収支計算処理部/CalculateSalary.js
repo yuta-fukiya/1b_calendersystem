@@ -1,7 +1,23 @@
+/*******************************************************************
+***  File Name    : CalculationSalary.js
+***  Version      : V1.0
+***  Designer     : 猪腰大樹
+***  Date         : 2022.7.12
+***  Purpose      : 収入を計算して結果を返す
+*******************************************************************/
+
 import {AskJobs} from "/MainJobs.js";
 
+/*****************************************************************
+***function name     : calculate
+***Designer          : 猪腰大樹
+***Date              : 2022.7.12
+***function          : 収入を週別シフト時間と月別シフト時間から計算してまとめて返す
+***Return            : 収入
+ *******************************************************************/
+
 export function calculate(year, month, day) {
-    var income = 0.0;
+    var income = 0.0;   // 収入の合計を返す変数
     var Week = AskJobs("WeekShift_UI", year, month);
     var Month = AskJobs("MonthShift_UI", year, month);
 
@@ -15,6 +31,14 @@ export function calculate(year, month, day) {
     return income;
 }
 
+/*****************************************************************
+***function name     : calWeek
+***Designer          : 猪腰大樹
+***Date              : 2022.7.12
+***function          : 週別シフトから収入を計算する
+***Return            : 収入
+ *******************************************************************/
+
 function calWeek(year, month, day) {
     var income = 0.0;
     var delta = [2];
@@ -26,6 +50,8 @@ function calWeek(year, month, day) {
 
     var Night_w = [14];
     var temp = [14];
+
+    var startDayOfWeek = new Date(year, month - 1, 1).getDay();
 
     /*
     Shift[3] = parseInt(Shift[1]) * 1.25 + "";
@@ -41,7 +67,7 @@ function calWeek(year, month, day) {
     var Night_s = Shift[5].split(":");
     var Night_f = Shift[6].split(":");
 
-    for (let i=0; i<14; i=i+2) {
+    for (let i=0; i<14; i=i+2) {    // 開始時刻 > 終了時刻の場合、終了時刻を24時間遅らせる
         start = Week[i].split(":");
         end = Week[i+1].split(":");
         if (parseInt(start[0]) > parseInt(end[0])) {
@@ -62,7 +88,7 @@ function calWeek(year, month, day) {
         } 
     }
     
-    for (let i=0; i<14; i=i+2) {
+    for (let i=0; i<14; i=i+2) {    // 通常の時間と深夜の時間を区別して配列に保管する
         start = Week[i].split(":");
         end = Week[i+1].split(":");
 
@@ -95,7 +121,7 @@ function calWeek(year, month, day) {
         }
     }
     
-    for (let i=0; i<day*2; i=i+2) {
+    for (let i=startDayOfWeek*2; i<(day+startDayOfWeek)*2; i=i+2) { // 収入の計算を行う
         start = Week[i%14].split(":");
         end = Week[(i+1)%14].split(":");
         var temp2 = income;
@@ -154,6 +180,14 @@ function calWeek(year, month, day) {
     return income;
 }
 
+/*****************************************************************
+***function name     : calMonth
+***Designer          : 猪腰大樹
+***Date              : 2022.7.12
+***function          : 月別シフトから収入を計算する
+***Return            : 収入
+ *******************************************************************/
+
 function calMonth(year, month, day) {
     var income = 0.0;
     var delta = [2];
@@ -180,7 +214,7 @@ function calMonth(year, month, day) {
     var Night_s = Shift[5].split(":");
     var Night_f = Shift[6].split(":");
     
-    if (parseInt(Night_s[0]) > parseInt(Night_f[0])) {
+    if (parseInt(Night_s[0]) > parseInt(Night_f[0])) {    // 開始時刻 > 終了時刻の場合、終了時刻を24時間遅らせる
         Night_f[0] = parseInt(Night_f[0]) + 24 + "";
     }
 
@@ -201,7 +235,7 @@ function calMonth(year, month, day) {
         } 
     }
     
-    for (let i=0; i<day*2; i=i+2) {
+    for (let i=0; i<day*2; i=i+2) {    // 通常の時間と深夜の時間を区別して配列に保管する
         start = Month[i].split(":");
         end = Month[i+1].split(":");
 
@@ -234,7 +268,7 @@ function calMonth(year, month, day) {
         }
     }
     
-    for (let i=0; i<day*2; i=i+2) {
+    for (let i=0; i<day*2; i=i+2) { // 収入の計算を行う
         start = Month[i].split(":");
         end = Month[i+1].split(":");
         var temp2 = income;

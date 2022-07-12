@@ -1,4 +1,20 @@
+/*******************************************************************
+***  File Name    : DayScheduleManagement.mjs
+***  Version      : V1.0
+***  Designer     : 猪腰大樹
+***  Date         : 2022.7.12
+***  Purpose      : 日付情報を登録・参照する
+*******************************************************************/
+
 import sqlite3 from "sqlite3";
+
+/*****************************************************************
+***function name     : ReturnDayScheduleInformation
+***Designer          : 猪腰大樹
+***Date              : 2022.7.12
+***function          : 日付情報を参照する
+***Return:           : 参照結果
+ *******************************************************************/
 
 export async function ReturnDayScheduleInformation(id, Date, name) {
     return new Promise((resolve, reject) => {
@@ -12,16 +28,16 @@ export async function ReturnDayScheduleInformation(id, Date, name) {
                 if(row['count(*)'] == 0){
                     DayInsert(id, Date);
                 }
-                if (name == 'title') {
+                if (name == 'title') {  // タイトル
                     DayScheduledata.push(row.title);
                     resolve(DayScheduledata);
-                } else if (name == 'S_time') {
+                } else if (name == 'S_time') {  // 開始時刻
                     DayScheduledata.push(row.S_time);
                     resolve(DayScheduledata);
-                } else if (name == 'E_time') {
+                } else if (name == 'E_time') {  // 終了時刻
                     DayScheduledata.push(row.E_time);
                     resolve(DayScheduledata);
-                } else if (name == 'Memo') {
+                } else if (name == 'Memo') {    // メモ
                     DayScheduledata.push(row.Memo);
                     resolve(DayScheduledata);
                 } else {
@@ -37,17 +53,25 @@ export async function ReturnDayScheduleInformation(id, Date, name) {
     })
 }
 
+/*****************************************************************
+***function name     : UpdateDayScheduleInformation
+***Designer          : 猪腰大樹
+***Date              : 2022.7.12
+***function          : 日付情報を更新する
+***Return            : 更新結果
+ *******************************************************************/
+
 export async function UpdateDayScheduleInformation(id, Date, name, DayScheduledata) {
     async function wait(){
     return new Promise((resolve, reject) => {
         var number = -1;
-        if (name == 'title') {
+        if (name == 'title') {  // タイトル
             number = 0;
-        } else if (name == 'S_time') {
+        } else if (name == 'S_time') {  // 開始時刻
             number = 1;
-        } else if (name == 'E_time') {
+        } else if (name == 'E_time') {  // 終了時刻
             number = 2;
-        } else if (name == 'Memo') {
+        } else if (name == 'Memo') {    // メモ
             number = 3;
         }
         if (number == -1) {
@@ -80,6 +104,13 @@ export async function UpdateDayScheduleInformation(id, Date, name, DayScheduleda
     return result;    
 }
 
+/*****************************************************************
+***function name     : DayInsert
+***Designer          : 猪腰大樹
+***Date              : 2022.7.12
+***function          : 日付情報を新規登録する
+ *******************************************************************/
+
 async function DayInsert(id, Date) {
     async function wait(){
         return new Promise((resolve) => {
@@ -96,26 +127,3 @@ async function DayInsert(id, Date) {
     const result = await wait();
     return result;    
 }
-
-//-----------------------------------------------------------------------------------------------
-async function test() {
-    var DayScheduledata = new Array('水族館', 12, 30, 18, 0, 'チケットを忘れずに', "2022/07/02");
-    var id = 'al20116';
-    var name1 = 'NULL';
-    var name2 = 'memo';
-    var Date = '2022/07/02';
-    var Judge;
-    Judge = await UpdateDayScheduleInformation(id, name1, DayScheduledata);
-    if (Judge == true) {
-        console.log('true');
-    } else {
-        console.log('false');
-    }
-    var c = [];
-    c = await ReturnDayScheduleInformation(id, Date, name2);
-    console.log(c);
-}
-
-
-
-//test();

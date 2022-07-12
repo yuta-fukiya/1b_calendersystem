@@ -1,4 +1,20 @@
+/*******************************************************************
+***  File Name    : TimetableManagement.mjs
+***  Version      : V1.0
+***  Designer     : 猪腰大樹
+***  Date         : 2022.7.12
+***  Purpose      : 時間割情報を登録・参照する
+*******************************************************************/
+
 import sqlite3 from "sqlite3";
+
+/*****************************************************************
+***function name     : ReturnTimetableInformation
+***Designer          : 猪腰大樹
+***Date              : 2022.7.12
+***function          : 時間割情報を参照する
+***Return:           : 参照結果
+ *******************************************************************/
 
 export async function ReturnTimetableInformation(id, wday, period, name){
     return new Promise((resolve, reject) => {
@@ -12,16 +28,16 @@ export async function ReturnTimetableInformation(id, wday, period, name){
                 if (row['count(*)']==0 && wday!="" &&period!=""){
                     TimeInsert(id, wday, period);
                 }
-                if (name == 'Class_name') {
+                if (name == 'Class_name') { // 授業名
                     Timetabledata.push(row.Class_name);
                     resolve(Timetabledata);
-                } else if (name == 'Class_room') {
+                } else if (name == 'Class_room') {  // 教室名
                     Timetabledata.push(row.Class_room);
                     resolve(Timetabledata);
-                } else if (name == 'Unit_num') {
+                } else if (name == 'Unit_num') {    // 単位数
                     Timetabledata.push(row.Unit_num);
                     resolve(Timetabledata);
-                } else if (name == 'Teacher_name') {
+                } else if (name == 'Teacher_name') {    // 担当教授
                     Timetabledata.push(row.Teacher_name);
                     resolve(Timetabledata);
                 } else {
@@ -37,15 +53,23 @@ export async function ReturnTimetableInformation(id, wday, period, name){
     })
 }
 
+/*****************************************************************
+***function name     : UpdateTimetableInformation
+***Designer          : 猪腰大樹
+***Date              : 2022.7.12
+***function          : 時間割情報を更新する
+***Return            : 更新結果
+ *******************************************************************/
+
 export async function UpdateTimetableInformation(id, wday, period, name, Timetabledata){
     var number = -1;
-    if(name == 'Class_name') {
+    if(name == 'Class_name') { // 授業名
         number = 0;
-    } else if(name == 'Class_room') {
+    } else if(name == 'Class_room') {  // 教室名
         number = 1;
-    } else if (name == 'Unit_num') {
+    } else if (name == 'Unit_num') {    // 単位数
         number = 2;
-    } else if (name == 'Teacher_name') {
+    } else if (name == 'Teacher_name') {    // 担当教授
         number = 3;
     }
 
@@ -73,6 +97,14 @@ export async function UpdateTimetableInformation(id, wday, period, name, Timetab
     }
     return "success";
 }
+
+/*****************************************************************
+***function name     : TimeInsert
+***Designer          : 猪腰大樹
+***Date              : 2022.7.12
+***function          : 時間割情報を新規登録する
+ *******************************************************************/
+
 async function TimeInsert(id, wday, period) {
     const db = new sqlite3.Database('./C8スケジュール管理部/Schedule.sqlite');
     db.serialize(() => {
@@ -82,26 +114,3 @@ async function TimeInsert(id, wday, period) {
     });
     db.close();
 }
-
-
-//-----------------------------------------------------------------------------------------------
-async function test() {
-    var Timetabledata = new Array('プログラミング', 16, 2, '山田', 2, 3);
-    var id = 'al20116';
-    var name1 = '';
-    var name2 = 'Teacher_name';
-    var wday = 2;
-    var period = 3;
-    var Judge;
-    Judge = await UpdateTimetableInformation(id, name1, Timetabledata);
-    if (Judge == true) {
-        console.log('true');
-    } else {
-        console.log('false');
-    }
-    var c = [];
-    c = await ReturnTimetableInformation(id, wday, period, name2);
-    console.log(c);
-}
-
-//test();
