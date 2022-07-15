@@ -130,7 +130,7 @@ function createSchedule(year, month, day){//スケジュール表示領域を作
     var date = new Date(year, month, day-4);
     var date1 = new Date(year, month, day);  
     var date2 = number[date.getDay()];
-    var date3 = date1.getDay()-1;
+    var date3 = date1.getDate()-1;
     var shift_array = shift_information2;
 
     for(var j = 0; j < size; j++){
