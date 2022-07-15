@@ -127,10 +127,10 @@ function createSchedule(year, month, day){//スケジュール表示領域を作
     console.log(shift_information);
     
     var number = [0, 1, 2, 3, 4, 5, 6];
-    var date = new Date(year, month, day-4);
+    var date = new Date(year, month, day-3);
     var date1 = new Date(year, month, day-1);  
     var date2 = number[date.getDay()];
-    var date3 = date1.getDate();
+    var date3 = date1.getDay();
     var shift_array = shift_information2;
 
     for(var j = 0; j < size; j++){
