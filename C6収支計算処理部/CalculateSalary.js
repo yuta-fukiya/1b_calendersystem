@@ -47,9 +47,11 @@ function calWeek(year, month, day) {
 
     var Shift = AskJobs("Shift_UI", year, month);
     var Week = AskJobs("WeekShift_UI", year, month);
+    var Month = AskJobs("MonthShift_UI", year, month);
 
     var Night_w = [14];
     var temp = [14];
+    var check = [31];
 
     var startDayOfWeek = new Date(year, month - 1, 1).getDay();
 
@@ -66,6 +68,16 @@ function calWeek(year, month, day) {
     var Overtime = Shift[4];
     var Night_s = Shift[5].split(":");
     var Night_f = Shift[6].split(":");
+
+    for (let i=0; i<day*2; i=i+2) {     // 月別シフト時間と週別シフト時間の重複チェック
+        start = Month[i].split(":");
+        end = Month[i+1].split(":");
+        if (parseInt(start[0]) == parseInt(end[0]) || parseInt(start[1]) == parseInt(end[1])) {
+            check[i/2] = 1;
+        } else {
+            check[i/2] = 0;
+        }
+    }
 
     for (let i=0; i<14; i=i+2) {    // 開始時刻 > 終了時刻の場合、終了時刻を24時間遅らせる
         start = Week[i].split(":");
@@ -122,59 +134,61 @@ function calWeek(year, month, day) {
     }
     
     for (let i=startDayOfWeek*2; i<(day+startDayOfWeek)*2; i=i+2) { // 収入の計算を行う
-        start = Week[i%14].split(":");
-        end = Week[(i+1)%14].split(":");
-        var temp2 = income;
-        var temp3 = 0.0;
-        var temp4 = 0.0;
-        for (let j=0; j<2; ++j) {
-            delta[j] = parseInt(end[j], 10)  - parseInt(start[j], 10);
-        }
-        temp3 = temp4;
-        temp4 += delta[0]+delta[1]/60;
-        if (temp3>8.0) {
-            income += (temp4-temp3)*Overtime;
-        } else if (temp4>8.0) {
-            income += (8-temp3)*HourWages;
-            income += (temp4-8)*Overtime;
-        } else {
-            income += (temp4-temp3)*HourWages;
-        }
+        if (check[i-startDayOfWeek*2] != 1) {
+            start = Week[i%14].split(":");
+            end = Week[(i+1)%14].split(":");
+            var temp2 = income;
+            var temp3 = 0.0;
+            var temp4 = 0.0;
+            for (let j=0; j<2; ++j) {
+                delta[j] = parseInt(end[j], 10)  - parseInt(start[j], 10);
+            }
+            temp3 = temp4;
+            temp4 += delta[0]+delta[1]/60;
+            if (temp3>8.0) {
+                income += (temp4-temp3)*Overtime;
+            } else if (temp4>8.0) {
+                income += (8-temp3)*HourWages;
+                income += (temp4-8)*Overtime;
+            } else {
+                income += (temp4-temp3)*HourWages;
+            }
 
-        start = Night_w[i%14].split(":");
-        end = Night_w[(i+1)%14].split(":");
-        for (let j=0; j<2; ++j) {
-            delta[j] = parseInt(end[j], 10)  - parseInt(start[j], 10);
-        }
-        temp3 = temp4;
-        temp4 += delta[0]+delta[1]/60;
-        if (temp3>8.0) {
-            income += (temp4-temp3)*HourWages*1.5;
-        } else if (temp4>8.0) {
-            income += (8-temp3)*NightWages;
-            income += (temp4-8)*HourWages*1.5;
-        } else {
-            income += (temp4-temp3)*NightWages;
-        }
-        
-        start = temp[i%14].split(":");
-        end = temp[(i+1)%14].split(":");
-        for (let j=0; j<2; ++j) {
-            delta[j] = parseInt(end[j], 10)  - parseInt(start[j], 10);
-        }
-        temp3 = temp4;
-        temp4 += delta[0]+delta[1]/60;
-        if (temp3>8.0) {
-            income += (temp4-temp3)*Overtime;
-        } else if (temp4>8.0) {
-            income += (8-temp3)*HourWages;
-            income += (temp4-8)*Overtime;
-        } else {
-            income += (temp4-temp3)*HourWages;
-        }
+            start = Night_w[i%14].split(":");
+            end = Night_w[(i+1)%14].split(":");
+            for (let j=0; j<2; ++j) {
+                delta[j] = parseInt(end[j], 10)  - parseInt(start[j], 10);
+            }
+            temp3 = temp4;
+            temp4 += delta[0]+delta[1]/60;
+            if (temp3>8.0) {
+                income += (temp4-temp3)*HourWages*1.5;
+            } else if (temp4>8.0) {
+                income += (8-temp3)*NightWages;
+                income += (temp4-8)*HourWages*1.5;
+            } else {
+                income += (temp4-temp3)*NightWages;
+            }
+            
+            start = temp[i%14].split(":");
+            end = temp[(i+1)%14].split(":");
+            for (let j=0; j<2; ++j) {
+                delta[j] = parseInt(end[j], 10)  - parseInt(start[j], 10);
+            }
+            temp3 = temp4;
+            temp4 += delta[0]+delta[1]/60;
+            if (temp3>8.0) {
+                income += (temp4-temp3)*Overtime;
+            } else if (temp4>8.0) {
+                income += (8-temp3)*HourWages;
+                income += (temp4-8)*Overtime;
+            } else {
+                income += (temp4-temp3)*HourWages;
+            }
 
-        if (temp2 != income) {
-            income += TrasCosts;
+            if (temp2 != income) {
+                income += TrasCosts;
+            }
         }
     }
     return income;
