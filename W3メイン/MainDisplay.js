@@ -146,7 +146,7 @@ function createSchedule(year, month, day){//スケジュール表示領域を作
     schedule+="<td>"+shift_information[0]+"</td>";
     schedule+="<td>"+shift_array[date2*2]+"</td>";
     schedule += "<td>" + shift_array[date2*2+1] + "</td>";
-    //schedule+="<td>"+shift_information3+"</td>";
+    schedule+="<td>"+shift_information3+"</td>";
     schedule+="</th>"
 
     schedule += "<a class ='schedule' href = 'daySchedule.html?id="+id+"&year="+year+"&month="+month+"&day="+day+"''>新たな予定を設定</a><br>"
