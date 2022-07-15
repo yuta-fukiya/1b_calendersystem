@@ -22,7 +22,6 @@ const arrayData = Year + "/" + Month + "/" + Day;
  *******************************************************************/
 
 export function SendTitle(scheduledata) {
-    alert(id);
     var data = [];
     data.push("update");
     data.push("title");
