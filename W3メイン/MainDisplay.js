@@ -122,10 +122,6 @@ function createSchedule(year, month, day){//スケジュール表示領域を作
     var shift_information3 = AskJobs("MonthShift_UI", year, month); 
 
     var size = schedule_information.length;
-    console.log(schedule_information);
-
-    console.log(shift_information);
-    
     var number = [0, 1, 2, 3, 4, 5, 6];
     var date = new Date(year, month, day-3);
     var date1 = new Date(year, month, day);  
@@ -144,8 +140,6 @@ function createSchedule(year, month, day){//スケジュール表示領域を作
     schedule += "<table><tr class = 'timeTable'>"
 
     
-    console.log(date2);
-    console.log(shift_information3[date3*2]);
     schedule+="<th>";
     schedule+="<td>"+shift_information[0]+"</td>";
     if (shift_information3[date3*2] == "00:00" && shift_information3[date3*2+1] == "00:00"){
