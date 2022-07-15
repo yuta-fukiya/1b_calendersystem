@@ -129,6 +129,7 @@ function createSchedule(year, month, day){//スケジュール表示領域を作
     var number = [0, 1, 2, 3, 4, 5, 6];
     var date = new Date(year, month, day+4);
     var date2 = number[date.getDay()];
+    var date3 = date.getDate()-5;
     var shift_array = shift_information2;
 
     for(var j = 0; j < size; j++){
@@ -142,11 +143,17 @@ function createSchedule(year, month, day){//スケジュール表示領域を作
     schedule += "<table><tr class = 'timeTable'>"
 
     
+    console.log(date3);
+    console.log(shift_information3[date3*2]);
     schedule+="<th>";
     schedule+="<td>"+shift_information[0]+"</td>";
-    schedule+="<td>"+shift_array[date2*2]+"</td>";
-    schedule += "<td>" + shift_array[date2*2+1] + "</td>";
-    schedule+="<td>"+shift_information3+"</td>";
+    if (shift_information3[date3*2] == "00:00" && shift_information3[date3*2+1] == "00:00"){
+        schedule+="<td>"+shift_array[date2*2]+"</td>";
+        schedule += "<td>" + shift_array[date2*2+1] + "</td>";
+    } else {
+        schedule+="<td>"+shift_information3[date3*2]+"</td>";
+        schedule+="<td>"+shift_information3[date3*2+1]+"</td>";
+    }
     schedule+="</th>"
 
     schedule += "<a class ='schedule' href = 'daySchedule.html?id="+id+"&year="+year+"&month="+month+"&day="+day+"''>新たな予定を設定</a><br>"
