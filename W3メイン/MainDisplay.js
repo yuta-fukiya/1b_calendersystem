@@ -144,7 +144,7 @@ function createSchedule(year, month, day){//スケジュール表示領域を作
     schedule += "<table><tr class = 'timeTable'>"
 
     
-    console.log(date3);
+    console.log(date2);
     console.log(shift_information3[date3*2]);
     schedule+="<th>";
     schedule+="<td>"+shift_information[0]+"</td>";
