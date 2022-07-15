@@ -33,6 +33,6 @@ export function UpdateSchedule(Scheduledata, ProcessName){
         update.SendE_Time(Scheduledata[2]);
         update.SendMemo(Scheduledata[3]);
     }
-    //alert("予定「"+Scheduledata[0]+"」を追加します");
+    alert("予定「"+Scheduledata[0]+"」を追加します");
 }
 
