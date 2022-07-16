@@ -123,7 +123,6 @@ function createSchedule(year, month, day){//スケジュール表示領域を作
     var size = schedule_information.length;
     var number = [0, 1, 2, 3, 4, 5, 6];
     var date = new Date(year, month, 0);
-    alert(date.getDate());
     if (date.getDate() == 31){
         date = new Date(year, month, day-3);
     }else if (date.getDate() == 30){
