@@ -55,13 +55,6 @@ function calWeek(year, month, day) {
 
     var startDayOfWeek = new Date(year, month - 1, 1).getDay();
 
-    /*
-    Shift[3] = parseInt(Shift[1]) * 1.25 + "";
-    Shift[4] = parseInt(Shift[1]) * 1.25 + "";
-    Shift[5] = "22:00";
-    Shift[6] = "05:00";
-    */
-
     var HourWages = parseInt(Shift[1]);
     var TrasCosts = parseInt(Shift[2]);
     var NightWages = Shift[3];
@@ -213,13 +206,6 @@ function calMonth(year, month, day) {
     
     var Night_w = [31];
     var temp = [31];
-    
-    /*
-    Shift[3] = parseInt(Shift[1]) * 1.25 + "";
-    Shift[4] = parseInt(Shift[1]) * 1.25 + "";
-    Shift[5] = "22:00";
-    Shift[6] = "05:00";
-    */
 
     var HourWages = parseInt(Shift[1]);
     var TrasCosts = parseInt(Shift[2]);

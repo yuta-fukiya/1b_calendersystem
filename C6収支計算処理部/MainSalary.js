@@ -35,23 +35,5 @@ export function AskSalary(year, month){
 
 export function SetIncome(year, month, day){
     var income = cal.calculate(year, month, day);
-    update.Sendincome(income);
-}
-
-/*************************************************************
-***function name     : UpdateSalary
-***Designer          : 猪腰大樹
-***Date              : 2022.7.12
-***function          : 収支情報を収支管理部で更新する
-**************************************************************/
-
-export function UpdateSalary(salary, ProcessName){
-    if (ProcessName == "income") {
-        update.Sendincome(salary);
-    } else if (ProcessName == "expense") {
-        update.Sendexpense(salary);
-    } else if (ProcessName == "All") {
-        update.Sendincome(salary[0]);
-        update.Sendexpense(salary[1]);
-    }
+    update.Sendincome(income, year, month);
 }
