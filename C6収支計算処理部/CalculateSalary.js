@@ -127,7 +127,7 @@ function calWeek(year, month, day) {
     }
     
     for (let i=startDayOfWeek*2; i<(day+startDayOfWeek)*2; i=i+2) { // 収入の計算を行う
-        if (check[i-startDayOfWeek*2] != 1) {
+        if (check[i/2-startDayOfWeek] == 1) {
             start = Week[i%14].split(":");
             end = Week[(i+1)%14].split(":");
             var temp2 = income;
