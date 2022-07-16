@@ -35,7 +35,6 @@ export function prev() {
     showDate.setMonth(showDate.getMonth() - 1);
     showProcess(showDate);
 }window.prev = prev;
-
 // 次の月表示
 export function next() {
     showDate.setMonth(showDate.getMonth() + 1);
@@ -123,7 +122,17 @@ function createSchedule(year, month, day){//スケジュール表示領域を作
 
     var size = schedule_information.length;
     var number = [0, 1, 2, 3, 4, 5, 6];
-    var date = new Date(year, month, day-3);
+    var date = new Date(year, month, 0);
+    alert(date.getDate());
+    if (date.getDate() == 31){
+        date = new Date(year, month, day-3);
+    }else if (date.getDate() == 30){
+        date = new Date(year, month, day-2);
+    }else if (date.getDate() == 29){
+        date = new Date(year, month, day-1);
+    }else if (date.getDate() == 28){
+        date = new Date(year, month, day);
+    }
     var date1 = new Date(year, month, day);  
     var date2 = number[date.getDay()];
     var date3 = date1.getDate()-1;
