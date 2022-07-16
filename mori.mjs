@@ -75,8 +75,8 @@ var DaySchedule_txt;
 var salary_txt;
 var schedule_timetable_txt;
 
-const hostname = '0.0.0.0'; 
-const port = 80; 
+const hostname = '127.0.0.1'; 
+const port = 8000; 
 
 const server = http.createServer(RouteSetting);
 
