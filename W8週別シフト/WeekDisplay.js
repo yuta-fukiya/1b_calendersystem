@@ -6,44 +6,64 @@
 ***  Purpose      : 週別シフト情報を参照・一時保存する
 *******************************************************************/
 
-
 import {AskJobs} from "./MainJobs.js";           //シフト設定処理部
+
 const userinfo = window.location.search.replace("?","");          //URLパラメータを取得する
 var userinfo2 = userinfo.split(",");        //取得したURLパラメータを","で区切る
 const year = userinfo2[1];      //入力する年
 const month = userinfo2[2];     //入力する月
 
-/*****************************************************************
+
+/****************************************************************
+***function name     : 無し
+***Designer          : 吹谷　優太
+***Date              : 2022.7.11
+***function          : シフト情報の初期値を求める即時関数
+*******************************************************************/
+window.onload = function () {
+    var week_shift = localStorage.getItem("Week");
+    var week_shift2;
+    if (week_shift == null){
+        week_shift2 = AskJobs("WeekShift_UI", year, month);
+        alert(week_shift2);
+    } else {
+        week_shift2 = week_shift.split(",");
+    } 
+    Week_DataInit(week_shift2);
+};
+
+/****************************************************************
 ***function name     : Week_DataSave
 ***Designer          : 吹谷　優太
 ***Date              : 2022.7.11
 ***function          : 現在カレンダーに反映しているシフト時間をシフト設定画面に反映する
 *******************************************************************/
-function Week_DataInit(){
-    var startId;
-    var endId;
-    var week = localStorage.getItem("Week");                        //ローカルストレージに問い合わせ
-    var week_name = ["sun", "mon", "tue", "wed", "thu", "fri", "sut"];   //曜日の配列
-    if (week == null){
-        var weekshift = AskJobs("WeekShift_UI", year, month);       //週間シフト情報をシフト設定処理部に問い合わせ
-        for (var i = 0; i < 7; i++){
-            startId = "weekshift_" + week_name[i] + "_s";
-            endId = "weekshift_" + week_name[i] + "_f";
-            document.getElementById(startId).value = weekshift[i*2];  //日曜日から土曜日の深夜給になる時間帯の始まり
-            document.getElementById(endId).value = weekshift[i*2+1];  //日曜日から土曜日の深夜給になる時間帯の終わり
-        }
-    } else {
-        var week2 = week.split(",");
-        var weekshift = AskJobs("WeekShift_UI", year, month);       //週間シフト情報をシフト設定処理部に問い合わせ
-        for (var i = 0; i < 7; i++){
-            startId = "weekshift_" + week_name[i] + "_s";
-            endId = "weekshift_" + week_name[i] + "_f";
-            document.getElementById(startId).value = week2[i*2];  //日曜日から土曜日の深夜給になる時間帯の始まり
-            document.getElementById(endId).value = week2[i*2+1];  //日曜日から土曜日の深夜給になる時間帯の終わり
-        }
+function Week_DataInit(week_shift){
+    const week = ["日", "月", "火", "水", "木", "金", "土"];
+    const week2 = ["sun", "mon", "tue", "wed", "thu", "fri", "sut"];
+    var calendar = "<table><tr>";
+    var start;
+    var end;
+
+    for (var i = 0; i < week.length; i++) {
+        calendar += "<th>" + week[i] + "</th>";
     }
+    calendar += "</tr>";
+    calendar += "<tr class='time'>";
+    for (var i = 0; i < week.length; i++) {
+        if (week_shift[i*2]!=week_shift[i*2+1]){
+            calendar += "<td class='exist'>";
+        } else{
+            calendar += "<td>";
+        }
+        start = "weekshift_" + week2[i] + "_s";
+        end = "weekshift_" + week2[i] + "_f";
+        calendar += "<input type='time' value='" + week_shift[i*2] + "' id='" + start + "'><br>～<br><input type='time' value='"+ week_shift[i*2+1] +"' id='" + end + "'></td>";
+    }
+    calendar += "</tr>";
+    calendar += "</table>";
+    document.querySelector('#calendar').innerHTML = calendar;
 }
-window.onload = Week_DataInit;
      
 /*******************************************
 ***function name     : Week_DataSave
@@ -51,7 +71,7 @@ window.onload = Week_DataInit;
 ***Date              : 2022.7.11
 ***function          : シフト設定処理部に週別シフト情報を送る
 ********************************************/
-function Week_DataSave(){
+export function Week_DataSave(){
     var startId;
     var endId;
     var weekshift = [];   //週間シフト情報をまとめるための配列

@@ -9,45 +9,62 @@
 h1 {
   background: linear-gradient(transparent 70%, #46ee8c 70%);
 }
+
 table{
-    border-spacing: 0;
-    border-collapse: collapse;
-  }
+  border-spacing: 0;
+  border-collapse: collapse;
+}
    
-  td{
-    border: 2px solid rgb(17, 13, 13);
-    padding: 20px;
-    text-align: center;
-  }
-  td:first-child{
-    background-color: #f5cece;
-  }
-  td:last-child{
-    background-color: rgb(203, 208, 245);
-  }
-  th:first-child{
-    color: red;
-  }
+td{
+  border: 2px solid rgb(17, 13, 13);
+  padding: 20px;
+  text-align: center;
+}
+
+td:first-child{
+  background-color: #f5cece;
+}
+
+td:last-child{
+  background-color: rgb(203, 208, 245);
+}
+
+th:first-child{
+  color: red;
+}
    
-  th:last-child{
-    color: royalblue;
-  }
+th:last-child{
+  color: royalblue;
+}
    
-  th.is-disabled{
-    color: #ccc;
-  }
+th.is-disabled{
+  color: #ccc;
+}
+
+td.exist{
+  background-color: rgb(243, 241, 206);
+}
+
+.exist input{
+  width: 75px;
+  padding: 1px;
+  font-size: 15px;
+}
+
 .time input{
-    width: 75px;
-    padding: 1px;
-    font-size: 15px;
+  width: 75px;
+  padding: 1px;
+  font-size: 15px;
 }
+
 .back{
-    width: 100px;
-    padding: 3px;
-    font-size: large;
-    background-color: #46ee8c;
-    cursor: pointer;
+  width: 100px;
+  padding: 3px;
+  font-size: large;
+  background-color: #46ee8c;
+  cursor: pointer;
 }
+
 .back:hover{
-    background-color: #b4ffd9;
+  background-color: #b4ffd9;
 }

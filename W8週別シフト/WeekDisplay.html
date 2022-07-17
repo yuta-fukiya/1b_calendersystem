@@ -18,55 +18,8 @@
 </head>
 <body>
     <h1>シフト設定ー曜日固定シフト</h1>
-        <table>
-            <tr>
-            <th>日</th>
-            <th>月</th>
-            <th>火</th>
-            <th>水</th>
-            <th>木</th>
-            <th>金</th>
-            <th>土</th>
-            </tr>
-            <tr class="time">
-                <td>
-                    <input type="time" id="weekshift_sun_s">
-                    <p>～<br></p>
-                    <input type="time" id="weekshift_sun_f">
-                </td>
-                <td>
-                    <input type="time" id="weekshift_mon_s" >
-                    <p>～<br></p>
-                    <input type="time" id="weekshift_mon_f" >
-                </td>
-                <td>
-                    <input type="time" id="weekshift_tue_s" >
-                    <p>～<br></p>
-                    <input type="time" id="weekshift_tue_f" >
-                </td>
-                <td>
-                    <input type="time" id="weekshift_wed_s" >
-                    <p>～<br></p>
-                    <input type="time" id="weekshift_wed_f" >
-                </td>
-                <td>
-                    <input type="time" id="weekshift_thu_s" >
-                    <p>～<br></p>
-                    <input type="time" id="weekshift_thu_f" >
-                </td>
-                <td>
-                    <input type="time" id="weekshift_fri_s" >
-                    <p>～<br></p>
-                    <input type="time" id="weekshift_fri_f" >
-                </td>
-                <td>
-                    <input type="time" id="weekshift_sut_s" >
-                    <p>～<br></p>
-                    <input type="time" id="weekshift_sut_f" >
-                </td>
-            </tr>
-        </table>
-        <br><br>
-        <input class="back" type="button" id="back" value="戻る" onclick="Week_DataSave()" >
+    <div id="calendar"></div>
+    <br><br>
+    <input class="back" type="button" id="back" value="戻る" onclick="Week_DataSave()" >
 </body>
 </html>
