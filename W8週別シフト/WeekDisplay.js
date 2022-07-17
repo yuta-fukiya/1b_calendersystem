@@ -25,7 +25,6 @@ window.onload = function () {
     var week_shift2;
     if (week_shift == null){
         week_shift2 = AskJobs("WeekShift_UI", year, month);
-        alert(week_shift2);
     } else {
         week_shift2 = week_shift.split(",");
     } 
