@@ -102,6 +102,7 @@ h1{
 
 td:hover{
     cursor: pointer;
+    background-color: #b4b4b4;
 }
 
 a{
