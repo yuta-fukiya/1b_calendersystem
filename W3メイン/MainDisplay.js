@@ -92,12 +92,10 @@ function createProcess(year, month) {
             } else {
                 // 当月の日付を曜日に照らし合わせて設定
                 count++;
-                if (year == today.getFullYear()
-                    && month == (today.getMonth())
-                    && count == today.getDate()) {
+                if (year == today.getFullYear() && month == (today.getMonth()) && count == today.getDate()) {
                     calendar += "<td class='today' onclick='displaySchedule("+year+","+month+","+count+")'>" + count + "</td>";
                 } else {
-                    calendar += "<td onclick='displaySchedule(" + year + "," + month + "," + count +")'>" + count + "</td>";
+                    calendar += "<td class='crent' onclick='displaySchedule(" + year + "," + month + "," + count +")'>" + count + "</td>";
                 }
             }
         }

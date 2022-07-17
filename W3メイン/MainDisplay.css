@@ -67,6 +67,16 @@ td.today {
     color: #fff;
 }
 
+td.today:hover{
+    cursor: pointer;
+    background-color: rgb(164, 165, 165);
+}
+
+td.crent:hover{
+    cursor: pointer;
+    background-color: rgb(164, 165, 165);
+}
+
 /*ボタン*/
 #next-prev-button {
     position: relative;
@@ -98,11 +108,6 @@ td.today {
 
 h1{
     text-align: center;
-}
-
-td:hover{
-    cursor: pointer;
-    background-color: #b4b4b4;
 }
 
 a{
