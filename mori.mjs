@@ -15,40 +15,40 @@ import * as Salary from "./C9収支管理部/SalaryManagement.mjs";
 import * as DaySchedule from "./C8スケジュール管理部/DayScheduleManagement.mjs";
 import * as timetable from "./C8スケジュール管理部/TimetableManagement.mjs";
 
-const LoginDisplay_html = fs.readFileSync('./W1ログイン/LoginDisplay.html', 'UTF-8');
-const LoginDisplay_js = fs.readFileSync('./W1ログイン/LoginDisplay.js', 'UTF-8');
-const LoginDisplay_css = fs.readFileSync('./W1ログイン/LoginDisplay.css', 'UTF-8');
+const LoginDisplay_html = fs.readFileSync('./C1UI処理部/M1-1ログイン画面UI処理/LoginDisplay.html', 'UTF-8');
+const LoginDisplay_js = fs.readFileSync('./C1UI処理部/M1-1ログイン画面UI処理/LoginDisplay.js', 'UTF-8');
+const LoginDisplay_css = fs.readFileSync('./C1UI処理部/M1-1ログイン画面UI処理/LoginDisplay.css', 'UTF-8');
 
-const RegistDisplay_html = fs.readFileSync('./W2新規登録/RegistDisplay.html', 'UTF-8');
-const RegistDisplay_js = fs.readFileSync('./W2新規登録/RegistDisplay.js', 'UTF-8');
+const RegistDisplay_html = fs.readFileSync('./C1UI処理部/M1-2新規登録画面UI処理/RegistDisplay.html', 'UTF-8');
+const RegistDisplay_js = fs.readFileSync('./C1UI処理部/M1-2新規登録画面UI処理/RegistDisplay.js', 'UTF-8');
 
-const MainDisplay_html = fs.readFileSync('./W3メイン/MainDisplay.html', 'UTF-8');
-const MainDisplay_js = fs.readFileSync('./W3メイン/MainDisplay.js', 'UTF-8');
-const MainDisplay_css = fs.readFileSync('./W3メイン/MainDisplay.css', 'UTF-8');
+const MainDisplay_html = fs.readFileSync('./C1UI処理部/M1-3メイン画面UI処理/MainDisplay.html', 'UTF-8');
+const MainDisplay_js = fs.readFileSync('./C1UI処理部/M1-3メイン画面UI処理/MainDisplay.js', 'UTF-8');
+const MainDisplay_css = fs.readFileSync('./C1UI処理部/M1-3メイン画面UI処理/MainDisplay.css', 'UTF-8');
 
-const daySchedule_html = fs.readFileSync('./W4日別/daySchedule.html', 'UTF-8');
-const daySchedule_css = fs.readFileSync('./W4日別/daySchedule.css', 'UTF-8');
-const daySchedule_js = fs.readFileSync('./W4日別/daySchedule.js', 'UTF-8');
+const daySchedule_html = fs.readFileSync('./C1UI処理部/M1-4日別予定設定画面UI処理/daySchedule.html', 'UTF-8');
+const daySchedule_css = fs.readFileSync('./C1UI処理部/M1-4日別予定設定画面UI処理/daySchedule.css', 'UTF-8');
+const daySchedule_js = fs.readFileSync('./C1UI処理部/M1-4日別予定設定画面UI処理/daySchedule.js', 'UTF-8');
 
-const timetable_html = fs.readFileSync('./W5時間割/timetable.html', 'UTF-8');
-const timetable_js = fs.readFileSync('./W5時間割/timetable.js', 'UTF-8');
-const timetable_css = fs.readFileSync('./W5時間割/timetable.css', 'UTF-8');
+const timetable_html = fs.readFileSync('./C1UI処理部/M1-5時間割設定UI処理/timetable.html', 'UTF-8');
+const timetable_js = fs.readFileSync('./C1UI処理部/M1-5時間割設定UI処理/timetable.js', 'UTF-8');
+const timetable_css = fs.readFileSync('./C1UI処理部/M1-5時間割設定UI処理/timetable.css', 'UTF-8');
 
-const timetabledetail_html = fs.readFileSync('./W6時間割詳細/timetabledetail.html', 'UTF-8');
-const timetabledetail_js = fs.readFileSync('./W6時間割詳細/timetabledetail.js', 'UTF-8');
-const timetabledetail_css = fs.readFileSync('./W6時間割詳細/timetabledetail.css', 'UTF-8');
+const timetabledetail_html = fs.readFileSync('./C1UI処理部/M1-6時間割詳細UI処理/timetabledetail.html', 'UTF-8');
+const timetabledetail_js = fs.readFileSync('./C1UI処理部/M1-6時間割詳細UI処理/timetabledetail.js', 'UTF-8');
+const timetabledetail_css = fs.readFileSync('./C1UI処理部/M1-6時間割詳細UI処理/timetabledetail.css', 'UTF-8');
 
-const ShiftDisplay_html = fs.readFileSync('./W7シフト/ShiftDisplay.html', 'UTF-8');
-const ShiftDisplay_js = fs.readFileSync('./W7シフト/ShiftDisplay.js', 'UTF-8');
-const ShiftDisplay_css = fs.readFileSync('./W7シフト/ShiftDisplay.css', 'UTF-8');
+const ShiftDisplay_html = fs.readFileSync('./C1UI処理部/M1-7シフト設定画面UI処理/ShiftDisplay.html', 'UTF-8');
+const ShiftDisplay_js = fs.readFileSync('./C1UI処理部/M1-7シフト設定画面UI処理/ShiftDisplay.js', 'UTF-8');
+const ShiftDisplay_css = fs.readFileSync('./C1UI処理部/M1-7シフト設定画面UI処理/ShiftDisplay.css', 'UTF-8');
 
-const WeekDisplay_html = fs.readFileSync('./W8週別シフト/WeekDisplay.html', 'UTF-8');
-const WeekDisplay_js = fs.readFileSync('./W8週別シフト/WeekDisplay.js', 'UTF-8');
-const WeekDisplay_css = fs.readFileSync('./W8週別シフト/WeekDisplay.css', 'UTF-8');
+const WeekDisplay_html = fs.readFileSync('./C1UI処理部/M1-8週別シフト設定画面UI処理/WeekDisplay.html', 'UTF-8');
+const WeekDisplay_js = fs.readFileSync('./C1UI処理部/M1-8週別シフト設定画面UI処理/WeekDisplay.js', 'UTF-8');
+const WeekDisplay_css = fs.readFileSync('./C1UI処理部/M1-8週別シフト設定画面UI処理/WeekDisplay.css', 'UTF-8');
 
-const MonthDisplay_html = fs.readFileSync('./W9月別シフト/MonthDisplay.html', 'UTF-8');
-const MonthDisplay_css = fs.readFileSync('./W9月別シフト/MonthDisplay.css', 'UTF-8');
-const MonthDisplay_js = fs.readFileSync('./W9月別シフト/MonthDisplay.js', 'UTF-8');
+const MonthDisplay_html = fs.readFileSync('./C1UI処理部/M1-9月別シフト設定画面UI処理/MonthDisplay.html', 'UTF-8');
+const MonthDisplay_css = fs.readFileSync('./C1UI処理部/M1-9月別シフト設定画面UI処理/MonthDisplay.css', 'UTF-8');
+const MonthDisplay_js = fs.readFileSync('./C1UI処理部/M1-9月別シフト設定画面UI処理/MonthDisplay.js', 'UTF-8');
 
 const MainLogin_js = fs.readFileSync('./C2認証処理部/MainLogin.js', 'UTF-8');
 
@@ -75,8 +75,13 @@ var DaySchedule_txt;
 var salary_txt;
 var schedule_timetable_txt;
 
-const hostname = '127.0.0.1'; 
-const port = 8000; 
+/*********************
+ 以下のhostname, portはローカルで利用する際に使います
+実行後のアクセス・・・http://127.0.0.1:8000
+***********************/
+
+const hostname = '127.0.0.1';
+const port = 8000;
 
 const server = http.createServer(RouteSetting);
 

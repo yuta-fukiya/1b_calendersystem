@@ -38,11 +38,11 @@ window.onload = function () {
 ***function          : 現在カレンダーに反映しているシフト時間をシフト設定画面に反映する
 *******************************************************************/
 function Week_DataInit(week_shift){
-    const week = ["日", "月", "火", "水", "木", "金", "土"];
-    const week2 = ["sun", "mon", "tue", "wed", "thu", "fri", "sut"];
+    const week = ["日", "月", "火", "水", "木", "金", "土"];             //html 表示用配列
+    const week2 = ["sun", "mon", "tue", "wed", "thu", "fri", "sut"];    //html 入力欄id用配列
     var calendar = "<table><tr>";
-    var start;
-    var end;
+    var start;           //htmlの入力欄のid
+    var end;             //htmlの入力欄のid
 
     for (var i = 0; i < week.length; i++) {
         calendar += "<th>" + week[i] + "</th>";

@@ -60,19 +60,24 @@ export function TimeTableDetails_update(){
     var classcou1 = timetabledata[0].length;
     var classcou2 = timetabledata[1].length;
     var classcou3 = timetabledata[3].length;
+    var count = 0; 
     if(classcou1>20) {
-        alert("授業名は２０文字以内で入力してください")
-    };
+        alert("授業名は２０文字以内で入力してください");
+        count++
+    }
     if(classcou2>20){
          alert("教室名は２０文字以内で入力してください");
+        count++;
     }
     if(classcou3>20){
          alert("講師名は２０文字以内で入力してください");
+        count++;
     }
     if(timetabledata[2]<=0 || timetabledata[2]>=100){
          alert("単位数の値が不正です");
+        count++;
     }
-    else {
+    if(count==0) {
         UpdateTimeTableJob(timetabledata); // 時間割情報を送信
         window.location.href="./timetable.html?" + id;
     }
