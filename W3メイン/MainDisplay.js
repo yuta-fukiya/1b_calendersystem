@@ -149,6 +149,9 @@ function createSchedule(year, month, day){//スケジュール表示領域を作
 
     
     schedule+="<th>";
+    if (shift_information[0] == "32文字以内で入力してください"){
+        shift_information[0] = "アルバイト";
+    }
     schedule+="<td>"+shift_information[0]+"</td>";
     if (shift_information3[date3*2] == "00:00" && shift_information3[date3*2+1] == "00:00"){
         schedule+="<td>"+shift_array[date2*2]+"</td>";
