@@ -61,14 +61,13 @@ function calWeek(year, month, day) {
     var Overtime = Shift[4];
     var Night_s = Shift[5].split(":");
     var Night_f = Shift[6].split(":");
-
-    for (let i=0; i<day*2; i=i+2) {     // 月別シフト時間と週別シフト時間の重複チェック
-        start = Month[i].split(":");
-        end = Month[i+1].split(":");
-        if (parseInt(start[0]) == parseInt(end[0]) || parseInt(start[1]) == parseInt(end[1])) {
-            check[i/2] = 1;
+    for (let i=0; i<day; i++) {     // 月別シフト時間と週別シフト時間の重複チェック
+        start = Month[i*2].split(":");
+        end = Month[i*2+1].split(":");
+        if (parseInt(start[0]) == parseInt(end[0]) && parseInt(start[1]) == parseInt(end[1])) {
+            check[i] = 1;
         } else {
-            check[i/2] = 0;
+            check[i] = 0;
         }
     }
 
